@@ -54,6 +54,7 @@ public @interface RestControllerAdvice {
 	 * <p>Allows for more concise annotation declarations e.g.:
 	 * {@code @ControllerAdvice("org.my.pkg")} is equivalent to
 	 * {@code @ControllerAdvice(basePackages="org.my.pkg")}.
+	 *
 	 * @see #basePackages()
 	 */
 	@AliasFor("basePackages")
