@@ -94,11 +94,9 @@ public class ServletForwardingController extends AbstractController implements B
 	@Nullable
 	private String beanName;
 
-
 	public ServletForwardingController() {
 		super(false);
 	}
-
 
 	/**
 	 * Set the name of the servlet to forward to,
