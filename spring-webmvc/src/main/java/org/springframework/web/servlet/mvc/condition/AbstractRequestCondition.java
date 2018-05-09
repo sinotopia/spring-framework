@@ -33,6 +33,7 @@ public abstract class AbstractRequestCondition<T extends AbstractRequestConditio
 	/**
 	 * Indicates whether this condition is empty, i.e. whether or not it
 	 * contains any discrete items.
+	 *
 	 * @return {@code true} if empty; {@code false} otherwise
 	 */
 	public boolean isEmpty() {
@@ -42,6 +43,7 @@ public abstract class AbstractRequestCondition<T extends AbstractRequestConditio
 	/**
 	 * Return the discrete items a request condition is composed of.
 	 * <p>For example URL patterns, HTTP request methods, param expressions, etc.
+	 *
 	 * @return a collection of objects, never {@code null}
 	 */
 	protected abstract Collection<?> getContent();
@@ -74,7 +76,7 @@ public abstract class AbstractRequestCondition<T extends AbstractRequestConditio
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder("[");
-		for (Iterator<?> iterator = getContent().iterator(); iterator.hasNext();) {
+		for (Iterator<?> iterator = getContent().iterator(); iterator.hasNext(); ) {
 			Object expression = iterator.next();
 			builder.append(expression.toString());
 			if (iterator.hasNext()) {

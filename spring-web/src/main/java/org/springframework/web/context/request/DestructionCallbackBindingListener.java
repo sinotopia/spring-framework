@@ -25,20 +25,20 @@ import javax.servlet.http.HttpSessionBindingListener;
  * wrapping a session destruction callback.
  *
  * @author Juergen Hoeller
- * @since 3.0
  * @see RequestAttributes#registerDestructionCallback
  * @see ServletRequestAttributes#registerSessionDestructionCallback
+ * @since 3.0
  */
 @SuppressWarnings("serial")
 public class DestructionCallbackBindingListener implements HttpSessionBindingListener, Serializable {
 
 	private final Runnable destructionCallback;
 
-
 	/**
 	 * Create a new DestructionCallbackBindingListener for the given callback.
+	 *
 	 * @param destructionCallback the Runnable to execute when this listener
-	 * object gets unbound from the session
+	 *                            object gets unbound from the session
 	 */
 	public DestructionCallbackBindingListener(Runnable destructionCallback) {
 		this.destructionCallback = destructionCallback;

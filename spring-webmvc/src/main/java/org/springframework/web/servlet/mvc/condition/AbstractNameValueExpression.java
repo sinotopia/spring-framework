@@ -45,8 +45,7 @@ abstract class AbstractNameValueExpression<T> implements NameValueExpression<T> 
 			this.isNegated = expression.startsWith("!");
 			this.name = (this.isNegated ? expression.substring(1) : expression);
 			this.value = null;
-		}
-		else {
+		} else {
 			this.isNegated = (separator > 0) && (expression.charAt(separator - 1) == '!');
 			this.name = (this.isNegated ? expression.substring(0, separator - 1) : expression.substring(0, separator));
 			this.value = parseValue(expression.substring(separator + 1));
@@ -74,8 +73,7 @@ abstract class AbstractNameValueExpression<T> implements NameValueExpression<T> 
 		boolean isMatch;
 		if (this.value != null) {
 			isMatch = matchValue(request);
-		}
-		else {
+		} else {
 			isMatch = matchName(request);
 		}
 		return (this.isNegated ? !isMatch : isMatch);
@@ -125,8 +123,7 @@ abstract class AbstractNameValueExpression<T> implements NameValueExpression<T> 
 			}
 			builder.append('=');
 			builder.append(this.value);
-		}
-		else {
+		} else {
 			if (this.isNegated) {
 				builder.append('!');
 			}

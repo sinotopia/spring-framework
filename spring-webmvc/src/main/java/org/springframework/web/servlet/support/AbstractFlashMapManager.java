@@ -117,8 +117,7 @@ public abstract class AbstractFlashMapManager implements FlashMapManager {
 						updateFlashMaps(allFlashMaps, request, response);
 					}
 				}
-			}
-			else {
+			} else {
 				allFlashMaps.removeAll(mapsToRemove);
 				updateFlashMaps(allFlashMaps, request, response);
 			}
@@ -142,6 +141,7 @@ public abstract class AbstractFlashMapManager implements FlashMapManager {
 
 	/**
 	 * Return a FlashMap contained in the given list that matches the request.
+	 *
 	 * @return a matching FlashMap or {@code null}
 	 */
 	@Nullable
@@ -217,8 +217,7 @@ public abstract class AbstractFlashMapManager implements FlashMapManager {
 				allFlashMaps.add(flashMap);
 				updateFlashMaps(allFlashMaps, request, response);
 			}
-		}
-		else {
+		} else {
 			List<FlashMap> allFlashMaps = retrieveFlashMaps(request);
 			allFlashMaps = (allFlashMaps != null ? allFlashMaps : new LinkedList<>());
 			allFlashMaps.add(flashMap);
@@ -241,6 +240,7 @@ public abstract class AbstractFlashMapManager implements FlashMapManager {
 
 	/**
 	 * Retrieve saved FlashMap instances from the underlying storage.
+	 *
 	 * @param request the current request
 	 * @return a List with FlashMap instances, or {@code null} if none found
 	 */
@@ -249,9 +249,10 @@ public abstract class AbstractFlashMapManager implements FlashMapManager {
 
 	/**
 	 * Update the FlashMap instances in the underlying storage.
+	 *
 	 * @param flashMaps a (potentially empty) list of FlashMap instances to save
-	 * @param request the current request
-	 * @param response the current response
+	 * @param request   the current request
+	 * @param response  the current response
 	 */
 	protected abstract void updateFlashMaps(
 			List<FlashMap> flashMaps, HttpServletRequest request, HttpServletResponse response);
@@ -262,6 +263,7 @@ public abstract class AbstractFlashMapManager implements FlashMapManager {
 	 * <p>The default implementation returns a shared static mutex.
 	 * Subclasses are encouraged to return a more specific mutex, or
 	 * {@code null} to indicate that no synchronization is necessary.
+	 *
 	 * @param request the current request
 	 * @return the mutex to use (may be {@code null} if none applicable)
 	 * @since 4.0.3

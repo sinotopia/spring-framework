@@ -73,6 +73,7 @@ public class ParameterizableViewController extends AbstractController {
 	/**
 	 * Set a View object for the ModelAndView to return.
 	 * Will override any pre-existing view name or View.
+	 *
 	 * @since 4.1
 	 */
 	public void setView(View view) {
@@ -82,6 +83,7 @@ public class ParameterizableViewController extends AbstractController {
 	/**
 	 * Return the View object, or {@code null} if we are using a view name
 	 * to be resolved by the DispatcherServlet via a ViewResolver.
+	 *
 	 * @since 4.1
 	 */
 	@Nullable
@@ -98,6 +100,7 @@ public class ParameterizableViewController extends AbstractController {
 	 * For full control over redirecting provide a {@code RedirectView} instance.
 	 * <p>If the status code is 204 and no view is configured, the request is
 	 * fully handled within the controller.
+	 *
 	 * @since 4.1
 	 */
 	public void setStatusCode(@Nullable HttpStatus statusCode) {
@@ -106,6 +109,7 @@ public class ParameterizableViewController extends AbstractController {
 
 	/**
 	 * Return the configured HTTP status code or {@code null}.
+	 *
 	 * @since 4.1
 	 */
 	@Nullable
@@ -119,6 +123,7 @@ public class ParameterizableViewController extends AbstractController {
 	 * handled within the controller and that no view should be used for rendering.
 	 * Useful in combination with {@link #setStatusCode}.
 	 * <p>By default this is set to {@code false}.
+	 *
 	 * @since 4.1
 	 */
 	public void setStatusOnly(boolean statusOnly) {
@@ -137,6 +142,7 @@ public class ParameterizableViewController extends AbstractController {
 	 * Return a ModelAndView object with the specified view name.
 	 * <p>The content of the {@link RequestContextUtils#getInputFlashMap
 	 * "input" FlashMap} is also added to the model.
+	 *
 	 * @see #getViewName()
 	 */
 	@Override
@@ -149,8 +155,7 @@ public class ParameterizableViewController extends AbstractController {
 			if (getStatusCode().is3xxRedirection()) {
 				request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, getStatusCode());
 				viewName = (viewName != null && !viewName.startsWith("redirect:") ? "redirect:" + viewName : viewName);
-			}
-			else {
+			} else {
 				response.setStatus(getStatusCode().value());
 				if (isStatusOnly() || (getStatusCode().equals(HttpStatus.NO_CONTENT) && getViewName() == null)) {
 					return null;
@@ -163,8 +168,7 @@ public class ParameterizableViewController extends AbstractController {
 
 		if (getViewName() != null) {
 			modelAndView.setViewName(viewName);
-		}
-		else {
+		} else {
 			modelAndView.setView(getView());
 		}
 
