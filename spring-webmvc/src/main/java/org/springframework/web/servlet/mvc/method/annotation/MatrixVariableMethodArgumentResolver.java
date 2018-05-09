@@ -91,8 +91,7 @@ public class MatrixVariableMethodArgumentResolver extends AbstractNamedValueMeth
 			if (pathParameters.containsKey(pathVar)) {
 				paramValues = pathParameters.get(pathVar).get(name);
 			}
-		}
-		else {
+		} else {
 			boolean found = false;
 			paramValues = new ArrayList<>();
 			for (MultiValueMap<String, String> params : pathParameters.values()) {
@@ -101,7 +100,7 @@ public class MatrixVariableMethodArgumentResolver extends AbstractNamedValueMeth
 						String paramType = parameter.getNestedParameterType().getName();
 						throw new ServletRequestBindingException(
 								"Found more than one match for URI path parameter '" + name +
-								"' for parameter type [" + paramType + "]. Use 'pathVar' attribute to disambiguate.");
+										"' for parameter type [" + paramType + "]. Use 'pathVar' attribute to disambiguate.");
 					}
 					paramValues.addAll(params.get(name));
 					found = true;
@@ -111,11 +110,9 @@ public class MatrixVariableMethodArgumentResolver extends AbstractNamedValueMeth
 
 		if (CollectionUtils.isEmpty(paramValues)) {
 			return null;
-		}
-		else if (paramValues.size() == 1) {
+		} else if (paramValues.size() == 1) {
 			return paramValues.get(0);
-		}
-		else {
+		} else {
 			return paramValues;
 		}
 	}
