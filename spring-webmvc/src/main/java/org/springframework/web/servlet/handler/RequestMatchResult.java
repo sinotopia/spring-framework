@@ -37,7 +37,6 @@ public class RequestMatchResult {
 
 	private final PathMatcher pathMatcher;
 
-
 	/**
 	 * Create an instance with a matching pattern.
 	 *
@@ -54,7 +53,6 @@ public class RequestMatchResult {
 		this.lookupPath = lookupPath;
 		this.pathMatcher = pathMatcher;
 	}
-
 
 	/**
 	 * Extract URI template variables from the matching pattern as defined in

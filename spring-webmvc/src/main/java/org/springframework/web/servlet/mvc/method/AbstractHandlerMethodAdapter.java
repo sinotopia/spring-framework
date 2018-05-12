@@ -57,7 +57,6 @@ public abstract class AbstractHandlerMethodAdapter extends WebContentGenerator i
 		return this.order;
 	}
 
-
 	/**
 	 * This implementation expects the handler to be an {@link HandlerMethod}.
 	 *

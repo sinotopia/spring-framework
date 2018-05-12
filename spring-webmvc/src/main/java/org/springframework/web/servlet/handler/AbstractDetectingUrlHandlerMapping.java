@@ -35,7 +35,6 @@ public abstract class AbstractDetectingUrlHandlerMapping extends AbstractUrlHand
 
 	private boolean detectHandlersInAncestorContexts = false;
 
-
 	/**
 	 * Set whether to detect handler beans in ancestor ApplicationContexts.
 	 * <p>Default is "false": Only handler beans in the current ApplicationContext
