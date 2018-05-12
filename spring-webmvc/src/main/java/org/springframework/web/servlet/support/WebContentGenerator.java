@@ -86,7 +86,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 
 	protected static final String HEADER_CACHE_CONTROL = "Cache-Control";
 
-
 	/**
 	 * Set of supported HTTP methods
 	 */
