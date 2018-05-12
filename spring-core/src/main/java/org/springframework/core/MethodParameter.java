@@ -96,7 +96,6 @@ public class MethodParameter {
 	@Nullable
 	private volatile MethodParameter nestedMethodParameter;
 
-
 	/**
 	 * Create a new {@code MethodParameter} for the given method, with nesting level 1.
 	 *
@@ -173,7 +172,6 @@ public class MethodParameter {
 		this.parameterNameDiscoverer = original.parameterNameDiscoverer;
 		this.parameterName = original.parameterName;
 	}
-
 
 	/**
 	 * Return the wrapped Method, if any.

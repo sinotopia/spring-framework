@@ -86,7 +86,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 
 	protected static final String HEADER_CACHE_CONTROL = "Cache-Control";
 
-
 	/**
 	 * Set of supported HTTP methods
 	 */
@@ -106,7 +105,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 	@Nullable
 	private String[] varyByRequestHeaders;
 
-
 	// deprecated fields
 
 	/**
@@ -125,7 +123,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 	private boolean useCacheControlNoStore = true;
 
 	private boolean alwaysMustRevalidate = false;
-
 
 	/**
 	 * Create a new WebContentGenerator which supports
@@ -160,7 +157,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 	public WebContentGenerator(String... supportedMethods) {
 		setSupportedMethods(supportedMethods);
 	}
-
 
 	/**
 	 * Set the HTTP methods that this content generator should support.
@@ -198,7 +194,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 		} else {
 			allowedMethods = new ArrayList<>(this.supportedMethods);
 			allowedMethods.add(HttpMethod.OPTIONS.name());
-
 		}
 		this.allowHeader = StringUtils.collectionToCommaDelimitedString(allowedMethods);
 	}
@@ -392,7 +387,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 	public final boolean isAlwaysMustRevalidate() {
 		return this.alwaysMustRevalidate;
 	}
-
 
 	/**
 	 * Check the given request for supported methods and a required session, if any.
