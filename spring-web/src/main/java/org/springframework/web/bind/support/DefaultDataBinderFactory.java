@@ -32,7 +32,6 @@ public class DefaultDataBinderFactory implements WebDataBinderFactory {
 	@Nullable
 	private final WebBindingInitializer initializer;
 
-
 	/**
 	 * Create a new {@code DefaultDataBinderFactory} instance.
 	 *
