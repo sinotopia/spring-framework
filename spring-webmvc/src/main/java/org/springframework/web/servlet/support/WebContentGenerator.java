@@ -105,7 +105,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 	@Nullable
 	private String[] varyByRequestHeaders;
 
-
 	// deprecated fields
 
 	/**
@@ -124,7 +123,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 	private boolean useCacheControlNoStore = true;
 
 	private boolean alwaysMustRevalidate = false;
-
 
 	/**
 	 * Create a new WebContentGenerator which supports
@@ -159,7 +157,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 	public WebContentGenerator(String... supportedMethods) {
 		setSupportedMethods(supportedMethods);
 	}
-
 
 	/**
 	 * Set the HTTP methods that this content generator should support.
@@ -197,7 +194,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 		} else {
 			allowedMethods = new ArrayList<>(this.supportedMethods);
 			allowedMethods.add(HttpMethod.OPTIONS.name());
-
 		}
 		this.allowHeader = StringUtils.collectionToCommaDelimitedString(allowedMethods);
 	}
@@ -392,7 +388,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 		return this.alwaysMustRevalidate;
 	}
 
-
 	/**
 	 * Check the given request for supported methods and a required session, if any.
 	 *
@@ -402,12 +397,14 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 	 */
 	protected final void checkRequest(HttpServletRequest request) throws ServletException {
 		// Check whether we should support the request method.
+		//检查请求类型是否支持
 		String method = request.getMethod();
 		if (this.supportedMethods != null && !this.supportedMethods.contains(method)) {
 			throw new HttpRequestMethodNotSupportedException(method, this.supportedMethods);
 		}
 
 		// Check whether a session is required.
+		//如果session是必须的，判断session是否实际存在
 		if (this.requireSession && request.getSession(false) == null) {
 			throw new HttpSessionRequiredException("Pre-existing session required but none found");
 		}
@@ -491,7 +488,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 			applyCacheControl(response, cControl);
 		}
 	}
-
 
 	/**
 	 * @see #checkRequest(HttpServletRequest)
@@ -621,7 +617,6 @@ public abstract class WebContentGenerator extends WebApplicationObjectSupport {
 			}
 		}
 	}
-
 
 	private Collection<String> getVaryRequestHeadersToAdd(HttpServletResponse response, String[] varyByRequestHeaders) {
 		if (!response.containsHeader(HttpHeaders.VARY)) {
