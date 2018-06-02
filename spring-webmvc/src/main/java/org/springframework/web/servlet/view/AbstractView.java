@@ -72,7 +72,6 @@ public abstract class AbstractView extends WebApplicationObjectSupport implement
 	 */
 	private static final int OUTPUT_BYTE_ARRAY_INITIAL_SIZE = 4096;
 
-
 	@Nullable
 	private String contentType = DEFAULT_CONTENT_TYPE;
 

@@ -25,15 +25,14 @@ import org.springframework.util.Assert;
  * additional attributes expected in the "Set-Cookie" response header.
  *
  * @author Rossen Stoyanchev
- * @since 5.0
  * @see <a href="https://tools.ietf.org/html/rfc6265">RFC 6265</a>
+ * @since 5.0
  */
 public class HttpCookie {
 
 	private final String name;
 
 	private final String value;
-
 
 	public HttpCookie(String name, @Nullable String value) {
 		Assert.hasLength(name, "'name' is required and must not be empty.");
@@ -54,7 +53,6 @@ public class HttpCookie {
 	public String getValue() {
 		return this.value;
 	}
-
 
 	@Override
 	public int hashCode() {

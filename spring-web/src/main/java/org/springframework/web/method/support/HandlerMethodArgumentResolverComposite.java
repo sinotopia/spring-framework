@@ -47,7 +47,6 @@ public class HandlerMethodArgumentResolverComposite implements HandlerMethodArgu
 	private final Map<MethodParameter, HandlerMethodArgumentResolver> argumentResolverCache =
 			new ConcurrentHashMap<>(256);
 
-
 	/**
 	 * Add the given {@link HandlerMethodArgumentResolver}.
 	 */
@@ -58,6 +57,7 @@ public class HandlerMethodArgumentResolverComposite implements HandlerMethodArgu
 
 	/**
 	 * Add the given {@link HandlerMethodArgumentResolver}s.
+	 *
 	 * @since 4.3
 	 */
 	public HandlerMethodArgumentResolverComposite addResolvers(@Nullable HandlerMethodArgumentResolver... resolvers) {
@@ -92,12 +92,12 @@ public class HandlerMethodArgumentResolverComposite implements HandlerMethodArgu
 
 	/**
 	 * Clear the list of configured resolvers.
+	 *
 	 * @since 4.3
 	 */
 	public void clear() {
 		this.argumentResolvers.clear();
 	}
-
 
 	/**
 	 * Whether the given {@linkplain MethodParameter method parameter} is supported by any registered
@@ -110,12 +110,13 @@ public class HandlerMethodArgumentResolverComposite implements HandlerMethodArgu
 
 	/**
 	 * Iterate over registered {@link HandlerMethodArgumentResolver}s and invoke the one that supports it.
+	 *
 	 * @throws IllegalStateException if no suitable {@link HandlerMethodArgumentResolver} is found.
 	 */
 	@Override
 	@Nullable
 	public Object resolveArgument(MethodParameter parameter, @Nullable ModelAndViewContainer mavContainer,
-			NativeWebRequest webRequest, @Nullable WebDataBinderFactory binderFactory) throws Exception {
+								  NativeWebRequest webRequest, @Nullable WebDataBinderFactory binderFactory) throws Exception {
 
 		HandlerMethodArgumentResolver resolver = getArgumentResolver(parameter);
 		if (resolver == null) {

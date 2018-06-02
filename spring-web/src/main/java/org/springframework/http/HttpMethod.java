@@ -34,7 +34,6 @@ public enum HttpMethod {
 
 	GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS, TRACE;
 
-
 	private static final Map<String, HttpMethod> mappings = new HashMap<>(8);
 
 	static {
@@ -42,7 +41,6 @@ public enum HttpMethod {
 			mappings.put(httpMethod.name(), httpMethod);
 		}
 	}
-
 
 	/**
 	 * Resolve the given method value to an {@code HttpMethod}.
@@ -55,7 +53,6 @@ public enum HttpMethod {
 	public static HttpMethod resolve(@Nullable String method) {
 		return (method != null ? mappings.get(method) : null);
 	}
-
 
 	/**
 	 * Determine whether this {@code HttpMethod} matches the given

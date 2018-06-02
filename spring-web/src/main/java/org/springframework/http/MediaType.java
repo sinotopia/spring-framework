@@ -366,7 +366,6 @@ public class MediaType extends MimeType implements Serializable {
 		TEXT_XML = valueOf(TEXT_XML_VALUE);
 	}
 
-
 	/**
 	 * Create a new {@code MediaType} for the given primary type.
 	 * <p>The {@linkplain #getSubtype() subtype} is set to "&#42;", parameters empty.
@@ -754,7 +753,6 @@ public class MediaType extends MimeType implements Serializable {
 			}
 		}
 	};
-
 
 	/**
 	 * Comparator used by {@link #sortBySpecificity(List)}.

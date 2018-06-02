@@ -85,7 +85,6 @@ public class WebDataBinder extends DataBinder {
 
 	private boolean bindEmptyMultipartFiles = true;
 
-
 	/**
 	 * Create a new WebDataBinder instance, with default object name.
 	 *
@@ -107,7 +106,6 @@ public class WebDataBinder extends DataBinder {
 	public WebDataBinder(@Nullable Object target, String objectName) {
 		super(target, objectName);
 	}
-
 
 	/**
 	 * Specify a prefix that can be used for parameters that mark potentially
@@ -189,7 +187,6 @@ public class WebDataBinder extends DataBinder {
 	public boolean isBindEmptyMultipartFiles() {
 		return this.bindEmptyMultipartFiles;
 	}
-
 
 	/**
 	 * This implementation performs a field default and marker check
@@ -310,7 +307,6 @@ public class WebDataBinder extends DataBinder {
 		// Default value: null.
 		return null;
 	}
-
 
 	/**
 	 * Bind all multipart files contained in the given request, if any

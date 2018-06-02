@@ -71,7 +71,6 @@ public abstract class AbstractNamedValueMethodArgumentResolver implements Handle
 
 	private final Map<MethodParameter, NamedValueInfo> namedValueInfoCache = new ConcurrentHashMap<>(256);
 
-
 	public AbstractNamedValueMethodArgumentResolver() {
 		this.configurableBeanFactory = null;
 		this.expressionContext = null;
@@ -87,7 +86,6 @@ public abstract class AbstractNamedValueMethodArgumentResolver implements Handle
 		this.expressionContext =
 				(beanFactory != null ? new BeanExpressionContext(beanFactory, new RequestScope()) : null);
 	}
-
 
 	@Override
 	@Nullable
@@ -260,7 +258,6 @@ public abstract class AbstractNamedValueMethodArgumentResolver implements Handle
 	protected void handleResolvedValue(@Nullable Object arg, String name, MethodParameter parameter,
 									   @Nullable ModelAndViewContainer mavContainer, NativeWebRequest webRequest) {
 	}
-
 
 	/**
 	 * Represents the information about a named value, including name, whether it's required and a default value.

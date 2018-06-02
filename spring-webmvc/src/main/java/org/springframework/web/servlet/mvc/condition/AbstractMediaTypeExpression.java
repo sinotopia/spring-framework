@@ -39,7 +39,6 @@ abstract class AbstractMediaTypeExpression implements MediaTypeExpression, Compa
 
 	private final boolean isNegated;
 
-
 	AbstractMediaTypeExpression(String expression) {
 		if (expression.startsWith("!")) {
 			this.isNegated = true;
@@ -55,7 +54,6 @@ abstract class AbstractMediaTypeExpression implements MediaTypeExpression, Compa
 		this.isNegated = negated;
 	}
 
-
 	@Override
 	public MediaType getMediaType() {
 		return this.mediaType;
@@ -65,7 +63,6 @@ abstract class AbstractMediaTypeExpression implements MediaTypeExpression, Compa
 	public boolean isNegated() {
 		return this.isNegated;
 	}
-
 
 	@Override
 	public int compareTo(AbstractMediaTypeExpression other) {

@@ -43,13 +43,12 @@ public abstract class AbstractCookieValueMethodArgumentResolver extends Abstract
 
 	/**
 	 * @param beanFactory a bean factory to use for resolving  ${...}
-	 * placeholder and #{...} SpEL expressions in default values;
-	 * or {@code null} if default values are not expected to contain expressions
+	 *                    placeholder and #{...} SpEL expressions in default values;
+	 *                    or {@code null} if default values are not expected to contain expressions
 	 */
 	public AbstractCookieValueMethodArgumentResolver(@Nullable ConfigurableBeanFactory beanFactory) {
 		super(beanFactory);
 	}
-
 
 	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
@@ -68,7 +67,6 @@ public abstract class AbstractCookieValueMethodArgumentResolver extends Abstract
 		throw new ServletRequestBindingException("Missing cookie '" + name +
 				"' for method parameter of type " + parameter.getNestedParameterType().getSimpleName());
 	}
-
 
 	private static class CookieValueNamedValueInfo extends NamedValueInfo {
 

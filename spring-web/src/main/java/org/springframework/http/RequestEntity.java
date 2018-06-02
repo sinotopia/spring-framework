@@ -59,9 +59,9 @@ import org.springframework.util.ObjectUtils;
  *
  * @author Arjen Poutsma
  * @author Sebastien Deleuze
- * @since 4.1
  * @see #getMethod()
  * @see #getUrl()
+ * @since 4.1
  */
 public class RequestEntity<T> extends HttpEntity<T> {
 
@@ -73,11 +73,11 @@ public class RequestEntity<T> extends HttpEntity<T> {
 	@Nullable
 	private final Type type;
 
-
 	/**
 	 * Constructor with method and URL but without body nor headers.
+	 *
 	 * @param method the method
-	 * @param url the URL
+	 * @param url    the URL
 	 */
 	public RequestEntity(HttpMethod method, URI url) {
 		this(null, null, method, url, null);
@@ -85,9 +85,10 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Constructor with method, URL and body but without headers.
-	 * @param body the body
+	 *
+	 * @param body   the body
 	 * @param method the method
-	 * @param url the URL
+	 * @param url    the URL
 	 */
 	public RequestEntity(@Nullable T body, HttpMethod method, URI url) {
 		this(body, null, method, url, null);
@@ -95,10 +96,11 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Constructor with method, URL, body and type but without headers.
-	 * @param body the body
+	 *
+	 * @param body   the body
 	 * @param method the method
-	 * @param url the URL
-	 * @param type the type used for generic type resolution
+	 * @param url    the URL
+	 * @param type   the type used for generic type resolution
 	 * @since 4.3
 	 */
 	public RequestEntity(@Nullable T body, HttpMethod method, URI url, Type type) {
@@ -107,9 +109,10 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Constructor with method, URL and headers but without body.
+	 *
 	 * @param headers the headers
-	 * @param method the method
-	 * @param url the URL
+	 * @param method  the method
+	 * @param url     the URL
 	 */
 	public RequestEntity(MultiValueMap<String, String> headers, HttpMethod method, URI url) {
 		this(null, headers, method, url, null);
@@ -117,28 +120,30 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Constructor with method, URL, headers and body.
-	 * @param body the body
+	 *
+	 * @param body    the body
 	 * @param headers the headers
-	 * @param method the method
-	 * @param url the URL
+	 * @param method  the method
+	 * @param url     the URL
 	 */
 	public RequestEntity(@Nullable T body, @Nullable MultiValueMap<String, String> headers,
-			@Nullable HttpMethod method, URI url) {
+						 @Nullable HttpMethod method, URI url) {
 
 		this(body, headers, method, url, null);
 	}
 
 	/**
 	 * Constructor with method, URL, headers, body and type.
-	 * @param body the body
+	 *
+	 * @param body    the body
 	 * @param headers the headers
-	 * @param method the method
-	 * @param url the URL
-	 * @param type the type used for generic type resolution
+	 * @param method  the method
+	 * @param url     the URL
+	 * @param type    the type used for generic type resolution
 	 * @since 4.3
 	 */
 	public RequestEntity(@Nullable T body, @Nullable MultiValueMap<String, String> headers,
-			@Nullable HttpMethod method, URI url, @Nullable Type type) {
+						 @Nullable HttpMethod method, URI url, @Nullable Type type) {
 
 		super(body, headers);
 		this.method = method;
@@ -149,6 +154,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Return the HTTP method of the request.
+	 *
 	 * @return the HTTP method as an {@code HttpMethod} enum value
 	 */
 	@Nullable
@@ -158,6 +164,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Return the URL of the request.
+	 *
 	 * @return the URL as a {@code URI}
 	 */
 	public URI getUrl() {
@@ -166,6 +173,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Return the type of the request's body.
+	 *
 	 * @return the request's body type, or {@code null} if not known
 	 * @since 4.3
 	 */
@@ -225,8 +233,9 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Create a builder with the given method and url.
+	 *
 	 * @param method the HTTP method (GET, POST, etc)
-	 * @param url the URL
+	 * @param url    the URL
 	 * @return the created builder
 	 */
 	public static BodyBuilder method(HttpMethod method, URI url) {
@@ -235,6 +244,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Create an HTTP GET builder with the given url.
+	 *
 	 * @param url the URL
 	 * @return the created builder
 	 */
@@ -244,6 +254,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Create an HTTP HEAD builder with the given url.
+	 *
 	 * @param url the URL
 	 * @return the created builder
 	 */
@@ -253,6 +264,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Create an HTTP POST builder with the given url.
+	 *
 	 * @param url the URL
 	 * @return the created builder
 	 */
@@ -262,6 +274,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Create an HTTP PUT builder with the given url.
+	 *
 	 * @param url the URL
 	 * @return the created builder
 	 */
@@ -271,6 +284,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Create an HTTP PATCH builder with the given url.
+	 *
 	 * @param url the URL
 	 * @return the created builder
 	 */
@@ -280,6 +294,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Create an HTTP DELETE builder with the given url.
+	 *
 	 * @param url the URL
 	 * @return the created builder
 	 */
@@ -289,6 +304,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Creates an HTTP OPTIONS builder with the given url.
+	 *
 	 * @param url the URL
 	 * @return the created builder
 	 */
@@ -299,13 +315,15 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 	/**
 	 * Defines a builder that adds headers to the request entity.
+	 *
 	 * @param <B> the builder subclass
 	 */
 	public interface HeadersBuilder<B extends HeadersBuilder<B>> {
 
 		/**
 		 * Add the given, single header value under the given name.
-		 * @param headerName  the header name
+		 *
+		 * @param headerName   the header name
 		 * @param headerValues the header value(s)
 		 * @return this builder
 		 * @see HttpHeaders#add(String, String)
@@ -315,6 +333,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 		/**
 		 * Set the list of acceptable {@linkplain MediaType media types}, as
 		 * specified by the {@code Accept} header.
+		 *
 		 * @param acceptableMediaTypes the acceptable media types
 		 */
 		B accept(MediaType... acceptableMediaTypes);
@@ -322,6 +341,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 		/**
 		 * Set the list of acceptable {@linkplain Charset charsets}, as specified
 		 * by the {@code Accept-Charset} header.
+		 *
 		 * @param acceptableCharsets the acceptable charsets
 		 */
 		B acceptCharset(Charset... acceptableCharsets);
@@ -330,18 +350,21 @@ public class RequestEntity<T> extends HttpEntity<T> {
 		 * Set the value of the {@code If-Modified-Since} header.
 		 * <p>The date should be specified as the number of milliseconds since
 		 * January 1, 1970 GMT.
+		 *
 		 * @param ifModifiedSince the new value of the header
 		 */
 		B ifModifiedSince(long ifModifiedSince);
 
 		/**
 		 * Set the values of the {@code If-None-Match} header.
+		 *
 		 * @param ifNoneMatches the new value of the header
 		 */
 		B ifNoneMatch(String... ifNoneMatches);
 
 		/**
 		 * Builds the request entity with no body.
+		 *
 		 * @return the request entity
 		 * @see BodyBuilder#body(Object)
 		 */
@@ -357,6 +380,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 		/**
 		 * Set the length of the body in bytes, as specified by the
 		 * {@code Content-Length} header.
+		 *
 		 * @param contentLength the content length
 		 * @return this builder
 		 * @see HttpHeaders#setContentLength(long)
@@ -366,6 +390,7 @@ public class RequestEntity<T> extends HttpEntity<T> {
 		/**
 		 * Set the {@linkplain MediaType media type} of the body, as specified
 		 * by the {@code Content-Type} header.
+		 *
 		 * @param contentType the content type
 		 * @return this builder
 		 * @see HttpHeaders#setContentType(MediaType)
@@ -374,7 +399,8 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 		/**
 		 * Set the body of the request entity and build the RequestEntity.
-		 * @param <T> the type of the body
+		 *
+		 * @param <T>  the type of the body
 		 * @param body the body of the request entity
 		 * @return the built request entity
 		 */
@@ -382,7 +408,8 @@ public class RequestEntity<T> extends HttpEntity<T> {
 
 		/**
 		 * Set the body and type of the request entity and build the RequestEntity.
-		 * @param <T> the type of the body
+		 *
+		 * @param <T>  the type of the body
 		 * @param body the body of the request entity
 		 * @param type the type of the body, useful for generic type resolution
 		 * @return the built request entity

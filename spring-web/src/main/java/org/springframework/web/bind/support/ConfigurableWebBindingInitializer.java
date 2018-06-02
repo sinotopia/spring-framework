@@ -59,7 +59,6 @@ public class ConfigurableWebBindingInitializer implements WebBindingInitializer 
 	@Nullable
 	private PropertyEditorRegistrar[] propertyEditorRegistrars;
 
-
 	/**
 	 * Set whether a binder should attempt to "auto-grow" a nested path that contains a null value.
 	 * <p>If "true", a null path location will be populated with a default object value and traversed

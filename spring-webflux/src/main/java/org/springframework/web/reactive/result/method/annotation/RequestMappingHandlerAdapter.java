@@ -54,7 +54,6 @@ public class RequestMappingHandlerAdapter implements HandlerAdapter, Application
 
 	private static final Log logger = LogFactory.getLog(RequestMappingHandlerAdapter.class);
 
-
 	private List<HttpMessageReader<?>> messageReaders = Collections.emptyList();
 
 	@Nullable
@@ -74,7 +73,6 @@ public class RequestMappingHandlerAdapter implements HandlerAdapter, Application
 
 	@Nullable
 	private ModelInitializer modelInitializer;
-
 
 	/**
 	 * Configure HTTP message readers to de-serialize the request body with.
@@ -202,7 +200,7 @@ public class RequestMappingHandlerAdapter implements HandlerAdapter, Application
 	}
 
 	private Mono<HandlerResult> handleException(Throwable exception, HandlerMethod handlerMethod,
-			BindingContext bindingContext, ServerWebExchange exchange) {
+												BindingContext bindingContext, ServerWebExchange exchange) {
 
 		Assert.state(this.methodResolver != null, "Not initialized");
 
@@ -216,12 +214,10 @@ public class RequestMappingHandlerAdapter implements HandlerAdapter, Application
 				Throwable cause = exception.getCause();
 				if (cause != null) {
 					return invocable.invoke(exchange, bindingContext, exception, cause, handlerMethod);
-				}
-				else {
+				} else {
 					return invocable.invoke(exchange, bindingContext, exception, handlerMethod);
 				}
-			}
-			catch (Throwable invocationEx) {
+			} catch (Throwable invocationEx) {
 				if (logger.isWarnEnabled()) {
 					logger.warn("Failed to invoke: " + invocable.getMethod(), invocationEx);
 				}

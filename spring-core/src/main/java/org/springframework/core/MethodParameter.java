@@ -96,7 +96,6 @@ public class MethodParameter {
 	@Nullable
 	private volatile MethodParameter nestedMethodParameter;
 
-
 	/**
 	 * Create a new {@code MethodParameter} for the given method, with nesting level 1.
 	 *
@@ -173,7 +172,6 @@ public class MethodParameter {
 		this.parameterNameDiscoverer = original.parameterNameDiscoverer;
 		this.parameterName = original.parameterName;
 	}
-
 
 	/**
 	 * Return the wrapped Method, if any.
@@ -667,7 +665,6 @@ public class MethodParameter {
 		return annotations;
 	}
 
-
 	@Override
 	public boolean equals(Object other) {
 		if (this == other) {
@@ -696,7 +693,6 @@ public class MethodParameter {
 	public MethodParameter clone() {
 		return new MethodParameter(this);
 	}
-
 
 	/**
 	 * Create a new MethodParameter for the given method or constructor.
@@ -767,7 +763,6 @@ public class MethodParameter {
 		Assert.isTrue(parameterIndex < count, () -> "Parameter index needs to be between -1 and " + (count - 1));
 		return parameterIndex;
 	}
-
 
 	/**
 	 * Inner class to avoid a hard dependency on Kotlin at runtime.
