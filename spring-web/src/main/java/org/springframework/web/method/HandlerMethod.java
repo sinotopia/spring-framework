@@ -167,7 +167,6 @@ public class HandlerMethod {
 		this.resolvedFromHandlerMethod = handlerMethod;
 	}
 
-
 	private MethodParameter[] initMethodParameters() {
 		int count = this.bridgedMethod.getParameterCount();
 		MethodParameter[] result = new MethodParameter[count];
@@ -189,7 +188,6 @@ public class HandlerMethod {
 			this.responseStatusReason = annotation.reason();
 		}
 	}
-
 
 	/**
 	 * Return the bean for this handler method.

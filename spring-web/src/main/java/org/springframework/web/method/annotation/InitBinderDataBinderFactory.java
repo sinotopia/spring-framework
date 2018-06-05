@@ -41,7 +41,6 @@ public class InitBinderDataBinderFactory extends DefaultDataBinderFactory {
 
 	private final List<InvocableHandlerMethod> binderMethods;
 
-
 	/**
 	 * Create a new InitBinderDataBinderFactory instance.
 	 * @param binderMethods {@code @InitBinder} methods

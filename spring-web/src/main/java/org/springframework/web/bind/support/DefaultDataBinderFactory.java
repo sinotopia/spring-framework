@@ -42,7 +42,6 @@ public class DefaultDataBinderFactory implements WebDataBinderFactory {
 		this.initializer = initializer;
 	}
 
-
 	/**
 	 * Create a new {@link WebDataBinder} for the given target object and
 	 * initialize it through a {@link WebBindingInitializer}.
@@ -54,10 +53,12 @@ public class DefaultDataBinderFactory implements WebDataBinderFactory {
 	public final WebDataBinder createBinder(
 			NativeWebRequest webRequest, @Nullable Object target, String objectName) throws Exception {
 
+		//创建数据绑定器
 		WebDataBinder dataBinder = createBinderInstance(target, objectName, webRequest);
 		if (this.initializer != null) {
 			this.initializer.initBinder(dataBinder, webRequest);
 		}
+		//初始化绑定器
 		initBinder(dataBinder, webRequest);
 		return dataBinder;
 	}

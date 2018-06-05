@@ -90,7 +90,6 @@ public class WebRequestDataBinder extends WebDataBinder {
 		super(target, objectName);
 	}
 
-
 	/**
 	 * Bind the parameters of the given request to this binder's target,
 	 * also binding multipart files in case of a multipart request.
