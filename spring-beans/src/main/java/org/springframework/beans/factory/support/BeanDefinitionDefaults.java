@@ -39,7 +39,6 @@ public class BeanDefinitionDefaults {
 	@Nullable
 	private String destroyMethodName;
 
-
 	public void setLazyInit(boolean lazyInit) {
 		this.lazyInit = lazyInit;
 	}

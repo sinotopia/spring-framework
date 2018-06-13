@@ -69,7 +69,6 @@ public class ModelAndView {
 	 */
 	private boolean cleared = false;
 
-
 	/**
 	 * Default constructor for bean-style usage: populating bean
 	 * properties instead of passing in constructor arguments.
@@ -196,7 +195,6 @@ public class ModelAndView {
 		addObject(modelName, modelObject);
 	}
 
-
 	/**
 	 * Set a view name for this ModelAndView, to be resolved by the
 	 * DispatcherServlet via a ViewResolver. Will override any
@@ -296,7 +294,6 @@ public class ModelAndView {
 		return this.status;
 	}
 
-
 	/**
 	 * Add an attribute to the model.
 	 *
@@ -334,7 +331,6 @@ public class ModelAndView {
 		return this;
 	}
 
-
 	/**
 	 * Clear the state of this ModelAndView object.
 	 * The object will be empty afterwards.
@@ -369,7 +365,6 @@ public class ModelAndView {
 	public boolean wasCleared() {
 		return (this.cleared && isEmpty());
 	}
-
 
 	/**
 	 * Return diagnostic information about this model and view.

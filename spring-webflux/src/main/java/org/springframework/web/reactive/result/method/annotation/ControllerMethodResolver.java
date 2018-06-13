@@ -103,8 +103,8 @@ class ControllerMethodResolver {
 
 
 	ControllerMethodResolver(ArgumentResolverConfigurer argumentResolvers,
-			List<HttpMessageReader<?>> messageReaders, ReactiveAdapterRegistry reactiveRegistry,
-			ConfigurableApplicationContext context) {
+							 List<HttpMessageReader<?>> messageReaders, ReactiveAdapterRegistry reactiveRegistry,
+							 ConfigurableApplicationContext context) {
 
 		Assert.notNull(argumentResolvers, "ArgumentResolverConfigurer is required");
 		Assert.notNull(messageReaders, "'messageReaders' is required");
@@ -135,7 +135,7 @@ class ControllerMethodResolver {
 	}
 
 	private void addResolversTo(ArgumentResolverRegistrar registrar,
-			ReactiveAdapterRegistry reactiveRegistry, ConfigurableApplicationContext context) {
+								ReactiveAdapterRegistry reactiveRegistry, ConfigurableApplicationContext context) {
 
 		ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
 
@@ -345,11 +345,15 @@ class ControllerMethodResolver {
 	}
 
 
-	/** Filter for {@link InitBinder @InitBinder} methods. */
+	/**
+	 * Filter for {@link InitBinder @InitBinder} methods.
+	 */
 	private static final ReflectionUtils.MethodFilter BINDER_METHODS = method ->
 			AnnotationUtils.findAnnotation(method, InitBinder.class) != null;
 
-	/** Filter for {@link ModelAttribute @ModelAttribute} methods. */
+	/**
+	 * Filter for {@link ModelAttribute @ModelAttribute} methods.
+	 */
 	private static final ReflectionUtils.MethodFilter ATTRIBUTE_METHODS = method ->
 			(AnnotationUtils.findAnnotation(method, RequestMapping.class) == null) &&
 					(AnnotationUtils.findAnnotation(method, ModelAttribute.class) != null);
@@ -367,7 +371,7 @@ class ControllerMethodResolver {
 
 
 		private ArgumentResolverRegistrar(ArgumentResolverConfigurer resolvers,
-				List<HttpMessageReader<?>> messageReaders, boolean modelAttribute) {
+										  List<HttpMessageReader<?>> messageReaders, boolean modelAttribute) {
 
 			this.customResolvers = resolvers.getCustomResolvers();
 			this.messageReaders = messageReaders;

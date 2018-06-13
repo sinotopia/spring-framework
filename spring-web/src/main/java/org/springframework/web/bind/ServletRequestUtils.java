@@ -127,7 +127,6 @@ public abstract class ServletRequestUtils {
 		return INT_PARSER.parseInts(name, request.getParameterValues(name));
 	}
 
-
 	/**
 	 * Get a Long parameter, or {@code null} if not present.
 	 * Throws an exception if it the parameter value isn't a number.

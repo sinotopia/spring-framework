@@ -51,7 +51,6 @@ public interface WebArgumentResolver {
 	 */
 	Object UNRESOLVED = new Object();
 
-
 	/**
 	 * Resolve an argument for the given handler method parameter within the given web request.
 	 *

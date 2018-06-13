@@ -40,7 +40,6 @@ public class HandlerMethodReturnValueHandlerComposite implements HandlerMethodRe
 
 	private final List<HandlerMethodReturnValueHandler> returnValueHandlers = new ArrayList<>();
 
-
 	/**
 	 * Return a read-only list with the registered handlers, or an empty list.
 	 */
@@ -69,11 +68,12 @@ public class HandlerMethodReturnValueHandlerComposite implements HandlerMethodRe
 
 	/**
 	 * Iterate over registered {@link HandlerMethodReturnValueHandler}s and invoke the one that supports it.
+	 *
 	 * @throws IllegalStateException if no suitable {@link HandlerMethodReturnValueHandler} is found.
 	 */
 	@Override
 	public void handleReturnValue(@Nullable Object returnValue, MethodParameter returnType,
-			ModelAndViewContainer mavContainer, NativeWebRequest webRequest) throws Exception {
+								  ModelAndViewContainer mavContainer, NativeWebRequest webRequest) throws Exception {
 
 		HandlerMethodReturnValueHandler handler = selectHandler(returnValue, returnType);
 		if (handler == null) {

@@ -67,6 +67,9 @@ public class HandlerMethod {
 
 	private final Method method;
 
+	/**
+	 * 如果method是bridge method则设置为其所对应的原有方法，否则直接设置为method
+	 */
 	private final Method bridgedMethod;
 
 	private final MethodParameter[] parameters;
@@ -167,6 +170,11 @@ public class HandlerMethod {
 		this.resolvedFromHandlerMethod = handlerMethod;
 	}
 
+	/**
+	 * 初始化处理请求的方法的参数
+	 *
+	 * @return
+	 */
 	private MethodParameter[] initMethodParameters() {
 		int count = this.bridgedMethod.getParameterCount();
 		MethodParameter[] result = new MethodParameter[count];
@@ -178,6 +186,9 @@ public class HandlerMethod {
 		return result;
 	}
 
+	/**
+	 * 计算处理器请求方法的响应状态
+	 */
 	private void evaluateResponseStatus() {
 		ResponseStatus annotation = getMethodAnnotation(ResponseStatus.class);
 		if (annotation == null) {
@@ -329,7 +340,6 @@ public class HandlerMethod {
 		return getBeanType().getName() + "#" + this.method.getName() + "[" + args + " args]";
 	}
 
-
 	@Override
 	public boolean equals(Object other) {
 		if (this == other) {
@@ -351,7 +361,6 @@ public class HandlerMethod {
 	public String toString() {
 		return this.method.toGenericString();
 	}
-
 
 	/**
 	 * A MethodParameter with HandlerMethod-specific behavior.
@@ -386,7 +395,6 @@ public class HandlerMethod {
 			return new HandlerMethodParameter(this);
 		}
 	}
-
 
 	/**
 	 * A MethodParameter for a HandlerMethod return type based on an actual return value.
