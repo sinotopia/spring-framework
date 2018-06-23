@@ -80,7 +80,6 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 */
 	int ROLE_INFRASTRUCTURE = 2;
 
-
 	// Modifiable attributes
 
 	/**
