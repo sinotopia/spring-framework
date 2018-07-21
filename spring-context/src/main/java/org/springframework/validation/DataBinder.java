@@ -118,7 +118,6 @@ public class DataBinder implements PropertyEditorRegistry, TypeConverter {
 	 */
 	public static final int DEFAULT_AUTO_GROW_COLLECTION_LIMIT = 256;
 
-
 	/**
 	 * We'll create a lot of DataBinder instances: Let's use a static logger.
 	 */
@@ -185,7 +184,6 @@ public class DataBinder implements PropertyEditorRegistry, TypeConverter {
 		this.target = ObjectUtils.unwrapOptional(target);
 		this.objectName = objectName;
 	}
-
 
 	/**
 	 * Return the wrapped target object.

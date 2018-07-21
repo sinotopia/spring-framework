@@ -66,7 +66,6 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 */
 	String SCOPE_PROTOTYPE = "prototype";
 
-
 	/**
 	 * Set the parent of this bean factory.
 	 * <p>Note that the parent cannot be changed: It should only be set outside

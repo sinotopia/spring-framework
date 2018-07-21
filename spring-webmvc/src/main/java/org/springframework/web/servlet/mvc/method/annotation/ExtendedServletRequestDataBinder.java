@@ -56,7 +56,6 @@ public class ExtendedServletRequestDataBinder extends ServletRequestDataBinder {
 		super(target, objectName);
 	}
 
-
 	/**
 	 * Merge URI variables into the property values to use for data binding.
 	 */

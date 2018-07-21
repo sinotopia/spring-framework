@@ -80,7 +80,6 @@ public class RequestParamMethodArgumentResolver extends AbstractNamedValueMethod
 
 	private final boolean useDefaultResolution;
 
-
 	/**
 	 * @param useDefaultResolution in default resolution mode a method argument
 	 * that is a simple type, as defined in {@link BeanUtils#isSimpleProperty},
@@ -106,7 +105,6 @@ public class RequestParamMethodArgumentResolver extends AbstractNamedValueMethod
 		super(beanFactory);
 		this.useDefaultResolution = useDefaultResolution;
 	}
-
 
 	/**
 	 * Supports the following:
@@ -254,7 +252,6 @@ public class RequestParamMethodArgumentResolver extends AbstractNamedValueMethod
 			return value.toString();
 		}
 	}
-
 
 	private static class RequestParamNamedValueInfo extends NamedValueInfo {
 

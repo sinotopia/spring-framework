@@ -52,7 +52,6 @@ public class OrderComparator implements Comparator<Object> {
 	 */
 	public static final OrderComparator INSTANCE = new OrderComparator();
 
-
 	/**
 	 * Build an adapted order comparator with the given source provider.
 	 * @param sourceProvider the order source provider to use
