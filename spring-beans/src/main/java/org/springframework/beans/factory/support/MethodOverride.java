@@ -44,16 +44,15 @@ public abstract class MethodOverride implements BeanMetadataElement {
 	@Nullable
 	private Object source;
 
-
 	/**
 	 * Construct a new override for the given method.
+	 *
 	 * @param methodName the name of the method to override
 	 */
 	protected MethodOverride(String methodName) {
 		Assert.notNull(methodName, "Method name must not be null");
 		this.methodName = methodName;
 	}
-
 
 	/**
 	 * Return the name of the method to be overridden.
@@ -98,11 +97,11 @@ public abstract class MethodOverride implements BeanMetadataElement {
 	 * Subclasses must override this to indicate whether they <em>match</em> the
 	 * given method. This allows for argument list checking as well as method
 	 * name checking.
+	 *
 	 * @param method the method to check
 	 * @return whether this override matches the given method
 	 */
 	public abstract boolean matches(Method method);
-
 
 	@Override
 	public boolean equals(Object other) {

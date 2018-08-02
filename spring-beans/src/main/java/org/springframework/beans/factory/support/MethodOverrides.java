@@ -32,15 +32,14 @@ import org.springframework.lang.Nullable;
  *
  * @author Rod Johnson
  * @author Juergen Hoeller
- * @since 1.1
  * @see MethodOverride
+ * @since 1.1
  */
 public class MethodOverrides {
 
 	private final Set<MethodOverride> overrides = Collections.synchronizedSet(new LinkedHashSet<>(2));
 
 	private volatile boolean modified = false;
-
 
 	/**
 	 * Create new MethodOverrides.
@@ -76,6 +75,7 @@ public class MethodOverrides {
 
 	/**
 	 * Return all method overrides contained by this object.
+	 *
 	 * @return Set of MethodOverride objects
 	 * @see MethodOverride
 	 */
@@ -93,6 +93,7 @@ public class MethodOverrides {
 
 	/**
 	 * Return the override for the given method, if any.
+	 *
 	 * @param method method to check for overrides for
 	 * @return the method override, or {@code null} if none
 	 */

@@ -33,7 +33,6 @@ public class BeanMetadataAttributeAccessor extends AttributeAccessorSupport impl
 	@Nullable
 	private Object source;
 
-
 	/**
 	 * Set the configuration source {@code Object} for this metadata element.
 	 * <p>The exact type of the object will depend on the configuration mechanism used.
@@ -48,9 +47,9 @@ public class BeanMetadataAttributeAccessor extends AttributeAccessorSupport impl
 		return this.source;
 	}
 
-
 	/**
 	 * Add the given BeanMetadataAttribute to this accessor's set of attributes.
+	 *
 	 * @param attribute the BeanMetadataAttribute object to register
 	 */
 	public void addMetadataAttribute(BeanMetadataAttribute attribute) {
@@ -59,6 +58,7 @@ public class BeanMetadataAttributeAccessor extends AttributeAccessorSupport impl
 
 	/**
 	 * Look up the given BeanMetadataAttribute in this accessor's set of attributes.
+	 *
 	 * @param name the name of the attribute
 	 * @return the corresponding BeanMetadataAttribute object,
 	 * or {@code null} if no such attribute defined
