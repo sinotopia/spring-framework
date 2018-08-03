@@ -1793,7 +1793,6 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		}
 	}
 
-
 	private static class NestedDependencyDescriptor extends DependencyDescriptor {
 
 		public NestedDependencyDescriptor(DependencyDescriptor original) {
@@ -1801,7 +1800,6 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 			increaseNestingLevel();
 		}
 	}
-
 
 	private static class MultiElementDescriptor extends NestedDependencyDescriptor {
 

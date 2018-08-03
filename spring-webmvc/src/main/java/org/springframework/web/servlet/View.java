@@ -72,7 +72,6 @@ public interface View {
 	 */
 	String SELECTED_CONTENT_TYPE = View.class.getName() + ".selectedContentType";
 
-
 	/**
 	 * Return the content type of the view, if predetermined.
 	 * <p>Can be used to check the view's content type upfront,

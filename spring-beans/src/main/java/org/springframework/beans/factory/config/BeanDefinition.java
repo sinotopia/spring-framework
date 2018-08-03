@@ -251,7 +251,6 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 		return !getPropertyValues().isEmpty();
 	}
 
-
 	// Read-only attributes
 
 	/**

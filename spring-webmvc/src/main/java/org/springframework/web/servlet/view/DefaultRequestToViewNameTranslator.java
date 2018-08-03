@@ -72,7 +72,6 @@ public class DefaultRequestToViewNameTranslator implements RequestToViewNameTran
 
 	private UrlPathHelper urlPathHelper = new UrlPathHelper();
 
-
 	/**
 	 * Set the prefix to prepend to generated view names.
 	 *

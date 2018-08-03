@@ -145,7 +145,6 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 */
 	public static final String INFER_METHOD = "(inferred)";
 
-
 	@Nullable
 	private volatile Object beanClass;
 
@@ -281,7 +280,6 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 		}
 	}
 
-
 	/**
 	 * Override settings in this bean definition (presumably a copied parent
 	 * from a parent-child inheritance relationship) from the given bean
@@ -371,7 +369,6 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 		setDestroyMethodName(defaults.getDestroyMethodName());
 		setEnforceDestroyMethod(false);
 	}
-
 
 	/**
 	 * Specify the bean class name of this bean definition.
