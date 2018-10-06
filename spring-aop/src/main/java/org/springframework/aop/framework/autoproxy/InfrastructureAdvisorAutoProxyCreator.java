@@ -33,7 +33,6 @@ public class InfrastructureAdvisorAutoProxyCreator extends AbstractAdvisorAutoPr
 	@Nullable
 	private ConfigurableListableBeanFactory beanFactory;
 
-
 	@Override
 	protected void initBeanFactory(ConfigurableListableBeanFactory beanFactory) {
 		super.initBeanFactory(beanFactory);

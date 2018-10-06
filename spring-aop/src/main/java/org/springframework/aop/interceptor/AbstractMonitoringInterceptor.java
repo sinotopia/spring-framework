@@ -33,10 +33,10 @@ import org.springframework.lang.Nullable;
  *
  * @author Rob Harrop
  * @author Juergen Hoeller
- * @since 1.2.7
  * @see #setPrefix
  * @see #setSuffix
  * @see #createInvocationTraceName
+ * @since 1.2.7
  */
 @SuppressWarnings("serial")
 public abstract class AbstractMonitoringInterceptor extends AbstractTraceInterceptor {
@@ -46,7 +46,6 @@ public abstract class AbstractMonitoringInterceptor extends AbstractTraceInterce
 	private String suffix = "";
 
 	private boolean logTargetClassInvocation = false;
-
 
 	/**
 	 * Set the text that will get appended to the trace data.
@@ -88,12 +87,12 @@ public abstract class AbstractMonitoringInterceptor extends AbstractTraceInterce
 		this.logTargetClassInvocation = logTargetClassInvocation;
 	}
 
-
 	/**
 	 * Create a {@code String} name for the given {@code MethodInvocation}
 	 * that can be used for trace/logging purposes. This name is made up of the
 	 * configured prefix, followed by the fully-qualified name of the method being
 	 * invoked, followed by the configured suffix.
+	 *
 	 * @see #setPrefix
 	 * @see #setSuffix
 	 */

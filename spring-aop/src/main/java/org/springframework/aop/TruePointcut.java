@@ -32,6 +32,7 @@ class TruePointcut implements Pointcut, Serializable {
 	 * Enforce Singleton pattern.
 	 */
 	private TruePointcut() {
+
 	}
 
 	@Override

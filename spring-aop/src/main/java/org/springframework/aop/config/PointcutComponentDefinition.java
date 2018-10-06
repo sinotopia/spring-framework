@@ -36,7 +36,6 @@ public class PointcutComponentDefinition extends AbstractComponentDefinition {
 
 	private final String description;
 
-
 	public PointcutComponentDefinition(String pointcutBeanName, BeanDefinition pointcutDefinition, String expression) {
 		Assert.notNull(pointcutBeanName, "Bean name must not be null");
 		Assert.notNull(pointcutDefinition, "Pointcut definition must not be null");
@@ -45,7 +44,6 @@ public class PointcutComponentDefinition extends AbstractComponentDefinition {
 		this.pointcutDefinition = pointcutDefinition;
 		this.description = "Pointcut <name='" + pointcutBeanName + "', expression=[" + expression + "]>";
 	}
-
 
 	@Override
 	public String getName() {
@@ -59,7 +57,7 @@ public class PointcutComponentDefinition extends AbstractComponentDefinition {
 
 	@Override
 	public BeanDefinition[] getBeanDefinitions() {
-		return new BeanDefinition[] {this.pointcutDefinition};
+		return new BeanDefinition[]{this.pointcutDefinition};
 	}
 
 	@Override

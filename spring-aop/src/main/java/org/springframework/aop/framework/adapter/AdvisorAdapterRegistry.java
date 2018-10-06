@@ -37,11 +37,12 @@ public interface AdvisorAdapterRegistry {
 	 * {@link org.springframework.aop.MethodBeforeAdvice},
 	 * {@link org.springframework.aop.AfterReturningAdvice},
 	 * {@link org.springframework.aop.ThrowsAdvice}.
+	 *
 	 * @param advice object that should be an advice
 	 * @return an Advisor wrapping the given advice. Never returns {@code null}.
 	 * If the advice parameter is an Advisor, return it.
 	 * @throws UnknownAdviceTypeException if no registered advisor adapter
-	 * can wrap the supposed advice
+	 *                                    can wrap the supposed advice
 	 */
 	Advisor wrap(Object advice) throws UnknownAdviceTypeException;
 
@@ -50,10 +51,11 @@ public interface AdvisorAdapterRegistry {
 	 * given Advisor in an interception-based framework.
 	 * <p>Don't worry about the pointcut associated with the Advisor,
 	 * if it's a PointcutAdvisor: just return an interceptor.
+	 *
 	 * @param advisor Advisor to find an interceptor for
 	 * @return an array of MethodInterceptors to expose this Advisor's behavior
 	 * @throws UnknownAdviceTypeException if the Advisor type is
-	 * not understood by any registered AdvisorAdapter.
+	 *                                    not understood by any registered AdvisorAdapter.
 	 */
 	MethodInterceptor[] getInterceptors(Advisor advisor) throws UnknownAdviceTypeException;
 
@@ -61,8 +63,9 @@ public interface AdvisorAdapterRegistry {
 	 * Register the given AdvisorAdapter. Note that it is not necessary to register
 	 * adapters for an AOP Alliance Interceptors or Spring Advices: these must be
 	 * automatically recognized by an AdvisorAdapterRegistry implementation.
+	 *
 	 * @param adapter AdvisorAdapter that understands a particular Advisor
-	 * or Advice types
+	 *                or Advice types
 	 */
 	void registerAdvisorAdapter(AdvisorAdapter adapter);
 

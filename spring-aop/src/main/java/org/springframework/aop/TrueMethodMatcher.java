@@ -31,7 +31,6 @@ class TrueMethodMatcher implements MethodMatcher, Serializable {
 
 	public static final TrueMethodMatcher INSTANCE = new TrueMethodMatcher();
 
-
 	/**
 	 * Enforce Singleton pattern.
 	 */

@@ -36,9 +36,9 @@ public class MethodBeforeAdviceInterceptor implements MethodInterceptor, Seriali
 
 	private MethodBeforeAdvice advice;
 
-
 	/**
 	 * Create a new MethodBeforeAdviceInterceptor for the given advice.
+	 *
 	 * @param advice the MethodBeforeAdvice to wrap
 	 */
 	public MethodBeforeAdviceInterceptor(MethodBeforeAdvice advice) {

@@ -39,7 +39,9 @@ public class AspectJAfterReturningAdvice extends AbstractAspectJAdvice
 		implements AfterReturningAdvice, AfterAdvice, Serializable {
 
 	public AspectJAfterReturningAdvice(
-			Method aspectJBeforeAdviceMethod, AspectJExpressionPointcut pointcut, AspectInstanceFactory aif) {
+			Method aspectJBeforeAdviceMethod,
+			AspectJExpressionPointcut pointcut,
+			AspectInstanceFactory aif) {
 
 		super(aspectJBeforeAdviceMethod, pointcut, aif);
 	}
@@ -73,6 +75,7 @@ public class AspectJAfterReturningAdvice extends AbstractAspectJAdvice
 	 * advice is only invoked if the returned value is an instance of the given
 	 * returning type and generic type parameters, if any, match the assignment
 	 * rules. If the returning type is Object, the advice is *always* invoked.
+	 *
 	 * @param returnValue the return value of the target method
 	 * @return whether to invoke the advice method for the given return value
 	 */
@@ -90,19 +93,18 @@ public class AspectJAfterReturningAdvice extends AbstractAspectJAdvice
 	 * then the return type of target method should be used to determine whether advice
 	 * is invoked or not. Also, even if the return type is void, if the type of argument
 	 * declared in the advice method is Object, then the advice must still get invoked.
-	 * @param type the type of argument declared in advice method
-	 * @param method the advice method
+	 *
+	 * @param type        the type of argument declared in advice method
+	 * @param method      the advice method
 	 * @param returnValue the return value of the target method
 	 * @return whether to invoke the advice method for the given return value and type
 	 */
 	private boolean matchesReturnValue(Class<?> type, Method method, @Nullable Object returnValue) {
 		if (returnValue != null) {
 			return ClassUtils.isAssignableValue(type, returnValue);
-		}
-		else if (Object.class == type && void.class == method.getReturnType()) {
+		} else if (Object.class == type && void.class == method.getReturnType()) {
 			return true;
-		}
-		else {
+		} else {
 			return ClassUtils.isAssignable(type, method.getReturnType());
 		}
 	}
