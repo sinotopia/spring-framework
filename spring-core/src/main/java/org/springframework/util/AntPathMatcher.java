@@ -580,8 +580,8 @@ public class AntPathMatcher implements PathMatcher {
 		int dotPos2 = pattern2.indexOf('.');
 		String file2 = (dotPos2 == -1 ? pattern2 : pattern2.substring(0, dotPos2));
 		String ext2 = (dotPos2 == -1 ? "" : pattern2.substring(dotPos2));
-		boolean ext1All = (ext1.equals(".*") || ext1.equals(""));
-		boolean ext2All = (ext2.equals(".*") || ext2.equals(""));
+		boolean ext1All = (ext1.equals(".*") || ext1.isEmpty());
+		boolean ext2All = (ext2.equals(".*") || ext2.isEmpty());
 		if (!ext1All && !ext2All) {
 			throw new IllegalArgumentException("Cannot combine patterns: " + pattern1 + " vs " + pattern2);
 		}
@@ -754,8 +754,8 @@ public class AntPathMatcher implements PathMatcher {
 				return -1;
 			}
 
-			boolean pattern1EqualsPath = pattern1.equals(path);
-			boolean pattern2EqualsPath = pattern2.equals(path);
+			boolean pattern1EqualsPath = pattern1.equals(this.path);
+			boolean pattern2EqualsPath = pattern2.equals(this.path);
 			if (pattern1EqualsPath && pattern2EqualsPath) {
 				return 0;
 			} else if (pattern1EqualsPath) {

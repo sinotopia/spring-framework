@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -87,7 +87,7 @@ public class ContextLoader {
 
 	/**
 	 * Config param for the root WebApplicationContext id,
-	 * to be used as serialization id for the underlying BeanFactory: {@value}
+	 * to be used as serialization id for the underlying BeanFactory: {@value}.
 	 */
 	public static final String CONTEXT_ID_PARAM = "contextId";
 
@@ -101,7 +101,7 @@ public class ContextLoader {
 	public static final String CONFIG_LOCATION_PARAM = "contextConfigLocation";
 
 	/**
-	 * Config param for the root WebApplicationContext implementation class to use: {@value}
+	 * Config param for the root WebApplicationContext implementation class to use: {@value}.
 	 *
 	 * @see #determineContextClass(ServletContext)
 	 */
@@ -109,7 +109,7 @@ public class ContextLoader {
 
 	/**
 	 * Config param for {@link ApplicationContextInitializer} classes to use
-	 * for initializing the root web application context: {@value}
+	 * for initializing the root web application context: {@value}.
 	 *
 	 * @see #customizeContext(ServletContext, ConfigurableWebApplicationContext)
 	 */
@@ -117,7 +117,7 @@ public class ContextLoader {
 
 	/**
 	 * Config param for global {@link ApplicationContextInitializer} classes to use
-	 * for initializing all web application contexts in the current application: {@value}
+	 * for initializing all web application contexts in the current application: {@value}.
 	 *
 	 * @see #customizeContext(ServletContext, ConfigurableWebApplicationContext)
 	 */
@@ -171,11 +171,10 @@ public class ContextLoader {
 	private WebApplicationContext context;
 
 	/**
-	 * Actual ApplicationContextInitializer instances to apply to the context
+	 * Actual ApplicationContextInitializer instances to apply to the context.
 	 */
 	private final List<ApplicationContextInitializer<ConfigurableApplicationContext>> contextInitializers =
 			new ArrayList<>();
-
 
 	/**
 	 * Create a new {@code ContextLoader} that will create a web application context
@@ -211,7 +210,7 @@ public class ContextLoader {
 	 * <li>{@code ServletContext} and {@code ServletConfig} objects will be delegated to
 	 * the application context</li>
 	 * <li>{@link #customizeContext} will be called</li>
-	 * <li>Any {@link ApplicationContextInitializer}s specified through the
+	 * <li>Any {@link ApplicationContextInitializer ApplicationContextInitializers} specified through the
 	 * "contextInitializerClasses" init-param will be applied.</li>
 	 * <li>{@link ConfigurableApplicationContext#refresh refresh()} will be called</li>
 	 * </ul>
@@ -272,8 +271,8 @@ public class ContextLoader {
 							"check whether you have multiple ContextLoader* definitions in your web.xml!");
 		}
 
-		Log logger = LogFactory.getLog(ContextLoader.class);
 		servletContext.log("Initializing Spring root WebApplicationContext");
+		Log logger = LogFactory.getLog(ContextLoader.class);
 		if (logger.isInfoEnabled()) {
 			logger.info("Root WebApplicationContext: initialization started");
 		}
@@ -308,24 +307,16 @@ public class ContextLoader {
 				currentContextPerThread.put(ccl, this.context);
 			}
 
-			if (logger.isDebugEnabled()) {
-				logger.debug("Published root WebApplicationContext as ServletContext attribute with name [" +
-						WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE + "]");
-			}
 			if (logger.isInfoEnabled()) {
 				long elapsedTime = System.currentTimeMillis() - startTime;
-				logger.info("Root WebApplicationContext: initialization completed in " + elapsedTime + " ms");
+				logger.info("Root WebApplicationContext initialized in " + elapsedTime + " ms");
 			}
 
 			return this.context;
-		} catch (RuntimeException ex) {
+		} catch (RuntimeException | Error ex) {
 			logger.error("Context initialization failed", ex);
 			servletContext.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, ex);
 			throw ex;
-		} catch (Error err) {
-			logger.error("Context initialization failed", err);
-			servletContext.setAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, err);
-			throw err;
 		}
 	}
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,8 @@ import org.springframework.util.ClassUtils;
  * @since 2.0
  */
 @SuppressWarnings("serial")
-public class ScopedProxyFactoryBean extends ProxyConfig implements FactoryBean<Object>, BeanFactoryAware {
+public class ScopedProxyFactoryBean extends ProxyConfig
+		implements FactoryBean<Object>, BeanFactoryAware, AopInfrastructureBean {
 
 	/**
 	 * The TargetSource that manages scoping
@@ -70,7 +71,6 @@ public class ScopedProxyFactoryBean extends ProxyConfig implements FactoryBean<O
 	 */
 	@Nullable
 	private Object proxy;
-
 
 	/**
 	 * Create a new ScopedProxyFactoryBean instance.

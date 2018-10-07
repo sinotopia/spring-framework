@@ -119,6 +119,7 @@ public class DefaultIntroductionAdvisor implements IntroductionAdvisor, ClassFil
 					!((DynamicIntroductionAdvice) this.advice).implementsInterface(ifc)) {
 				throw new IllegalArgumentException("DynamicIntroductionAdvice [" + this.advice + "] " +
 						"does not implement interface [" + ifc.getName() + "] specified for introduction");
+
 			}
 		}
 	}

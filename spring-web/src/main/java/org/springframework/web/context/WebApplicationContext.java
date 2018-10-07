@@ -81,8 +81,8 @@ public interface WebApplicationContext extends ApplicationContext {
 	String SERVLET_CONTEXT_BEAN_NAME = "servletContext";
 
 	/**
-	 * Name of the ServletContext/PortletContext init-params environment bean in the factory.
-	 * <p>Note: Possibly merged with ServletConfig/PortletConfig parameters.
+	 * Name of the ServletContext init-params environment bean in the factory.
+	 * <p>Note: Possibly merged with ServletConfig parameters.
 	 * ServletConfig parameters override ServletContext parameters of the same name.
 	 *
 	 * @see javax.servlet.ServletContext#getInitParameterNames()
@@ -94,6 +94,8 @@ public interface WebApplicationContext extends ApplicationContext {
 
 	/**
 	 * Name of the ServletContext/PortletContext attributes environment bean in the factory.
+	 * <p>
+	 * Name of the ServletContext attributes environment bean in the factory.
 	 *
 	 * @see javax.servlet.ServletContext#getAttributeNames()
 	 * @see javax.servlet.ServletContext#getAttribute(String)

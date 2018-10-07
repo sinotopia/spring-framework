@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,7 +81,6 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 	 */
 	private final Object beanFactoryMonitor = new Object();
 
-
 	/**
 	 * Create a new AbstractRefreshableApplicationContext with no parent.
 	 */
@@ -149,8 +148,9 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 	@Override
 	protected void cancelRefresh(BeansException ex) {
 		synchronized (this.beanFactoryMonitor) {
-			if (this.beanFactory != null)
+			if (this.beanFactory != null) {
 				this.beanFactory.setSerializationId(null);
+			}
 		}
 		super.cancelRefresh(ex);
 	}

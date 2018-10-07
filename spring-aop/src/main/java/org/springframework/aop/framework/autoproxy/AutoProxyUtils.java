@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,12 @@
 
 package org.springframework.aop.framework.autoproxy;
 
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.core.Conventions;
 import org.springframework.lang.Nullable;
+import org.springframework.util.StringUtils;
 
 /**
  * Utilities for auto-proxy aware components.
@@ -66,7 +68,9 @@ public abstract class AutoProxyUtils {
 	 * @param beanName    the name of the bean
 	 * @return whether the given bean should be proxied with its target class
 	 */
-	public static boolean shouldProxyTargetClass(ConfigurableListableBeanFactory beanFactory, @Nullable String beanName) {
+	public static boolean shouldProxyTargetClass(
+			ConfigurableListableBeanFactory beanFactory, @Nullable String beanName) {
+
 		if (beanName != null && beanFactory.containsBeanDefinition(beanName)) {
 			BeanDefinition bd = beanFactory.getBeanDefinition(beanName);
 			return Boolean.TRUE.equals(bd.getAttribute(PRESERVE_TARGET_CLASS_ATTRIBUTE));
@@ -85,7 +89,9 @@ public abstract class AutoProxyUtils {
 	 * @since 4.2.3
 	 */
 	@Nullable
-	public static Class<?> determineTargetClass(ConfigurableListableBeanFactory beanFactory, @Nullable String beanName) {
+	public static Class<?> determineTargetClass(
+			ConfigurableListableBeanFactory beanFactory, @Nullable String beanName) {
+
 		if (beanName == null) {
 			return null;
 		}
@@ -113,6 +119,24 @@ public abstract class AutoProxyUtils {
 		if (beanName != null && beanFactory.containsBeanDefinition(beanName)) {
 			beanFactory.getMergedBeanDefinition(beanName).setAttribute(ORIGINAL_TARGET_CLASS_ATTRIBUTE, targetClass);
 		}
+	}
+
+	/**
+	 * Determine whether the given bean name indicates an "original instance"
+	 * according to {@link AutowireCapableBeanFactory#ORIGINAL_INSTANCE_SUFFIX},
+	 * skipping any proxy attempts for it.
+	 * @param beanName the name of the bean
+	 * @param beanClass the corresponding bean class
+	 * @since 5.1
+	 * @see AutowireCapableBeanFactory#ORIGINAL_INSTANCE_SUFFIX
+	 */
+	static boolean isOriginalInstance(String beanName, Class<?> beanClass) {
+		if (!StringUtils.hasLength(beanName) || beanName.length() !=
+				beanClass.getName().length() + AutowireCapableBeanFactory.ORIGINAL_INSTANCE_SUFFIX.length()) {
+			return false;
+		}
+		return (beanName.startsWith(beanClass.getName()) &&
+				beanName.endsWith(AutowireCapableBeanFactory.ORIGINAL_INSTANCE_SUFFIX));
 	}
 
 }

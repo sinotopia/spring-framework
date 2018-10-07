@@ -20,12 +20,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 import java.util.function.Consumer;
-
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.core.ReactiveAdapterRegistry;
@@ -61,8 +57,6 @@ import org.springframework.web.method.support.ModelAndViewContainer;
  */
 public class ResponseBodyEmitterReturnValueHandler implements HandlerMethodReturnValueHandler {
 
-	private static final Log logger = LogFactory.getLog(ResponseBodyEmitterReturnValueHandler.class);
-
 	private final List<HttpMessageConverter<?>> messageConverters;
 
 	private final ReactiveTypeHandler reactiveHandler;
@@ -89,7 +83,8 @@ public class ResponseBodyEmitterReturnValueHandler implements HandlerMethodRetur
 	 * @since 5.0
 	 */
 	public ResponseBodyEmitterReturnValueHandler(List<HttpMessageConverter<?>> messageConverters,
-												 ReactiveAdapterRegistry reactiveRegistry, TaskExecutor executor,
+												 ReactiveAdapterRegistry reactiveRegistry,
+												 TaskExecutor executor,
 												 ContentNegotiationManager manager) {
 
 		Assert.notEmpty(messageConverters, "HttpMessageConverter List must not be empty");
@@ -97,16 +92,14 @@ public class ResponseBodyEmitterReturnValueHandler implements HandlerMethodRetur
 		this.reactiveHandler = new ReactiveTypeHandler(reactiveRegistry, executor, manager);
 	}
 
-
 	@Override
 	public boolean supportsReturnType(MethodParameter returnType) {
-
 		Class<?> bodyType = ResponseEntity.class.isAssignableFrom(returnType.getParameterType()) ?
-				ResolvableType.forMethodParameter(returnType).getGeneric(0).resolve() :
+				ResolvableType.forMethodParameter(returnType).getGeneric().resolve() :
 				returnType.getParameterType();
 
-		return bodyType != null && (ResponseBodyEmitter.class.isAssignableFrom(bodyType) ||
-				this.reactiveHandler.isReactiveType(bodyType));
+		return (bodyType != null && (ResponseBodyEmitter.class.isAssignableFrom(bodyType) ||
+				this.reactiveHandler.isReactiveType(bodyType)));
 	}
 
 	@Override
@@ -145,7 +138,12 @@ public class ResponseBodyEmitterReturnValueHandler implements HandlerMethodRetur
 		} else {
 			emitter = this.reactiveHandler.handleValue(returnValue, returnType, mavContainer, webRequest);
 			if (emitter == null) {
-				// Not streaming..
+				// Not streaming: write headers without committing response..
+				outputMessage.getHeaders().forEach((headerName, headerValues) -> {
+					for (String headerValue : headerValues) {
+						response.addHeader(headerName, headerValue);
+					}
+				});
 				return;
 			}
 		}
@@ -165,7 +163,6 @@ public class ResponseBodyEmitterReturnValueHandler implements HandlerMethodRetur
 		HttpMessageConvertingHandler handler = new HttpMessageConvertingHandler(outputMessage, deferredResult);
 		emitter.initialize(handler);
 	}
-
 
 	/**
 	 * ResponseBodyEmitter.Handler that writes with HttpMessageConverter's.
@@ -188,9 +185,6 @@ public class ResponseBodyEmitterReturnValueHandler implements HandlerMethodRetur
 
 		@SuppressWarnings("unchecked")
 		private <T> void sendInternal(T data, @Nullable MediaType mediaType) throws IOException {
-			if (logger.isTraceEnabled()) {
-				logger.trace("Writing [" + data + "]");
-			}
 			for (HttpMessageConverter<?> converter : ResponseBodyEmitterReturnValueHandler.this.messageConverters) {
 				if (converter.canWrite(data.getClass(), mediaType)) {
 					((HttpMessageConverter<T>) converter).write(data, mediaType, this.outputMessage);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -83,7 +83,7 @@ public class ControlFlowPointcut implements Pointcut, ClassFilter, MethodMatcher
 	 * some candidate classes.
 	 */
 	@Override
-	public boolean matches(Method method, @Nullable Class<?> targetClass) {
+	public boolean matches(Method method, Class<?> targetClass) {
 		return true;
 	}
 
@@ -93,7 +93,7 @@ public class ControlFlowPointcut implements Pointcut, ClassFilter, MethodMatcher
 	}
 
 	@Override
-	public boolean matches(Method method, @Nullable Class<?> targetClass, Object... args) {
+	public boolean matches(Method method, Class<?> targetClass, Object... args) {
 		this.evaluations++;
 
 		for (StackTraceElement element : new Throwable().getStackTrace()) {
@@ -133,7 +133,7 @@ public class ControlFlowPointcut implements Pointcut, ClassFilter, MethodMatcher
 			return false;
 		}
 		ControlFlowPointcut that = (ControlFlowPointcut) other;
-		return (this.clazz.equals(that.clazz)) && ObjectUtils.nullSafeEquals(that.methodName, this.methodName);
+		return (this.clazz.equals(that.clazz)) && ObjectUtils.nullSafeEquals(this.methodName, that.methodName);
 	}
 
 	@Override

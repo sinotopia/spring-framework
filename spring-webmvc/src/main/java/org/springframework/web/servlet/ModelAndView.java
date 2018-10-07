@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,27 +47,28 @@ import org.springframework.util.CollectionUtils;
 public class ModelAndView {
 
 	/**
-	 * View instance or view name String
+	 * View instance or view name String.
 	 */
 	@Nullable
 	private Object view;
 
 	/**
-	 * Model Map
+	 * Model Map.
 	 */
 	@Nullable
 	private ModelMap model;
 
 	/**
-	 * Optional HTTP status for the response
+	 * Optional HTTP status for the response.
 	 */
 	@Nullable
 	private HttpStatus status;
 
 	/**
-	 * Indicates whether or not this instance has been cleared with a call to {@link #clear()}
+	 * Indicates whether or not this instance has been cleared with a call to {@link #clear()}.
 	 */
 	private boolean cleared = false;
+
 
 	/**
 	 * Default constructor for bean-style usage: populating bean
@@ -95,7 +96,7 @@ public class ModelAndView {
 	 * Convenient constructor when there is no model data to expose.
 	 * Can also be used in conjunction with {@code addObject}.
 	 *
-	 * @param view View object to render
+	 * @param view the View object to render
 	 * @see #addObject
 	 */
 	public ModelAndView(View view) {
@@ -107,7 +108,7 @@ public class ModelAndView {
 	 *
 	 * @param viewName name of the View to render, to be resolved
 	 *                 by the DispatcherServlet's ViewResolver
-	 * @param model    Map of model names (Strings) to model objects
+	 * @param model    a Map of model names (Strings) to model objects
 	 *                 (Objects). Model entries may not be {@code null}, but the
 	 *                 model Map may be {@code null} if there is no model data.
 	 */
@@ -120,12 +121,12 @@ public class ModelAndView {
 
 	/**
 	 * Create a new ModelAndView given a View object and a model.
-	 * <emphasis>Note: the supplied model data is copied into the internal
+	 * <em>Note: the supplied model data is copied into the internal
 	 * storage of this class. You should not consider to modify the supplied
-	 * Map after supplying it to this class</emphasis>
+	 * Map after supplying it to this class</em>
 	 *
-	 * @param view  View object to render
-	 * @param model Map of model names (Strings) to model objects
+	 * @param view  the View object to render
+	 * @param model a Map of model names (Strings) to model objects
 	 *              (Objects). Model entries may not be {@code null}, but the
 	 *              model Map may be {@code null} if there is no model data.
 	 */
@@ -155,7 +156,7 @@ public class ModelAndView {
 	 *
 	 * @param viewName name of the View to render, to be resolved
 	 *                 by the DispatcherServlet's ViewResolver
-	 * @param model    Map of model names (Strings) to model objects
+	 * @param model    a Map of model names (Strings) to model objects
 	 *                 (Objects). Model entries may not be {@code null}, but the
 	 *                 model Map may be {@code null} if there is no model data.
 	 * @param status   an HTTP status code to use for the response
@@ -186,7 +187,7 @@ public class ModelAndView {
 	/**
 	 * Convenient constructor to take a single model object.
 	 *
-	 * @param view        View object to render
+	 * @param view        the View object to render
 	 * @param modelName   name of the single entry in the model
 	 * @param modelObject the single model object
 	 */
@@ -194,6 +195,7 @@ public class ModelAndView {
 		this.view = view;
 		addObject(modelName, modelObject);
 	}
+
 
 	/**
 	 * Set a view name for this ModelAndView, to be resolved by the
@@ -294,15 +296,16 @@ public class ModelAndView {
 		return this.status;
 	}
 
+
 	/**
 	 * Add an attribute to the model.
 	 *
-	 * @param attributeName  name of the object to add to the model
-	 * @param attributeValue object to add to the model (never {@code null})
+	 * @param attributeName  name of the object to add to the model (never {@code null})
+	 * @param attributeValue object to add to the model (can be {@code null})
 	 * @see ModelMap#addAttribute(String, Object)
 	 * @see #getModelMap()
 	 */
-	public ModelAndView addObject(String attributeName, Object attributeValue) {
+	public ModelAndView addObject(String attributeName, @Nullable Object attributeValue) {
 		getModelMap().addAttribute(attributeName, attributeValue);
 		return this;
 	}
@@ -330,6 +333,7 @@ public class ModelAndView {
 		getModelMap().addAllAttributes(modelMap);
 		return this;
 	}
+
 
 	/**
 	 * Clear the state of this ModelAndView object.
@@ -366,19 +370,17 @@ public class ModelAndView {
 		return (this.cleared && isEmpty());
 	}
 
+
 	/**
 	 * Return diagnostic information about this model and view.
 	 */
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("ModelAndView: ");
-		if (isReference()) {
-			sb.append("reference to view with name '").append(this.view).append("'");
-		} else {
-			sb.append("materialized View is [").append(this.view).append(']');
-		}
-		sb.append("; model is ").append(this.model);
-		return sb.toString();
+		return "ModelAndView [view=" + formatView() + "; model=" + this.model + "]";
+	}
+
+	private String formatView() {
+		return isReference() ? "\"" + this.view + "\"" : "[" + this.view + "]";
 	}
 
 }

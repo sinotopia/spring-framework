@@ -35,6 +35,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.CachedIntrospectionResults;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -159,99 +160,97 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		ContextClosedEvent.class.getName();
 	}
 
-
 	/**
 	 * Logger used by this class. Available to subclasses.
 	 */
 	protected final Log logger = LogFactory.getLog(getClass());
 
 	/**
-	 * Unique id for this context, if any
+	 * Unique id for this context, if any.
 	 */
 	private String id = ObjectUtils.identityToString(this);
 
 	/**
-	 * Display name
+	 * Display name.
 	 */
 	private String displayName = ObjectUtils.identityToString(this);
 
 	/**
-	 * Parent context
+	 * Parent context.
 	 */
 	@Nullable
 	private ApplicationContext parent;
 
 	/**
-	 * Environment used by this context
+	 * Environment used by this context.
 	 */
 	@Nullable
 	private ConfigurableEnvironment environment;
 
 	/**
-	 * BeanFactoryPostProcessors to apply on refresh
+	 * BeanFactoryPostProcessors to apply on refresh.
 	 */
 	private final List<BeanFactoryPostProcessor> beanFactoryPostProcessors = new ArrayList<>();
 
 	/**
-	 * System time in milliseconds when this context started
+	 * System time in milliseconds when this context started.
 	 */
 	private long startupDate;
 
 	/**
-	 * Flag that indicates whether this context is currently active
+	 * Flag that indicates whether this context is currently active.
 	 */
 	private final AtomicBoolean active = new AtomicBoolean();
 
 	/**
-	 * Flag that indicates whether this context has been closed already
+	 * Flag that indicates whether this context has been closed already.
 	 */
 	private final AtomicBoolean closed = new AtomicBoolean();
 
 	/**
-	 * Synchronization monitor for the "refresh" and "destroy"
+	 * Synchronization monitor for the "refresh" and "destroy".
 	 */
 	private final Object startupShutdownMonitor = new Object();
 
 	/**
-	 * Reference to the JVM shutdown hook, if registered
+	 * Reference to the JVM shutdown hook, if registered.
 	 */
 	@Nullable
 	private Thread shutdownHook;
 
 	/**
-	 * ResourcePatternResolver used by this context
+	 * ResourcePatternResolver used by this context.
 	 */
 	private ResourcePatternResolver resourcePatternResolver;
 
 	/**
-	 * LifecycleProcessor for managing the lifecycle of beans within this context
+	 * LifecycleProcessor for managing the lifecycle of beans within this context.
 	 */
 	@Nullable
 	private LifecycleProcessor lifecycleProcessor;
 
 	/**
-	 * MessageSource we delegate our implementation of this interface to
+	 * MessageSource we delegate our implementation of this interface to.
 	 */
 	@Nullable
 	private MessageSource messageSource;
 
 	/**
-	 * Helper class used in event publishing
+	 * Helper class used in event publishing.
 	 */
 	@Nullable
 	private ApplicationEventMulticaster applicationEventMulticaster;
 
 	/**
-	 * Statically specified listeners
+	 * Statically specified listeners.
 	 */
 	private final Set<ApplicationListener<?>> applicationListeners = new LinkedHashSet<>();
 
 	/**
-	 * ApplicationEvents published early
+	 * ApplicationEvents published early.
 	 */
 	@Nullable
 	private Set<ApplicationEvent> earlyApplicationEvents;
-
 
 	/**
 	 * Create a new AbstractApplicationContext with no parent.
@@ -420,9 +419,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	protected void publishEvent(Object event, @Nullable ResolvableType eventType) {
 		Assert.notNull(event, "Event must not be null");
-		if (logger.isTraceEnabled()) {
-			logger.trace("Publishing event in " + getDisplayName() + ": " + event);
-		}
 
 		// Decorate event as an ApplicationEvent if necessary
 		ApplicationEvent applicationEvent;
@@ -637,8 +633,12 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		this.closed.set(false);
 		this.active.set(true);
 
-		if (logger.isInfoEnabled()) {
-			logger.info("Refreshing " + this);
+		if (logger.isDebugEnabled()) {
+			if (logger.isTraceEnabled()) {
+				logger.trace("Refreshing " + this);
+			} else {
+				logger.debug("Refreshing " + getDisplayName());
+			}
 		}
 
 		// Initialize any placeholder property sources in the context environment
@@ -676,11 +676,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		//初始化BeanFactory,并进行XML文件读取，并将得到的BeanFactory记录在当前实体的属性中
 		refreshBeanFactory();
 		//返回当前实体的BeanFactory属性
-		ConfigurableListableBeanFactory beanFactory = getBeanFactory();
-		if (logger.isDebugEnabled()) {
-			logger.debug("Bean factory for " + getDisplayName() + ": " + beanFactory);
-		}
-		return beanFactory;
+		return getBeanFactory();
 	}
 
 	/**
@@ -786,8 +782,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 					hms.setParentMessageSource(getInternalParentMessageSource());
 				}
 			}
-			if (logger.isDebugEnabled()) {
-				logger.debug("Using MessageSource [" + this.messageSource + "]");
+			if (logger.isTraceEnabled()) {
+				logger.trace("Using MessageSource [" + this.messageSource + "]");
 			}
 		} else {
 			// Use empty MessageSource to be able to accept getMessage calls.
@@ -795,9 +791,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			dms.setParentMessageSource(getInternalParentMessageSource());
 			this.messageSource = dms;
 			beanFactory.registerSingleton(MESSAGE_SOURCE_BEAN_NAME, this.messageSource);
-			if (logger.isDebugEnabled()) {
-				logger.debug("Unable to locate MessageSource with name '" + MESSAGE_SOURCE_BEAN_NAME +
-						"': using default [" + this.messageSource + "]");
+			if (logger.isTraceEnabled()) {
+				logger.trace("No '" + MESSAGE_SOURCE_BEAN_NAME + "' bean, using [" + this.messageSource + "]");
 			}
 		}
 	}
@@ -813,16 +808,15 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		if (beanFactory.containsLocalBean(APPLICATION_EVENT_MULTICASTER_BEAN_NAME)) {
 			this.applicationEventMulticaster =
 					beanFactory.getBean(APPLICATION_EVENT_MULTICASTER_BEAN_NAME, ApplicationEventMulticaster.class);
-			if (logger.isDebugEnabled()) {
-				logger.debug("Using ApplicationEventMulticaster [" + this.applicationEventMulticaster + "]");
+			if (logger.isTraceEnabled()) {
+				logger.trace("Using ApplicationEventMulticaster [" + this.applicationEventMulticaster + "]");
 			}
 		} else {
 			this.applicationEventMulticaster = new SimpleApplicationEventMulticaster(beanFactory);
 			beanFactory.registerSingleton(APPLICATION_EVENT_MULTICASTER_BEAN_NAME, this.applicationEventMulticaster);
-			if (logger.isDebugEnabled()) {
-				logger.debug("Unable to locate ApplicationEventMulticaster with name '" +
-						APPLICATION_EVENT_MULTICASTER_BEAN_NAME +
-						"': using default [" + this.applicationEventMulticaster + "]");
+			if (logger.isTraceEnabled()) {
+				logger.trace("No '" + APPLICATION_EVENT_MULTICASTER_BEAN_NAME + "' bean, using " +
+						"[" + this.applicationEventMulticaster.getClass().getSimpleName() + "]");
 			}
 		}
 	}
@@ -838,18 +832,17 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		if (beanFactory.containsLocalBean(LIFECYCLE_PROCESSOR_BEAN_NAME)) {
 			this.lifecycleProcessor =
 					beanFactory.getBean(LIFECYCLE_PROCESSOR_BEAN_NAME, LifecycleProcessor.class);
-			if (logger.isDebugEnabled()) {
-				logger.debug("Using LifecycleProcessor [" + this.lifecycleProcessor + "]");
+			if (logger.isTraceEnabled()) {
+				logger.trace("Using LifecycleProcessor [" + this.lifecycleProcessor + "]");
 			}
 		} else {
 			DefaultLifecycleProcessor defaultProcessor = new DefaultLifecycleProcessor();
 			defaultProcessor.setBeanFactory(beanFactory);
 			this.lifecycleProcessor = defaultProcessor;
 			beanFactory.registerSingleton(LIFECYCLE_PROCESSOR_BEAN_NAME, this.lifecycleProcessor);
-			if (logger.isDebugEnabled()) {
-				logger.debug("Unable to locate LifecycleProcessor with name '" +
-						LIFECYCLE_PROCESSOR_BEAN_NAME +
-						"': using default [" + this.lifecycleProcessor + "]");
+			if (logger.isTraceEnabled()) {
+				logger.trace("No '" + LIFECYCLE_PROCESSOR_BEAN_NAME + "' bean, using " +
+						"[" + this.lifecycleProcessor.getClass().getSimpleName() + "]");
 			}
 		}
 	}
@@ -1053,8 +1046,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	protected void doClose() {
 		if (this.active.get() && this.closed.compareAndSet(false, true)) {
-			if (logger.isInfoEnabled()) {
-				logger.info("Closing " + this);
+			if (logger.isDebugEnabled()) {
+				logger.debug("Closing " + this);
 			}
 
 			LiveBeansView.unregisterApplicationContext(this);
@@ -1152,7 +1145,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	}
 
 	@Override
-	public <T> T getBean(String name, @Nullable Class<T> requiredType) throws BeansException {
+	public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
 		assertBeanFactoryActive();
 		return getBeanFactory().getBean(name, requiredType);
 	}
@@ -1173,6 +1166,18 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	public <T> T getBean(Class<T> requiredType, Object... args) throws BeansException {
 		assertBeanFactoryActive();
 		return getBeanFactory().getBean(requiredType, args);
+	}
+
+	@Override
+	public <T> ObjectProvider<T> getBeanProvider(Class<T> requiredType) {
+		assertBeanFactoryActive();
+		return getBeanFactory().getBeanProvider(requiredType);
+	}
+
+	@Override
+	public <T> ObjectProvider<T> getBeanProvider(ResolvableType requiredType) {
+		assertBeanFactoryActive();
+		return getBeanFactory().getBeanProvider(requiredType);
 	}
 
 	@Override
@@ -1199,7 +1204,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	}
 
 	@Override
-	public boolean isTypeMatch(String name, @Nullable Class<?> typeToMatch) throws NoSuchBeanDefinitionException {
+	public boolean isTypeMatch(String name, Class<?> typeToMatch) throws NoSuchBeanDefinitionException {
 		assertBeanFactoryActive();
 		return getBeanFactory().isTypeMatch(name, typeToMatch);
 	}
@@ -1315,8 +1320,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	@Nullable
 	protected BeanFactory getInternalParentBeanFactory() {
-		return (getParent() instanceof ConfigurableApplicationContext) ?
-				((ConfigurableApplicationContext) getParent()).getBeanFactory() : getParent();
+		return (getParent() instanceof ConfigurableApplicationContext ?
+				((ConfigurableApplicationContext) getParent()).getBeanFactory() : getParent());
 	}
 
 
@@ -1359,8 +1364,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	@Nullable
 	protected MessageSource getInternalParentMessageSource() {
-		return (getParent() instanceof AbstractApplicationContext) ?
-				((AbstractApplicationContext) getParent()).messageSource : getParent();
+		return (getParent() instanceof AbstractApplicationContext ?
+				((AbstractApplicationContext) getParent()).messageSource : getParent());
 	}
 
 
@@ -1437,20 +1442,19 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	@Override
 	public abstract ConfigurableListableBeanFactory getBeanFactory() throws IllegalStateException;
 
-
+	/**
+	 * Return information about this context.
+	 */
 	/**
 	 * Return information about this context.
 	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder(getDisplayName());
-		sb.append(": startup date [").append(new Date(getStartupDate()));
-		sb.append("]; ");
+		sb.append(", started on ").append(new Date(getStartupDate()));
 		ApplicationContext parent = getParent();
-		if (parent == null) {
-			sb.append("root of context hierarchy");
-		} else {
-			sb.append("parent: ").append(parent.getDisplayName());
+		if (parent != null) {
+			sb.append(", parent: ").append(parent.getDisplayName());
 		}
 		return sb.toString();
 	}

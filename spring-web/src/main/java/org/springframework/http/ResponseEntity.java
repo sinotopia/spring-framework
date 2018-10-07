@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package org.springframework.http;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.lang.Nullable;
@@ -61,6 +62,7 @@ import org.springframework.util.ObjectUtils;
  * }
  * </pre>
  *
+ * @param <T> the body type
  * @author Arjen Poutsma
  * @author Brian Clozel
  * @see #getStatusCode()
@@ -216,6 +218,20 @@ public class ResponseEntity<T> extends HttpEntity<T> {
 	 */
 	public static BodyBuilder status(int status) {
 		return new DefaultBuilder(status);
+	}
+
+	/**
+	 * A shortcut for creating a {@code ResponseEntity} with the given body
+	 * and the {@linkplain HttpStatus#OK OK} status, or an empty body and a
+	 * {@linkplain HttpStatus#NOT_FOUND NOT FOUND} status in case of a
+	 * {@linkplain Optional#empty()} parameter.
+	 *
+	 * @return the created {@code ResponseEntity}
+	 * @since 5.1
+	 */
+	public static <T> ResponseEntity<T> of(Optional<T> body) {
+		Assert.notNull(body, "Body must not be null");
+		return body.map(ResponseEntity::ok).orElse(notFound().build());
 	}
 
 	/**

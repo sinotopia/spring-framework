@@ -58,6 +58,27 @@ public abstract class ReflectionUtils {
 
 	private static final Field[] NO_FIELDS = {};
 
+	/**
+	 * Pre-built FieldFilter that matches all non-static, non-final fields.
+	 */
+	public static final FieldFilter COPYABLE_FIELDS =
+			field -> !(Modifier.isStatic(field.getModifiers()) || Modifier.isFinal(field.getModifiers()));
+
+
+	/**
+	 * Pre-built MethodFilter that matches all non-bridge methods.
+	 */
+	public static final MethodFilter NON_BRIDGED_METHODS =
+			(method -> !method.isBridge());
+
+
+	/**
+	 * Pre-built MethodFilter that matches all non-bridge non-synthetic methods
+	 * which are not declared on {@code java.lang.Object}.
+	 */
+	public static final MethodFilter USER_DECLARED_METHODS =
+			(method -> (!method.isBridge() && !method.isSynthetic() && method.getDeclaringClass() != Object.class));
+
 
 	/**
 	 * Cache for {@link Class#getDeclaredMethods()} plus equivalent default methods
@@ -534,6 +555,7 @@ public abstract class ReflectionUtils {
 	 * @throws IllegalStateException if introspection fails
 	 * @see #doWithMethods
 	 * @since 4.2
+	 * @since 4.2
 	 */
 	public static void doWithLocalMethods(Class<?> clazz, MethodCallback mc) {
 		Method[] methods = getDeclaredMethods(clazz);
@@ -870,26 +892,5 @@ public abstract class ReflectionUtils {
 		boolean matches(Field field);
 	}
 
-
-	/**
-	 * Pre-built FieldFilter that matches all non-static, non-final fields.
-	 */
-	public static final FieldFilter COPYABLE_FIELDS =
-			field -> !(Modifier.isStatic(field.getModifiers()) || Modifier.isFinal(field.getModifiers()));
-
-
-	/**
-	 * Pre-built MethodFilter that matches all non-bridge methods.
-	 */
-	public static final MethodFilter NON_BRIDGED_METHODS =
-			(method -> !method.isBridge());
-
-
-	/**
-	 * Pre-built MethodFilter that matches all non-bridge methods
-	 * which are not declared on {@code java.lang.Object}.
-	 */
-	public static final MethodFilter USER_DECLARED_METHODS =
-			(method -> (!method.isBridge() && method.getDeclaringClass() != Object.class));
 
 }

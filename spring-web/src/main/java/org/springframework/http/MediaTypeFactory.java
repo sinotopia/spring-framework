@@ -40,11 +40,14 @@ import org.springframework.util.StringUtils;
  * @author Arjen Poutsma
  * @since 5.0
  */
-public class MediaTypeFactory {
+public final class MediaTypeFactory {
 
 	private static final String MIME_TYPES_FILE_NAME = "/org/springframework/http/mime.types";
 
 	private static final MultiValueMap<String, MediaType> fileExtensionToMediaTypes = parseMimeTypes();
+
+	private MediaTypeFactory() {
+	}
 
 	/**
 	 * Parse the {@code mime.types} file found in the resources. Format is:

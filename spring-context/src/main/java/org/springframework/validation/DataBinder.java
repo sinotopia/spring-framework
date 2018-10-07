@@ -739,8 +739,8 @@ public class DataBinder implements PropertyEditorRegistry, TypeConverter {
 	 * @see #doBind(org.springframework.beans.MutablePropertyValues)
 	 */
 	public void bind(PropertyValues pvs) {
-		MutablePropertyValues mpvs = (pvs instanceof MutablePropertyValues) ?
-				(MutablePropertyValues) pvs : new MutablePropertyValues(pvs);
+		MutablePropertyValues mpvs = (pvs instanceof MutablePropertyValues ?
+				(MutablePropertyValues) pvs : new MutablePropertyValues(pvs));
 		doBind(mpvs);
 	}
 
@@ -881,8 +881,12 @@ public class DataBinder implements PropertyEditorRegistry, TypeConverter {
 	 * @see #getBindingResult()
 	 */
 	public void validate() {
-		for (Validator validator : this.validators) {
-			validator.validate(getTarget(), getBindingResult());
+		Object target = getTarget();
+		Assert.state(target != null, "No target to validate");
+		BindingResult bindingResult = getBindingResult();
+		// Call each validator with the same binding result
+		for (Validator validator : getValidators()) {
+			validator.validate(target, bindingResult);
 		}
 	}
 
@@ -893,13 +897,18 @@ public class DataBinder implements PropertyEditorRegistry, TypeConverter {
 	 * @param validationHints one or more hint objects to be passed to a {@link SmartValidator}
 	 * @see #setValidator(Validator)
 	 * @see SmartValidator#validate(Object, Errors, Object...)
+	 * @since 3.1
 	 */
 	public void validate(Object... validationHints) {
+		Object target = getTarget();
+		Assert.state(target != null, "No target to validate");
+		BindingResult bindingResult = getBindingResult();
+		// Call each validator with the same binding result
 		for (Validator validator : getValidators()) {
 			if (!ObjectUtils.isEmpty(validationHints) && validator instanceof SmartValidator) {
-				((SmartValidator) validator).validate(getTarget(), getBindingResult(), validationHints);
+				((SmartValidator) validator).validate(target, bindingResult, validationHints);
 			} else if (validator != null) {
-				validator.validate(getTarget(), getBindingResult());
+				validator.validate(target, bindingResult);
 			}
 		}
 	}

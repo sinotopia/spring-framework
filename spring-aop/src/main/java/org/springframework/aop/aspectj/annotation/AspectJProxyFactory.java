@@ -56,7 +56,6 @@ public class AspectJProxyFactory extends ProxyCreatorSupport {
 
 	private final AspectJAdvisorFactory aspectFactory = new ReflectiveAspectJAdvisorFactory();
 
-
 	/**
 	 * Create a new AspectJProxyFactory.
 	 */

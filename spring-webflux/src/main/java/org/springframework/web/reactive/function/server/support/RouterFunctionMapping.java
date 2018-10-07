@@ -18,11 +18,11 @@ package org.springframework.web.reactive.function.server.support;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import reactor.core.publisher.Mono;
 
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.codec.HttpMessageReader;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.lang.Nullable;
@@ -34,10 +34,10 @@ import org.springframework.web.reactive.handler.AbstractHandlerMapping;
 import org.springframework.web.server.ServerWebExchange;
 
 /**
- * {@code HandlerMapping} implementation that supports {@link RouterFunction}s.
+ * {@code HandlerMapping} implementation that supports {@link RouterFunction RouterFunctions}.
  * <p>If no {@link RouterFunction} is provided at
- * {@linkplain #RouterFunctionMapping(RouterFunction) construction time}, this mapping will detect
- * all router functions in the application context, and consult them in
+ * {@linkplain #RouterFunctionMapping(RouterFunction) construction time}, this mapping
+ * will detect all router functions in the application context, and consult them in
  * {@linkplain org.springframework.core.annotation.Order order}.
  *
  * @author Arjen Poutsma
@@ -105,27 +105,38 @@ public class RouterFunctionMapping extends AbstractHandlerMapping implements Ini
 	 * Initialized the router functions by detecting them in the application context.
 	 */
 	protected void initRouterFunctions() {
-		if (logger.isDebugEnabled()) {
-			logger.debug("Looking for router functions in application context: " +
-					getApplicationContext());
-		}
-
 		List<RouterFunction<?>> routerFunctions = routerFunctions();
-		if (!CollectionUtils.isEmpty(routerFunctions) && logger.isInfoEnabled()) {
-			routerFunctions.forEach(routerFunction -> logger.info("Mapped " + routerFunction));
-		}
-		this.routerFunction = routerFunctions.stream()
-				.reduce(RouterFunction::andOther)
-				.orElse(null);
+		this.routerFunction = routerFunctions.stream().reduce(RouterFunction::andOther).orElse(null);
+		logRouterFunctions(routerFunctions);
 	}
 
 	private List<RouterFunction<?>> routerFunctions() {
-		SortedRouterFunctionsContainer container = new SortedRouterFunctionsContainer();
-		obtainApplicationContext().getAutowireCapableBeanFactory().autowireBean(container);
-
-		return CollectionUtils.isEmpty(container.routerFunctions) ? Collections.emptyList() :
-				container.routerFunctions;
+		List<RouterFunction<?>> functions = this.getApplicationContext()
+				.getBeanProvider(RouterFunction.class)
+				.orderedStream()
+				.map(router -> (RouterFunction<?>)router)
+				.collect(Collectors.toList());
+		return (!CollectionUtils.isEmpty(functions) ? functions : Collections.emptyList());
 	}
+
+	private void logRouterFunctions(List<RouterFunction<?>> routerFunctions) {
+		if (logger.isDebugEnabled()) {
+			int total = routerFunctions.size();
+			String message = total + " RouterFunction(s) in " + formatMappingName();
+			if (logger.isTraceEnabled()) {
+				if (total > 0) {
+					routerFunctions.forEach(routerFunction -> logger.trace("Mapped " + routerFunction));
+				}
+				else {
+					logger.trace(message);
+				}
+			}
+			else if (total > 0) {
+				logger.debug(message);
+			}
+		}
+	}
+
 
 	@Override
 	protected Mono<?> getHandlerInternal(ServerWebExchange exchange) {
@@ -136,18 +147,6 @@ public class RouterFunctionMapping extends AbstractHandlerMapping implements Ini
 		}
 		else {
 			return Mono.empty();
-		}
-	}
-
-
-	private static class SortedRouterFunctionsContainer {
-
-		@Nullable
-		private List<RouterFunction<?>> routerFunctions;
-
-		@Autowired(required = false)
-		public void setRouterFunctions(List<RouterFunction<?>> routerFunctions) {
-			this.routerFunctions = routerFunctions;
 		}
 	}
 

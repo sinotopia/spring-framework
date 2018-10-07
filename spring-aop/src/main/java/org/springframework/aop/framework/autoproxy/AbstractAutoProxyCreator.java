@@ -16,7 +16,6 @@
 
 package org.springframework.aop.framework.autoproxy;
 
-import java.beans.PropertyDescriptor;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -109,7 +108,6 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	 * @see #getAdvicesAndAdvisorsForBean
 	 */
 	protected static final Object[] PROXY_WITHOUT_ADDITIONAL_INTERCEPTORS = new Object[0];
-
 
 	/**
 	 * Logger available to subclasses
@@ -227,7 +225,6 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 		return this.beanFactory;
 	}
 
-
 	@Override
 	@Nullable
 	public Class<?> predictBeanType(Class<?> beanClass, String beanName) {
@@ -240,12 +237,12 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 
 	@Override
 	@Nullable
-	public Constructor<?>[] determineCandidateConstructors(Class<?> beanClass, String beanName) throws BeansException {
+	public Constructor<?>[] determineCandidateConstructors(Class<?> beanClass, String beanName) {
 		return null;
 	}
 
 	@Override
-	public Object getEarlyBeanReference(Object bean, String beanName) throws BeansException {
+	public Object getEarlyBeanReference(Object bean, String beanName) {
 		Object cacheKey = getCacheKey(bean.getClass(), beanName);
 		if (!this.earlyProxyReferences.contains(cacheKey)) {
 			this.earlyProxyReferences.add(cacheKey);
@@ -254,7 +251,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	}
 
 	@Override
-	public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
+	public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) {
 		Object cacheKey = getCacheKey(beanClass, beanName);
 
 		if (!StringUtils.hasLength(beanName) || !this.targetSourcedBeans.contains(beanName)) {
@@ -290,9 +287,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	}
 
 	@Override
-	public PropertyValues postProcessPropertyValues(
-			PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName) {
-
+	public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) {
 		return pvs;
 	}
 
@@ -308,7 +303,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	 * @see #getAdvicesAndAdvisorsForBean
 	 */
 	@Override
-	public Object postProcessAfterInitialization(@Nullable Object bean, String beanName) throws BeansException {
+	public Object postProcessAfterInitialization(@Nullable Object bean, String beanName) {
 		if (bean != null) {
 			//根据指定的Bean的class和name构建key，格式为className_beanName
 			Object cacheKey = getCacheKey(bean.getClass(), beanName);
@@ -319,7 +314,6 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 		}
 		return bean;
 	}
-
 
 	/**
 	 * Build a cache key for the given bean class and bean name.
@@ -409,15 +403,18 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	/**
 	 * Subclasses should override this method to return {@code true} if the
 	 * given bean should not be considered for auto-proxying by this post-processor.
-	 * <p>Sometimes we need to be able to avoid this happening if it will lead to
-	 * a circular reference. This implementation returns {@code false}.
+	 * <p>Sometimes we need to be able to avoid this happening, e.g. if it will lead to
+	 * a circular reference or if the existing target instance needs to be preserved.
+	 * This implementation returns {@code false} unless the bean name indicates an
+	 * "original instance" according to {@code AutowireCapableBeanFactory} conventions.
 	 *
 	 * @param beanClass the class of the bean
 	 * @param beanName  the name of the bean
 	 * @return whether to skip the given bean
+	 * @see org.springframework.beans.factory.config.AutowireCapableBeanFactory#ORIGINAL_INSTANCE_SUFFIX
 	 */
 	protected boolean shouldSkip(Class<?> beanClass, String beanName) {
-		return false;
+		return AutoProxyUtils.isOriginalInstance(beanName, beanClass);
 	}
 
 	/**
@@ -440,9 +437,9 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 				TargetSource ts = tsc.getTargetSource(beanClass, beanName);
 				if (ts != null) {
 					// Found a matching TargetSource.
-					if (logger.isDebugEnabled()) {
-						logger.debug("TargetSourceCreator [" + tsc +
-								" found custom TargetSource for bean with name '" + beanName + "'");
+					if (logger.isTraceEnabled()) {
+						logger.trace("TargetSourceCreator [" + tsc +
+								"] found custom TargetSource for bean with name '" + beanName + "'");
 					}
 					return ts;
 				}
@@ -550,10 +547,10 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 				}
 			}
 		}
-		if (logger.isDebugEnabled()) {
+		if (logger.isTraceEnabled()) {
 			int nrOfCommonInterceptors = commonInterceptors.length;
 			int nrOfSpecificInterceptors = (specificInterceptors != null ? specificInterceptors.length : 0);
-			logger.debug("Creating implicit proxy for bean '" + beanName + "' with " + nrOfCommonInterceptors +
+			logger.trace("Creating implicit proxy for bean '" + beanName + "' with " + nrOfCommonInterceptors +
 					" common interceptors and " + nrOfSpecificInterceptors + " specific interceptors");
 		}
 
@@ -588,13 +585,13 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	 * to change the interfaces exposed.
 	 * <p>The default implementation is empty.
 	 *
-	 * @param proxyFactory ProxyFactory that is already configured with
+	 * @param proxyFactory a ProxyFactory that is already configured with
 	 *                     TargetSource and interfaces and will be used to create the proxy
 	 *                     immediately after this method returns
 	 */
 	protected void customizeProxyFactory(ProxyFactory proxyFactory) {
-	}
 
+	}
 
 	/**
 	 * Return whether the given bean is to be proxied, what additional

@@ -59,7 +59,7 @@ public class XmlViewResolver extends AbstractCachingViewResolver
 		implements Ordered, InitializingBean, DisposableBean {
 
 	/**
-	 * Default if no other location is supplied
+	 * Default if no other location is supplied.
 	 */
 	public static final String DEFAULT_LOCATION = "/WEB-INF/views.xml";
 
@@ -71,7 +71,6 @@ public class XmlViewResolver extends AbstractCachingViewResolver
 	private ConfigurableApplicationContext cachedFactory;
 
 	private int order = Ordered.LOWEST_PRECEDENCE;  // default: same as non-Ordered
-
 
 	/**
 	 * Set the location of the XML file that defines the view beans.

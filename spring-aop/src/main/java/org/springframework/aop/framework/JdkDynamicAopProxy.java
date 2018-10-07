@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,7 +77,6 @@ final class JdkDynamicAopProxy implements AopProxy, InvocationHandler, Serializa
 	 * proxies behave the same :-)
 	 * This way, we can also more easily take advantage of minor optimizations in each class.
 	 */
-
 	/**
 	 * We use a static Log to avoid serialization issues
 	 */
@@ -122,8 +121,8 @@ final class JdkDynamicAopProxy implements AopProxy, InvocationHandler, Serializa
 
 	@Override
 	public Object getProxy(@Nullable ClassLoader classLoader) {
-		if (logger.isDebugEnabled()) {
-			logger.debug("Creating JDK dynamic proxy: target source is " + this.advised.getTargetSource());
+		if (logger.isTraceEnabled()) {
+			logger.trace("Creating JDK dynamic proxy: " + this.advised.getTargetSource());
 		}
 		Class<?>[] proxiedInterfaces = AopProxyUtils.completeProxiedInterfaces(this.advised, true);
 		findDefinedEqualsAndHashCodeMethods(proxiedInterfaces);

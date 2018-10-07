@@ -168,7 +168,7 @@ public abstract class AbstractAdvisorAutoProxyCreator extends AbstractAutoProxyC
 	 * <p>Typically used to add Advisors that expose contextual information
 	 * required by some of the later advisors.
 	 *
-	 * @param candidateAdvisors Advisors that have already been identified as
+	 * @param candidateAdvisors the Advisors that have already been identified as
 	 *                          applying to a given bean
 	 */
 	protected void extendAdvisors(List<Advisor> candidateAdvisors) {
@@ -181,7 +181,6 @@ public abstract class AbstractAdvisorAutoProxyCreator extends AbstractAutoProxyC
 	protected boolean advisorsPreFiltered() {
 		return true;
 	}
-
 
 	/**
 	 * Subclass of BeanFactoryAdvisorRetrievalHelper that delegates to

@@ -22,7 +22,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -66,13 +65,11 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 	 */
 	private static final long serialVersionUID = 2651364800145442165L;
 
-
 	/**
 	 * Canonical TargetSource when there's no target, and behavior is
 	 * supplied by the advisors.
 	 */
 	public static final TargetSource EMPTY_TARGET_SOURCE = EmptyTargetSource.INSTANCE;
-
 
 	/**
 	 * Package-protected to allow direct access for efficiency
@@ -104,14 +101,13 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 	 * List of Advisors. If an Advice is added, it will be wrapped
 	 * in an Advisor before being added to this List.
 	 */
-	private List<Advisor> advisors = new LinkedList<>();
+	private List<Advisor> advisors = new ArrayList<>();
 
 	/**
 	 * Array updated on changes to the advisors list, which is easier
 	 * to manipulate internally.
 	 */
 	private Advisor[] advisorArray = new Advisor[0];
-
 
 	/**
 	 * No-arg constructor for use as a JavaBean.
@@ -129,7 +125,6 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 		this();
 		setInterfaces(interfaces);
 	}
-
 
 	/**
 	 * Set the given object as target.
@@ -166,11 +161,12 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 	 * @see #setTargetSource
 	 * @see #setTarget
 	 */
-	public void setTargetClass(Class<?> targetClass) {
+	public void setTargetClass(@Nullable Class<?> targetClass) {
 		this.targetSource = EmptyTargetSource.forClass(targetClass);
 	}
 
 	@Override
+	@Nullable
 	public Class<?> getTargetClass() {
 		return this.targetSource.getTargetClass();
 	}
@@ -490,7 +486,7 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 	 *
 	 * @param method      the proxied method
 	 * @param targetClass the target class
-	 * @return List of MethodInterceptors (may also include InterceptorAndDynamicMethodMatchers)
+	 * @return a List of MethodInterceptors (may also include InterceptorAndDynamicMethodMatchers)
 	 */
 	public List<Object> getInterceptorsAndDynamicInterceptionAdvice(Method method, @Nullable Class<?> targetClass) {
 		MethodCacheKey cacheKey = new MethodCacheKey(method);
@@ -546,7 +542,7 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 
 	/**
 	 * Build a configuration-only copy of this AdvisedSupport,
-	 * replacing the TargetSource
+	 * replacing the TargetSource.
 	 */
 	AdvisedSupport getConfigurationOnlyCopy() {
 		AdvisedSupport copy = new AdvisedSupport();

@@ -63,7 +63,7 @@ import org.springframework.util.StringUtils;
 public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedenceInformation, Serializable {
 
 	/**
-	 * Key used in ReflectiveMethodInvocation userAtributes map for the current joinpoint.
+	 * Key used in ReflectiveMethodInvocation userAttributes map for the current joinpoint.
 	 */
 	protected static final String JOIN_POINT_KEY = JoinPoint.class.getName();
 
@@ -116,7 +116,7 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 
 	/**
 	 * This will be non-null if the creator of this advice object knows the argument names
-	 * and sets them explicitly
+	 * and sets them explicitly.
 	 */
 	@Nullable
 	private String[] argumentNames;
@@ -139,13 +139,13 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 
 	/**
 	 * Index for thisJoinPoint argument (currently only
-	 * supported at index 0 if present at all)
+	 * supported at index 0 if present at all).
 	 */
 	private int joinPointArgumentIndex = -1;
 
 	/**
 	 * Index for thisJoinPointStaticPart argument (currently only
-	 * supported at index 0 if present at all)
+	 * supported at index 0 if present at all).
 	 */
 	private int joinPointStaticPartArgumentIndex = -1;
 
@@ -551,6 +551,7 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 	 *
 	 * @param jp          the current JoinPoint
 	 * @param jpMatch     the join point match that matched this execution join point
+	 *                    to the advice method.
 	 * @param returnValue the return value from the method execution (may be null)
 	 * @param ex          the exception thrown by the method execution (may be null)
 	 * @return the empty array if there are no arguments
@@ -710,7 +711,7 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 		}
 
 		@Override
-		public boolean matches(Method method, @Nullable Class<?> targetClass) {
+		public boolean matches(Method method, Class<?> targetClass) {
 			return !this.adviceMethod.equals(method);
 		}
 

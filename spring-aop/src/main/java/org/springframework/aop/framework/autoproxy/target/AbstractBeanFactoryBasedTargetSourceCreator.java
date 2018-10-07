@@ -66,7 +66,6 @@ public abstract class AbstractBeanFactoryBasedTargetSourceCreator
 	private final Map<String, DefaultListableBeanFactory> internalBeanFactories =
 			new HashMap<>();
 
-
 	@Override
 	public final void setBeanFactory(BeanFactory beanFactory) {
 		if (!(beanFactory instanceof ConfigurableBeanFactory)) {
