@@ -284,7 +284,7 @@ public class UrlPathHelper {
 	}
 
 	/**
-	 * Sanitize the given path with the following rules:
+	 * Sanitize the given path. Uses the following rules:
 	 * <ul>
 	 * <li>replace all "//" by "/"</li>
 	 * </ul>
@@ -536,7 +536,7 @@ public class UrlPathHelper {
 	 * {@link #getLookupPathForRequest(HttpServletRequest)}.
 	 *
 	 * @param request current HTTP request
-	 * @param vars    URI variables extracted from the URL path
+	 * @param vars    the URI variables extracted from the URL path
 	 * @return the same Map or a new Map instance
 	 */
 	public Map<String, String> decodePathVariables(HttpServletRequest request, Map<String, String> vars) {
@@ -558,7 +558,7 @@ public class UrlPathHelper {
 	 * {@link #getLookupPathForRequest(HttpServletRequest)}.
 	 *
 	 * @param request current HTTP request
-	 * @param vars    URI variables extracted from the URL path
+	 * @param vars    the URI variables extracted from the URL path
 	 * @return the same Map or a new Map instance
 	 */
 	public MultiValueMap<String, String> decodeMatrixVariables(HttpServletRequest request,

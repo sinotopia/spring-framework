@@ -317,4 +317,8 @@ public class CacheControl {
 		builder.append(value);
 	}
 
+	@Override
+	public String toString() {
+		return "CacheControl [" + getHeaderValue() + "]";
+	}
 }

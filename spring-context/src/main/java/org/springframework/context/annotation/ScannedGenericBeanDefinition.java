@@ -50,7 +50,6 @@ public class ScannedGenericBeanDefinition extends GenericBeanDefinition implemen
 
 	private final AnnotationMetadata metadata;
 
-
 	/**
 	 * Create a new ScannedGenericBeanDefinition for the class that the
 	 * given MetadataReader describes.

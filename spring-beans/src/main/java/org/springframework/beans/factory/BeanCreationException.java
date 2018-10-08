@@ -18,7 +18,7 @@ package org.springframework.beans.factory;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.FatalBeanException;
@@ -36,10 +36,10 @@ import org.springframework.lang.Nullable;
 public class BeanCreationException extends FatalBeanException {
 
 	@Nullable
-	private String beanName;
+	private final String beanName;
 
 	@Nullable
-	private String resourceDescription;
+	private final String resourceDescription;
 
 	@Nullable
 	private List<Throwable> relatedCauses;
@@ -51,6 +51,8 @@ public class BeanCreationException extends FatalBeanException {
 	 */
 	public BeanCreationException(String msg) {
 		super(msg);
+		this.beanName = null;
+		this.resourceDescription = null;
 	}
 
 	/**
@@ -61,6 +63,8 @@ public class BeanCreationException extends FatalBeanException {
 	 */
 	public BeanCreationException(String msg, Throwable cause) {
 		super(msg, cause);
+		this.beanName = null;
+		this.resourceDescription = null;
 	}
 
 	/**
@@ -72,6 +76,7 @@ public class BeanCreationException extends FatalBeanException {
 	public BeanCreationException(String beanName, String msg) {
 		super("Error creating bean with name '" + beanName + "': " + msg);
 		this.beanName = beanName;
+		this.resourceDescription = null;
 	}
 
 	/**
@@ -99,6 +104,7 @@ public class BeanCreationException extends FatalBeanException {
 				(resourceDescription != null ? " defined in " + resourceDescription : "") + ": " + msg);
 		this.resourceDescription = resourceDescription;
 		this.beanName = beanName;
+		this.relatedCauses = null;
 	}
 
 	/**
@@ -142,7 +148,7 @@ public class BeanCreationException extends FatalBeanException {
 	 */
 	public void addRelatedCause(Throwable ex) {
 		if (this.relatedCauses == null) {
-			this.relatedCauses = new LinkedList<>();
+			this.relatedCauses = new ArrayList<>();
 		}
 		this.relatedCauses.add(ex);
 	}

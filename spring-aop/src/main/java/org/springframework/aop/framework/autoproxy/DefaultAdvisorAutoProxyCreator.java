@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,9 +38,10 @@ import org.springframework.lang.Nullable;
 @SuppressWarnings("serial")
 public class DefaultAdvisorAutoProxyCreator extends AbstractAdvisorAutoProxyCreator implements BeanNameAware {
 
-	/** Separator between prefix and remainder of bean name */
+	/**
+	 * Separator between prefix and remainder of bean name
+	 */
 	public static final String SEPARATOR = ".";
-
 
 	private boolean usePrefix = false;
 
@@ -51,6 +52,7 @@ public class DefaultAdvisorAutoProxyCreator extends AbstractAdvisorAutoProxyCrea
 	/**
 	 * Set whether to only include advisors with a certain prefix in the bean name.
 	 * <p>Default is {@code false}, including all beans of type {@code Advisor}.
+	 *
 	 * @see #setAdvisorBeanNamePrefix
 	 */
 	public void setUsePrefix(boolean usePrefix) {
@@ -68,6 +70,7 @@ public class DefaultAdvisorAutoProxyCreator extends AbstractAdvisorAutoProxyCrea
 	 * Set the prefix for bean names that will cause them to be included for
 	 * auto-proxying by this object. This prefix should be set to avoid circular
 	 * references. Default value is the bean name of this object + a dot.
+	 *
 	 * @param advisorBeanNamePrefix the exclusion prefix
 	 */
 	public void setAdvisorBeanNamePrefix(@Nullable String advisorBeanNamePrefix) {
@@ -91,9 +94,9 @@ public class DefaultAdvisorAutoProxyCreator extends AbstractAdvisorAutoProxyCrea
 		}
 	}
 
-
 	/**
 	 * Consider {@code Advisor} beans with the specified prefix as eligible, if activated.
+	 *
 	 * @see #setUsePrefix
 	 * @see #setAdvisorBeanNamePrefix
 	 */

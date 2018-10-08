@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -448,7 +448,7 @@ public class RedirectView extends AbstractUrlBasedView implements SmartView {
 	 * Stringifies, URL-encodes and formats model attributes as query properties.
 	 *
 	 * @param targetUrl      the StringBuilder to append the properties to
-	 * @param model          Map that contains model attributes
+	 * @param model          a Map that contains model attributes
 	 * @param encodingScheme the encoding scheme to use
 	 * @throws UnsupportedEncodingException if string encoding failed
 	 * @see #queryProperties
@@ -617,7 +617,7 @@ public class RedirectView extends AbstractUrlBasedView implements SmartView {
 	}
 
 	/**
-	 * Send a redirect back to the HTTP client
+	 * Send a redirect back to the HTTP client.
 	 *
 	 * @param request          current HTTP request (allows for reacting to request method)
 	 * @param response         current HTTP response (for sending response headers)

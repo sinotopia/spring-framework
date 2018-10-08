@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2015 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,8 +37,19 @@ import org.springframework.lang.Nullable;
  */
 public class QuickTargetSourceCreator extends AbstractBeanFactoryBasedTargetSourceCreator {
 
+	/**
+	 * The CommonsPool2TargetSource prefix.
+	 */
 	public static final String PREFIX_COMMONS_POOL = ":";
+
+	/**
+	 * The ThreadLocalTargetSource prefix.
+	 */
 	public static final String PREFIX_THREAD_LOCAL = "%";
+
+	/**
+	 * The PrototypeTargetSource prefix.
+	 */
 	public static final String PREFIX_PROTOTYPE = "!";
 
 	@Override
@@ -50,14 +61,11 @@ public class QuickTargetSourceCreator extends AbstractBeanFactoryBasedTargetSour
 			CommonsPool2TargetSource cpts = new CommonsPool2TargetSource();
 			cpts.setMaxSize(25);
 			return cpts;
-		}
-		else if (beanName.startsWith(PREFIX_THREAD_LOCAL)) {
+		} else if (beanName.startsWith(PREFIX_THREAD_LOCAL)) {
 			return new ThreadLocalTargetSource();
-		}
-		else if (beanName.startsWith(PREFIX_PROTOTYPE)) {
+		} else if (beanName.startsWith(PREFIX_PROTOTYPE)) {
 			return new PrototypeTargetSource();
-		}
-		else {
+		} else {
 			// No match. Don't create a custom target source.
 			return null;
 		}

@@ -44,6 +44,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 /**
@@ -118,7 +119,8 @@ class UndertowServerHttpRequest extends AbstractServerHttpRequest {
 
 	@Override
 	public Flux<DataBuffer> getBody() {
-		return Flux.from(this.body);
+		return Flux.from(this.body)
+				.doOnDiscard(PooledDataBuffer.class, DataBufferUtils::release);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -127,8 +129,13 @@ class UndertowServerHttpRequest extends AbstractServerHttpRequest {
 		return (T) this.exchange;
 	}
 
+	@Override
+	protected String initId() {
+		return ObjectUtils.getIdentityHexString(this.exchange.getConnection());
+	}
 
-	private static class RequestBodyPublisher extends AbstractListenerReadPublisher<DataBuffer> {
+
+	private class RequestBodyPublisher extends AbstractListenerReadPublisher<DataBuffer> {
 
 		private final StreamSourceChannel channel;
 
@@ -136,7 +143,9 @@ class UndertowServerHttpRequest extends AbstractServerHttpRequest {
 
 		private final ByteBufferPool byteBufferPool;
 
+
 		public RequestBodyPublisher(HttpServerExchange exchange, DataBufferFactory bufferFactory) {
+			super(UndertowServerHttpRequest.this.getLogPrefix());
 			this.channel = exchange.getRequestChannel();
 			this.bufferFactory = bufferFactory;
 			this.byteBufferPool = exchange.getConnection().getByteBufferPool();
@@ -171,10 +180,10 @@ class UndertowServerHttpRequest extends AbstractServerHttpRequest {
 			boolean release = true;
 			try {
 				ByteBuffer byteBuffer = pooledByteBuffer.getBuffer();
-
 				int read = this.channel.read(byteBuffer);
-				if (logger.isTraceEnabled()) {
-					logger.trace("Channel read returned " + read + (read != -1 ? " bytes" : ""));
+
+				if (rsReadLogger.isTraceEnabled()) {
+					rsReadLogger.trace(getLogPrefix() + "Read " + read + (read != -1 ? " bytes" : ""));
 				}
 
 				if (read > 0) {
@@ -187,7 +196,8 @@ class UndertowServerHttpRequest extends AbstractServerHttpRequest {
 					onAllDataRead();
 				}
 				return null;
-			} finally {
+			}
+			finally {
 				if (release && pooledByteBuffer.isOpen()) {
 					pooledByteBuffer.close();
 				}
@@ -205,6 +215,11 @@ class UndertowServerHttpRequest extends AbstractServerHttpRequest {
 		public UndertowDataBuffer(DataBuffer dataBuffer, PooledByteBuffer pooledByteBuffer) {
 			this.dataBuffer = dataBuffer;
 			this.pooledByteBuffer = pooledByteBuffer;
+		}
+
+		@Override
+		public boolean isAllocated() {
+			return this.pooledByteBuffer.isOpen();
 		}
 
 		@Override

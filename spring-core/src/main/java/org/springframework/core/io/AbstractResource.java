@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,26 +53,24 @@ public abstract class AbstractResource implements Resource {
 		// Try file existence: can we find the file in the file system?
 		try {
 			return getFile().exists();
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			// Fall back to stream existence: can we open the stream?
 			try {
-				InputStream is = getInputStream();
-				is.close();
+				getInputStream().close();
 				return true;
-			}
-			catch (Throwable isEx) {
+			} catch (Throwable isEx) {
 				return false;
 			}
 		}
 	}
 
 	/**
-	 * This implementation always returns {@code true}.
+	 * This implementation always returns {@code true} for a resource
+	 * that {@link #exists() exists} (revised as of 5.1).
 	 */
 	@Override
 	public boolean isReadable() {
-		return true;
+		return exists();
 	}
 
 	/**
@@ -109,8 +107,7 @@ public abstract class AbstractResource implements Resource {
 		URL url = getURL();
 		try {
 			return ResourceUtils.toURI(url);
-		}
-		catch (URISyntaxException ex) {
+		} catch (URISyntaxException ex) {
 			throw new NestedIOException("Invalid URI [" + url + "]", ex);
 		}
 	}
@@ -139,6 +136,7 @@ public abstract class AbstractResource implements Resource {
 	 * This implementation reads the entire InputStream to calculate the
 	 * content length. Subclasses will almost always be able to provide
 	 * a more optimal version of this, e.g. checking a File length.
+	 *
 	 * @see #getInputStream()
 	 */
 	@Override
@@ -152,12 +150,10 @@ public abstract class AbstractResource implements Resource {
 				size += read;
 			}
 			return size;
-		}
-		finally {
+		} finally {
 			try {
 				is.close();
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 			}
 		}
 	}
@@ -165,6 +161,7 @@ public abstract class AbstractResource implements Resource {
 	/**
 	 * This implementation checks the timestamp of the underlying File,
 	 * if available.
+	 *
 	 * @see #getFileForLastModifiedCheck()
 	 */
 	@Override
@@ -180,10 +177,11 @@ public abstract class AbstractResource implements Resource {
 	/**
 	 * Determine the File to use for timestamp checking.
 	 * <p>The default implementation delegates to {@link #getFile()}.
+	 *
 	 * @return the File to use for timestamp checking (never {@code null})
 	 * @throws FileNotFoundException if the resource cannot be resolved as
-	 * an absolute file path, i.e. is not available in a file system
-	 * @throws IOException in case of general resolution/reading failures
+	 *                               an absolute file path, i.e. is not available in a file system
+	 * @throws IOException           in case of general resolution/reading failures
 	 */
 	protected File getFileForLastModifiedCheck() throws IOException {
 		return getFile();
@@ -210,31 +208,34 @@ public abstract class AbstractResource implements Resource {
 
 
 	/**
-	 * This implementation returns the description of this resource.
-	 * @see #getDescription()
-	 */
-	@Override
-	public String toString() {
-		return getDescription();
-	}
-
-	/**
 	 * This implementation compares description strings.
+	 *
 	 * @see #getDescription()
 	 */
 	@Override
-	public boolean equals(Object obj) {
-		return (obj == this ||
-			(obj instanceof Resource && ((Resource) obj).getDescription().equals(getDescription())));
+	public boolean equals(Object other) {
+		return (this == other || (other instanceof Resource &&
+				((Resource) other).getDescription().equals(getDescription())));
 	}
 
 	/**
 	 * This implementation returns the description's hash code.
+	 *
 	 * @see #getDescription()
 	 */
 	@Override
 	public int hashCode() {
 		return getDescription().hashCode();
+	}
+
+	/**
+	 * This implementation returns the description of this resource.
+	 *
+	 * @see #getDescription()
+	 */
+	@Override
+	public String toString() {
+		return getDescription();
 	}
 
 }

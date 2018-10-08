@@ -16,8 +16,8 @@
 
 package org.springframework.beans;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +34,7 @@ import org.springframework.lang.Nullable;
  * @see #getPropertyValue
  * @see #setPropertyValue
  */
-public abstract class AbstractPropertyAccessor extends TypeConverterSupport implements ConfigurablePropertyAccessor {
+public abstract class  AbstractPropertyAccessor extends TypeConverterSupport implements ConfigurablePropertyAccessor {
 
 	private boolean extractOldValueForEditor = false;
 
@@ -110,7 +110,7 @@ public abstract class AbstractPropertyAccessor extends TypeConverterSupport impl
 			}
 			catch (PropertyAccessException ex) {
 				if (propertyAccessExceptions == null) {
-					propertyAccessExceptions = new LinkedList<>();
+					propertyAccessExceptions = new ArrayList<>();
 				}
 				propertyAccessExceptions.add(ex);
 			}

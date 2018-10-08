@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ import org.springframework.util.ReflectionUtils;
  * migrate to {@code ShadowMatch.getVariablesInvolvedInRuntimeTest()}
  * or some similar operation.
  *
- * <p>See <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=151593"/>Bug 151593</a>
+ * <p>See <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=151593">Bug 151593</a>
  *
  * @author Adrian Colyer
  * @author Ramnivas Laddad
@@ -71,8 +71,7 @@ class RuntimeTestWalker {
 			residualTestField = ShadowMatchImpl.class.getDeclaredField("residualTest");
 			varTypeField = ReflectionVar.class.getDeclaredField("varType");
 			myClassField = ReflectionBasedReferenceTypeDelegate.class.getDeclaredField("myClass");
-		}
-		catch (NoSuchFieldException ex) {
+		} catch (NoSuchFieldException ex) {
 			throw new IllegalStateException("The version of aspectjtools.jar / aspectjweaver.jar " +
 					"on the classpath is incompatible with this version of Spring: " + ex);
 		}
@@ -87,8 +86,7 @@ class RuntimeTestWalker {
 		try {
 			ReflectionUtils.makeAccessible(residualTestField);
 			this.runtimeTest = (Test) residualTestField.get(shadowMatch);
-		}
-		catch (IllegalAccessException ex) {
+		} catch (IllegalAccessException ex) {
 			throw new IllegalStateException(ex);
 		}
 	}
@@ -167,8 +165,7 @@ class RuntimeTestWalker {
 			try {
 				ReflectionUtils.makeAccessible(varTypeField);
 				return (Integer) varTypeField.get(v);
-			}
-			catch (IllegalAccessException ex) {
+			} catch (IllegalAccessException ex) {
 				throw new IllegalStateException(ex);
 			}
 		}
@@ -208,8 +205,7 @@ class RuntimeTestWalker {
 					try {
 						ReflectionUtils.makeAccessible(myClassField);
 						typeClass = (Class<?>) myClassField.get(delegate);
-					}
-					catch (IllegalAccessException ex) {
+					} catch (IllegalAccessException ex) {
 						throw new IllegalStateException(ex);
 					}
 				}
@@ -220,8 +216,7 @@ class RuntimeTestWalker {
 					typeClass = ClassUtils.forName(type.getName(), this.matchClass.getClassLoader());
 				}
 				this.matches = typeClass.isAssignableFrom(this.matchClass);
-			}
-			catch (ClassNotFoundException ex) {
+			} catch (ClassNotFoundException ex) {
 				this.matches = false;
 			}
 		}

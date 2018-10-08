@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2017 the original author or authors.
+ * Copyright 2002-2018 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,6 +48,7 @@ public class ControlFlowPointcut implements Pointcut, ClassFilter, MethodMatcher
 
 	/**
 	 * Construct a new pointcut that matches all control flows below that class.
+	 *
 	 * @param clazz the clazz
 	 */
 	public ControlFlowPointcut(Class<?> clazz) {
@@ -58,7 +59,8 @@ public class ControlFlowPointcut implements Pointcut, ClassFilter, MethodMatcher
 	 * Construct a new pointcut that matches all calls below the given method
 	 * in the given class. If no method name is given, matches all control flows
 	 * below the given class.
-	 * @param clazz the clazz
+	 *
+	 * @param clazz      the clazz
 	 * @param methodName the name of the method (may be {@code null})
 	 */
 	public ControlFlowPointcut(Class<?> clazz, @Nullable String methodName) {
@@ -81,7 +83,7 @@ public class ControlFlowPointcut implements Pointcut, ClassFilter, MethodMatcher
 	 * some candidate classes.
 	 */
 	@Override
-	public boolean matches(Method method, @Nullable Class<?> targetClass) {
+	public boolean matches(Method method, Class<?> targetClass) {
 		return true;
 	}
 
@@ -91,7 +93,7 @@ public class ControlFlowPointcut implements Pointcut, ClassFilter, MethodMatcher
 	}
 
 	@Override
-	public boolean matches(Method method, @Nullable Class<?> targetClass, Object... args) {
+	public boolean matches(Method method, Class<?> targetClass, Object... args) {
 		this.evaluations++;
 
 		for (StackTraceElement element : new Throwable().getStackTrace()) {
@@ -131,7 +133,7 @@ public class ControlFlowPointcut implements Pointcut, ClassFilter, MethodMatcher
 			return false;
 		}
 		ControlFlowPointcut that = (ControlFlowPointcut) other;
-		return (this.clazz.equals(that.clazz)) && ObjectUtils.nullSafeEquals(that.methodName, this.methodName);
+		return (this.clazz.equals(that.clazz)) && ObjectUtils.nullSafeEquals(this.methodName, that.methodName);
 	}
 
 	@Override

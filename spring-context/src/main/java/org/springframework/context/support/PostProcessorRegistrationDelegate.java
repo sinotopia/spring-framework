@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -47,7 +46,11 @@ import org.springframework.lang.Nullable;
  * @author Juergen Hoeller
  * @since 4.0
  */
-class PostProcessorRegistrationDelegate {
+final class PostProcessorRegistrationDelegate {
+
+	private PostProcessorRegistrationDelegate() {
+	}
+
 
 	/**
 	 * 激活BeanFactoryPostProcessors
@@ -68,12 +71,13 @@ class PostProcessorRegistrationDelegate {
 		//首先处理BeanDefinitionRegistry类型
 		if (beanFactory instanceof BeanDefinitionRegistry) {
 			BeanDefinitionRegistry registry = (BeanDefinitionRegistry) beanFactory;
+
 			//常规BeanFactoryPostProcessor
-			List<BeanFactoryPostProcessor> regularPostProcessors = new LinkedList<>();
+			List<BeanFactoryPostProcessor> regularPostProcessors = new ArrayList<>();
 			//BeanDefinitionRegistryPostProcessor
-			//
-			List<BeanDefinitionRegistryPostProcessor> registryProcessors = new LinkedList<>();
-			//硬编码注册的后处理器
+			////硬编码注册的后处理器
+			List<BeanDefinitionRegistryPostProcessor> registryProcessors = new ArrayList<>();
+
 			for (BeanFactoryPostProcessor postProcessor : beanFactoryPostProcessors) {
 				if (postProcessor instanceof BeanDefinitionRegistryPostProcessor) {
 					//对于BeanDefinitionRegistryPostProcessor,在BeanFactoryPostProcessor的基础上还有自定义的方法,需要先调用
@@ -342,7 +346,7 @@ class PostProcessorRegistrationDelegate {
 	 * BeanPostProcessor instantiation, i.e. when a bean is not eligible for
 	 * getting processed by all BeanPostProcessors.
 	 */
-	private static class BeanPostProcessorChecker implements BeanPostProcessor {
+	private static final class BeanPostProcessorChecker implements BeanPostProcessor {
 
 		private static final Log logger = LogFactory.getLog(BeanPostProcessorChecker.class);
 

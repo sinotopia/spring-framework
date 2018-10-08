@@ -34,9 +34,9 @@ public class StandardClassMetadata implements ClassMetadata {
 
 	private final Class<?> introspectedClass;
 
-
 	/**
 	 * Create a new StandardClassMetadata wrapper for the given Class.
+	 *
 	 * @param introspectedClass the Class to introspect
 	 */
 	public StandardClassMetadata(Class<?> introspectedClass) {
@@ -50,7 +50,6 @@ public class StandardClassMetadata implements ClassMetadata {
 	public final Class<?> getIntrospectedClass() {
 		return this.introspectedClass;
 	}
-
 
 	@Override
 	public String getClassName() {
