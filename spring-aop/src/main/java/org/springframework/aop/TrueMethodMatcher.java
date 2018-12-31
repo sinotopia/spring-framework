@@ -35,7 +35,6 @@ final class TrueMethodMatcher implements MethodMatcher, Serializable {
 	private TrueMethodMatcher() {
 	}
 
-
 	@Override
 	public boolean isRuntime() {
 		return false;
@@ -51,7 +50,6 @@ final class TrueMethodMatcher implements MethodMatcher, Serializable {
 		// Should never be invoked as isRuntime returns false.
 		throw new UnsupportedOperationException();
 	}
-
 
 	@Override
 	public String toString() {
