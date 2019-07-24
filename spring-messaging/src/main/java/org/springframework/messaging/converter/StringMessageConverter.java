@@ -36,7 +36,6 @@ public class StringMessageConverter extends AbstractMessageConverter {
 
 	private final Charset defaultCharset;
 
-
 	public StringMessageConverter() {
 		this(StandardCharsets.UTF_8);
 	}
@@ -75,8 +74,7 @@ public class StringMessageConverter extends AbstractMessageConverter {
 	private Charset getContentTypeCharset(@Nullable MimeType mimeType) {
 		if (mimeType != null && mimeType.getCharset() != null) {
 			return mimeType.getCharset();
-		}
-		else {
+		} else {
 			return this.defaultCharset;
 		}
 	}

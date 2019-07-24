@@ -55,7 +55,6 @@ public class AnnotatedBeanDefinitionReader {
 
 	private ConditionEvaluator conditionEvaluator;
 
-
 	/**
 	 * Create a new {@code AnnotatedBeanDefinitionReader} for the given registry.
 	 * If the registry is {@link EnvironmentCapable}, e.g. is an {@code ApplicationContext},
@@ -88,7 +87,6 @@ public class AnnotatedBeanDefinitionReader {
 		this.conditionEvaluator = new ConditionEvaluator(registry, environment, null);
 		AnnotationConfigUtils.registerAnnotationConfigProcessors(this.registry);
 	}
-
 
 	/**
 	 * Return the BeanDefinitionRegistry that this scanner operates on.
@@ -124,7 +122,6 @@ public class AnnotatedBeanDefinitionReader {
 		this.scopeMetadataResolver =
 				(scopeMetadataResolver != null ? scopeMetadataResolver : new AnnotationScopeMetadataResolver());
 	}
-
 
 	/**
 	 * Register one or more annotated classes to be processed.
@@ -256,7 +253,6 @@ public class AnnotatedBeanDefinitionReader {
 		definitionHolder = AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, this.registry);
 		BeanDefinitionReaderUtils.registerBeanDefinition(definitionHolder, this.registry);
 	}
-
 
 	/**
 	 * Get the Environment from the given registry if possible, otherwise return a new

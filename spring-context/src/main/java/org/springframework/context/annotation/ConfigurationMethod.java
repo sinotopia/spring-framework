@@ -32,12 +32,10 @@ abstract class ConfigurationMethod {
 
 	protected final ConfigurationClass configurationClass;
 
-
 	public ConfigurationMethod(MethodMetadata metadata, ConfigurationClass configurationClass) {
 		this.metadata = metadata;
 		this.configurationClass = configurationClass;
 	}
-
 
 	public MethodMetadata getMetadata() {
 		return this.metadata;
@@ -61,7 +59,6 @@ abstract class ConfigurationMethod {
 
 	public void validate(ProblemReporter problemReporter) {
 	}
-
 
 	@Override
 	public String toString() {
