@@ -63,7 +63,6 @@ public class CustomProblemReporterTests {
 		assertNotNull(bean);
 	}
 
-
 	private static class CollatingProblemReporter implements ProblemReporter {
 
 		private final List<Problem> errors = new ArrayList<>();

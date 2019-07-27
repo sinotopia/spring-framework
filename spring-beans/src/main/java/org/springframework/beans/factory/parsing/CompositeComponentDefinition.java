@@ -40,7 +40,6 @@ public class CompositeComponentDefinition extends AbstractComponentDefinition {
 
 	private final List<ComponentDefinition> nestedComponents = new ArrayList<>();
 
-
 	/**
 	 * Create a new CompositeComponentDefinition.
 	 *
@@ -53,7 +52,6 @@ public class CompositeComponentDefinition extends AbstractComponentDefinition {
 		this.source = source;
 	}
 
-
 	@Override
 	public String getName() {
 		return this.name;
@@ -64,7 +62,6 @@ public class CompositeComponentDefinition extends AbstractComponentDefinition {
 	public Object getSource() {
 		return this.source;
 	}
-
 
 	/**
 	 * Add the given component as nested element of this composite component.

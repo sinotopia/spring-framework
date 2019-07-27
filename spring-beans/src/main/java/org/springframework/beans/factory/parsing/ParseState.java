@@ -44,7 +44,6 @@ public final class ParseState {
 	 */
 	private final LinkedList<Entry> state;
 
-
 	/**
 	 * Create a new {@code ParseState} with an empty {@link LinkedList}.
 	 */
@@ -60,7 +59,6 @@ public final class ParseState {
 	private ParseState(ParseState other) {
 		this.state = (LinkedList<Entry>) other.state.clone();
 	}
-
 
 	/**
 	 * Add a new {@link Entry} to the {@link LinkedList}.
@@ -93,7 +91,6 @@ public final class ParseState {
 		return new ParseState(this);
 	}
 
-
 	/**
 	 * Returns a tree-style representation of the current {@code ParseState}.
 	 */
@@ -112,7 +109,6 @@ public final class ParseState {
 		}
 		return sb.toString();
 	}
-
 
 	/**
 	 * Marker interface for entries into the {@link ParseState}.
