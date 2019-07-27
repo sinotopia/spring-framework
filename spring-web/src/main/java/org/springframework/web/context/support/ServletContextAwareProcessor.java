@@ -35,9 +35,9 @@ import org.springframework.web.context.ServletContextAware;
  *
  * @author Juergen Hoeller
  * @author Phillip Webb
- * @since 12.03.2004
  * @see org.springframework.web.context.ServletContextAware
  * @see org.springframework.web.context.support.XmlWebApplicationContext#postProcessBeanFactory
+ * @since 12.03.2004
  */
 public class ServletContextAwareProcessor implements BeanPostProcessor {
 
@@ -46,7 +46,6 @@ public class ServletContextAwareProcessor implements BeanPostProcessor {
 
 	@Nullable
 	private ServletConfig servletConfig;
-
 
 	/**
 	 * Create a new ServletContextAwareProcessor without an initial context or config.
@@ -77,7 +76,6 @@ public class ServletContextAwareProcessor implements BeanPostProcessor {
 		this.servletContext = servletContext;
 		this.servletConfig = servletConfig;
 	}
-
 
 	/**
 	 * Returns the {@link ServletContext} to be injected or {@code null}. This method

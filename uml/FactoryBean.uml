@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.springframework.beans.factory.FactoryBean</OriginalElement>
+  <nodes>
+    <node x="15326.0" y="397.0">org.springframework.jmx.access.MBeanProxyFactoryBean</node>
+    <node x="14198.0" y="397.0">org.springframework.scheduling.quartz.JobDetailFactoryBean</node>
+    <node x="13322.569686411149" y="494.0">org.springframework.beans.factory.config.ListFactoryBean</node>
+    <node x="13790.569686411149" y="494.0">org.springframework.beans.factory.config.SetFactoryBean</node>
+    <node x="14964.0" y="397.0">org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean</node>
+    <node x="4158.0" y="397.0">org.springframework.beans.factory.config.PropertyPathFactoryBean</node>
+    <node x="4588.5" y="494.0">org.springframework.transaction.interceptor.TransactionProxyFactoryBean</node>
+    <node x="7252.0" y="397.0">org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean</node>
+    <node x="13440.0" y="397.0">org.springframework.jms.remoting.JmsInvokerProxyFactoryBean</node>
+    <node x="1990.0" y="397.0">org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean</node>
+    <node x="11384.0" y="397.0">org.springframework.cache.ehcache.EhCacheFactoryBean</node>
+    <node x="0.0" y="397.0">org.springframework.scheduling.commonj.TimerManagerFactoryBean</node>
+    <node x="9492.0" y="397.0">org.springframework.web.accept.ContentNegotiationManagerFactoryBean</node>
+    <node x="14424.0" y="397.0">org.springframework.remoting.jaxws.LocalJaxWsServiceFactoryBean</node>
+    <node x="12424.0" y="397.0">org.springframework.remoting.caucho.HessianProxyFactoryBean</node>
+    <node x="6680.0" y="397.0">org.springframework.cache.jcache.JCacheManagerFactoryBean</node>
+    <node x="15560.0" y="397.0">org.springframework.jmx.support.MBeanServerConnectionFactoryBean</node>
+    <node x="17076.0" y="397.0">org.springframework.beans.factory.config.ServiceLocatorFactoryBean</node>
+    <node x="4972.0" y="397.0">org.springframework.aop.config.MethodLocatingFactoryBean</node>
+    <node x="3206.0" y="397.0">org.springframework.scheduling.quartz.SchedulerFactoryBean</node>
+    <node x="12822.569686411149" y="494.0">org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean</node>
+    <node x="10852.0" y="397.0">org.springframework.scheduling.quartz.CronTriggerFactoryBean</node>
+    <node x="12548.569686411149" y="494.0">org.springframework.jdbc.config.SortedResourcesFactoryBean</node>
+    <node x="11478.811846689894" y="571.0">org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean</node>
+    <node x="3432.0" y="397.0">org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean</node>
+    <node x="9218.0" y="397.0">org.springframework.jmx.support.ConnectorServerFactoryBean</node>
+    <node x="1732.0" y="397.0">org.springframework.scheduling.quartz.SimpleTriggerFactoryBean</node>
+    <node x="742.0" y="397.0">org.springframework.orm.jpa.AbstractEntityManagerFactoryBean</node>
+    <node x="11736.811846689894" y="571.0">org.springframework.beans.factory.serviceloader.ServiceFactoryBean</node>
+    <node x="16616.0" y="397.0">org.springframework.remoting.rmi.RmiProxyFactoryBean</node>
+    <node x="4642.0" y="397.0">org.springframework.aop.framework.AbstractSingletonProxyFactoryBean</node>
+    <node x="9846.0" y="397.0">org.springframework.web.servlet.config.AnnotationDrivenBeanDefinitionParser.CompositeUriComponentsContributorFactoryBean</node>
+    <node x="18172.0" y="397.0">org.springframework.jmx.support.WebSphereMBeanServerFactoryBean</node>
+    <node x="8146.0" y="397.0">org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactoryBean</node>
+    <node x="16834.0" y="397.0">org.springframework.aop.scope.ScopedProxyFactoryBean</node>
+    <node x="16422.0" y="397.0">org.springframework.http.client.support.ProxyFactoryBean</node>
+    <node x="12238.0" y="397.0">org.springframework.http.converter.json.GsonFactoryBean</node>
+    <node x="12674.0" y="397.0">org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean</node>
+    <node x="13948.0" y="397.0">org.springframework.remoting.rmi.JndiRmiProxyFactoryBean</node>
+    <node x="8928.0" y="397.0">org.springframework.format.datetime.standard.DateTimeFormatterFactoryBean</node>
+    <node x="5576.0" y="397.0">org.springframework.jmx.support.MBeanServerFactoryBean</node>
+    <node x="6140.0" y="397.0">org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean</node>
+    <node x="10264.0" y="397.0">org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean</node>
+    <node x="17592.0" y="397.0">org.springframework.remoting.support.SimpleHttpServerFactoryBean</node>
+    <node x="17874.0" y="397.0">org.springframework.web.socket.client.standard.WebSocketContainerFactoryBean</node>
+    <node x="2320.0" y="397.0">org.springframework.web.context.support.ServletContextParameterFactoryBean</node>
+    <node x="11094.0" y="397.0">org.springframework.format.datetime.joda.DateTimeFormatterFactoryBean</node>
+    <node x="250.0" y="397.0">org.springframework.scheduling.concurrent.ThreadPoolExecutorFactoryBean</node>
+    <node x="3722.0" y="397.0">org.springframework.remoting.rmi.RmiRegistryFactoryBean</node>
+    <node x="12956.0" y="397.0">org.springframework.beans.factory.config.AbstractFactoryBean</node>
+    <node x="4408.0" y="397.0">org.springframework.beans.factory.config.PropertiesFactoryBean</node>
+    <node x="7896.0" y="397.0">org.springframework.scheduling.concurrent.ForkJoinPoolFactoryBean</node>
+    <node x="13144.569686411149" y="494.0">org.springframework.beans.factory.config.MapFactoryBean</node>
+    <node x="2658.0" y="397.0">org.springframework.web.context.support.ServletContextAttributeFactoryBean</node>
+    <node x="9446.56968641115" y="0.0">org.springframework.beans.factory.FactoryBean</node>
+    <node x="1064.0" y="397.0">org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean</node>
+    <node x="6406.0" y="397.0">org.springframework.jca.support.LocalConnectionFactoryBean</node>
+    <node x="5818.0" y="397.0">org.springframework.transaction.config.JtaTransactionManagerFactoryBean</node>
+    <node x="11594.0" y="397.0">org.springframework.beans.factory.config.FieldRetrievingFactoryBean</node>
+    <node x="3964.0" y="397.0">org.springframework.aop.framework.ProxyFactoryBean</node>
+    <node x="1482.0" y="397.0">org.springframework.orm.jpa.support.SharedEntityManagerBean</node>
+    <node x="13714.0" y="397.0">org.springframework.jndi.JndiObjectFactoryBean</node>
+    <node x="2996.0" y="397.0">org.springframework.beans.factory.config.YamlMapFactoryBean</node>
+    <node x="7558.0" y="397.0">org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean</node>
+    <node x="1012.5" y="494.0">org.springframework.orm.jpa.LocalEntityManagerFactoryBean</node>
+    <node x="16148.0" y="397.0">org.springframework.jca.support.ResourceAdapterFactoryBean</node>
+    <node x="5238.0" y="397.0">org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean</node>
+    <node x="13508.569686411149" y="494.0">org.springframework.beans.factory.config.ProviderCreatingFactoryBean</node>
+    <node x="14714.0" y="397.0">org.springframework.orm.hibernate5.LocalSessionFactoryBean</node>
+    <node x="15882.0" y="397.0">org.springframework.beans.factory.config.MethodInvokingFactoryBean</node>
+    <node x="11946.811846689894" y="571.0">org.springframework.beans.factory.serviceloader.ServiceListFactoryBean</node>
+    <node x="13174.0" y="397.0">org.springframework.beans.factory.config.YamlPropertiesFactoryBean</node>
+    <node x="8694.0" y="397.0">org.springframework.web.socket.config.MessageBrokerBeanDefinitionParser.DecoratingFactoryBean</node>
+    <node x="6938.0" y="397.0">org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean</node>
+    <node x="8428.0" y="397.0">org.springframework.cache.ehcache.EhCacheManagerFactoryBean</node>
+    <node x="548.0" y="397.0">org.springframework.beans.factory.SmartFactoryBean</node>
+    <node x="11868.0" y="397.0">org.springframework.format.support.FormattingConversionServiceFactoryBean</node>
+    <node x="17342.0" y="397.0">org.springframework.scheduling.config.TaskExecutorFactoryBean</node>
+    <node x="10562.0" y="397.0">org.springframework.context.support.ConversionServiceFactoryBean</node>
+    <node x="4870.5" y="494.0">org.springframework.cache.interceptor.CacheProxyFactoryBean</node>
+    <node x="642.5" y="494.0">org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean</node>
+    <node x="11716.811846689894" y="494.0">org.springframework.beans.factory.serviceloader.AbstractServiceLoaderBasedFactoryBean</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="8551.0" y="347.0" />
+      <point x="9507.56968641115" y="347.0" />
+      <point x="-6.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.aop.config.MethodLocatingFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="5095.0" y="227.0" />
+      <point x="9483.56968641115" y="227.0" />
+      <point x="-30.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.aop.scope.ScopedProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="16945.0" y="97.0" />
+      <point x="9569.56968641115" y="97.0" />
+      <point x="56.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="1851.0" y="107.0" />
+      <point x="9459.56968641115" y="107.0" />
+      <point x="-54.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jmx.support.MBeanServerConnectionFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="15711.0" y="147.0" />
+      <point x="9559.56968641115" y="147.0" />
+      <point x="46.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="7085.0" y="297.0" />
+      <point x="9497.56968641115" y="297.0" />
+      <point x="-16.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.http.converter.json.GsonFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="12321.0" y="277.0" />
+      <point x="9533.56968641115" y="277.0" />
+      <point x="20.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.aop.framework.ProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="4051.0" y="187.0" />
+      <point x="9475.56968641115" y="187.0" />
+      <point x="-38.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="10403.0" y="347.0" />
+      <point x="9519.56968641115" y="347.0" />
+      <point x="6.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.scheduling.concurrent.ForkJoinPoolFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="8011.0" y="327.0" />
+      <point x="9503.56968641115" y="327.0" />
+      <point x="-10.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="2145.0" y="117.0" />
+      <point x="9461.56968641115" y="117.0" />
+      <point x="-52.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jdbc.config.SortedResourcesFactoryBean" target="org.springframework.beans.factory.config.AbstractFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="12675.569686411149" y="464.0" />
+      <point x="12998.42857142857" y="464.0" />
+      <point x="-56.57142857142935" y="13.5" />
+    </edge>
+    <edge source="org.springframework.cache.jcache.JCacheManagerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="6799.0" y="287.0" />
+      <point x="9495.56968641115" y="287.0" />
+      <point x="-18.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.web.servlet.config.AnnotationDrivenBeanDefinitionParser.CompositeUriComponentsContributorFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="10045.0" y="357.0" />
+      <point x="9517.56968641115" y="357.0" />
+      <point x="4.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.serviceloader.ServiceFactoryBean" target="org.springframework.beans.factory.serviceloader.AbstractServiceLoaderBasedFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="11831.811846689894" y="546.0" />
+      <point x="11887.811846689894" y="546.0" />
+      <point x="0.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="5397.0" y="237.0" />
+      <point x="9485.56968641115" y="237.0" />
+      <point x="-28.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" target="org.springframework.orm.jpa.AbstractEntityManagerFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="-75.5" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean" target="org.springframework.beans.factory.serviceloader.AbstractServiceLoaderBasedFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="11597.811846689894" y="546.0" />
+      <point x="11773.811846689894" y="546.0" />
+      <point x="-114.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean" target="org.springframework.beans.factory.config.AbstractFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="12973.569686411149" y="474.0" />
+      <point x="13026.714285714286" y="474.0" />
+      <point x="-28.285714285713766" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.SmartFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="635.0" y="67.0" />
+      <point x="9451.56968641115" y="67.0" />
+      <point x="-62.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.web.socket.client.standard.WebSocketContainerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="18013.0" y="57.0" />
+      <point x="9577.56968641115" y="57.0" />
+      <point x="64.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="1263.0" y="87.0" />
+      <point x="9455.56968641115" y="87.0" />
+      <point x="-58.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.scheduling.concurrent.ThreadPoolExecutorFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="389.0" y="57.0" />
+      <point x="9449.56968641115" y="57.0" />
+      <point x="-64.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" target="org.springframework.orm.jpa.AbstractEntityManagerFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="1151.5" y="474.0" />
+      <point x="968.5" y="474.0" />
+      <point x="75.5" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.PropertiesFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="4515.0" y="207.0" />
+      <point x="9479.56968641115" y="207.0" />
+      <point x="-34.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.PropertyPathFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="4273.0" y="197.0" />
+      <point x="9477.56968641115" y="197.0" />
+      <point x="-36.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jms.remoting.JmsInvokerProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="13567.0" y="227.0" />
+      <point x="9543.56968641115" y="227.0" />
+      <point x="30.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jmx.access.MBeanProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="15433.0" y="157.0" />
+      <point x="9557.56968641115" y="157.0" />
+      <point x="44.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.serviceloader.ServiceListFactoryBean" target="org.springframework.beans.factory.serviceloader.AbstractServiceLoaderBasedFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="12057.811846689894" y="546.0" />
+      <point x="12001.811846689894" y="546.0" />
+      <point x="114.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.remoting.rmi.RmiProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="16715.0" y="107.0" />
+      <point x="9567.56968641115" y="107.0" />
+      <point x="54.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.ServiceLocatorFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="17199.0" y="87.0" />
+      <point x="9571.56968641115" y="87.0" />
+      <point x="58.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jca.support.ResourceAdapterFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="16275.0" y="127.0" />
+      <point x="9563.56968641115" y="127.0" />
+      <point x="50.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.cache.ehcache.EhCacheFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="11479.0" y="307.0" />
+      <point x="9527.56968641115" y="307.0" />
+      <point x="14.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.scheduling.config.TaskExecutorFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="17457.0" y="77.0" />
+      <point x="9573.56968641115" y="77.0" />
+      <point x="60.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="3567.0" y="167.0" />
+      <point x="9471.56968641115" y="167.0" />
+      <point x="-42.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.scheduling.quartz.CronTriggerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="10963.0" y="327.0" />
+      <point x="9523.56968641115" y="327.0" />
+      <point x="10.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.remoting.rmi.JndiRmiProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="14063.0" y="207.0" />
+      <point x="9547.56968641115" y="207.0" />
+      <point x="34.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.format.support.FormattingConversionServiceFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="12043.0" y="287.0" />
+      <point x="9531.56968641115" y="287.0" />
+      <point x="18.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.web.socket.config.MessageBrokerBeanDefinitionParser.DecoratingFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="8801.0" y="357.0" />
+      <point x="9509.56968641115" y="357.0" />
+      <point x="-4.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.serviceloader.AbstractServiceLoaderBasedFactoryBean" target="org.springframework.beans.factory.config.AbstractFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="11887.811846689894" y="454.0" />
+      <point x="12970.142857142857" y="454.0" />
+      <point x="-84.85714285714312" y="13.5" />
+    </edge>
+    <edge source="org.springframework.format.datetime.standard.DateTimeFormatterFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="9063.0" y="367.0" />
+      <point x="9511.56968641115" y="367.0" />
+      <point x="-2.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.ProviderCreatingFactoryBean" target="org.springframework.beans.factory.config.AbstractFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="13639.569686411149" y="454.0" />
+      <point x="13111.57142857143" y="454.0" />
+      <point x="56.57142857142935" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jndi.JndiObjectFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="13821.0" y="217.0" />
+      <point x="9545.56968641115" y="217.0" />
+      <point x="32.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.ListFactoryBean" target="org.springframework.beans.factory.config.AbstractFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="13405.569686411149" y="464.0" />
+      <point x="13083.285714285714" y="464.0" />
+      <point x="28.285714285713766" y="13.5" />
+    </edge>
+    <edge source="org.springframework.context.support.ConversionServiceFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="10697.0" y="337.0" />
+      <point x="9521.56968641115" y="337.0" />
+      <point x="8.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.cache.interceptor.CacheProxyFactoryBean" target="org.springframework.aop.framework.AbstractSingletonProxyFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="4977.5" y="474.0" />
+      <point x="4874.5" y="474.0" />
+      <point x="77.5" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jmx.support.ConnectorServerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="9345.0" y="377.0" />
+      <point x="9513.56968641115" y="377.0" />
+      <point x="0.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.remoting.jaxws.LocalJaxWsServiceFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="14559.0" y="187.0" />
+      <point x="9551.56968641115" y="187.0" />
+      <point x="38.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="7395.0" y="307.0" />
+      <point x="9499.56968641115" y="307.0" />
+      <point x="-14.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.http.client.support.ProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="16509.0" y="117.0" />
+      <point x="9565.56968641115" y="117.0" />
+      <point x="52.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.remoting.caucho.HessianProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="12539.0" y="267.0" />
+      <point x="9535.56968641115" y="267.0" />
+      <point x="22.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="7717.0" y="317.0" />
+      <point x="9501.56968641115" y="317.0" />
+      <point x="-12.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.web.context.support.ServletContextParameterFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="2479.0" y="127.0" />
+      <point x="9463.56968641115" y="127.0" />
+      <point x="-50.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" target="org.springframework.aop.framework.AbstractSingletonProxyFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="-77.5" y="13.5" />
+    </edge>
+    <edge source="org.springframework.format.datetime.joda.DateTimeFormatterFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="11229.0" y="317.0" />
+      <point x="9525.56968641115" y="317.0" />
+      <point x="12.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="8277.0" y="337.0" />
+      <point x="9505.56968641115" y="337.0" />
+      <point x="-8.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.YamlPropertiesFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="13297.0" y="237.0" />
+      <point x="9541.56968641115" y="237.0" />
+      <point x="28.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.aop.framework.AbstractSingletonProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="4797.0" y="217.0" />
+      <point x="9481.56968641115" y="217.0" />
+      <point x="-32.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.MethodInvokingFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="16005.0" y="137.0" />
+      <point x="9561.56968641115" y="137.0" />
+      <point x="48.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.scheduling.quartz.JobDetailFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="14301.0" y="197.0" />
+      <point x="9549.56968641115" y="197.0" />
+      <point x="36.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.orm.jpa.AbstractEntityManagerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="893.0" y="77.0" />
+      <point x="9453.56968641115" y="77.0" />
+      <point x="-60.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.MapFactoryBean" target="org.springframework.beans.factory.config.AbstractFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="13223.569686411149" y="474.0" />
+      <point x="13055.0" y="474.0" />
+      <point x="0.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jca.support.LocalConnectionFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="6533.0" y="277.0" />
+      <point x="9493.56968641115" y="277.0" />
+      <point x="-20.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.scheduling.commonj.TimerManagerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="115.0" y="47.0" />
+      <point x="9447.56968641115" y="47.0" />
+      <point x="-66.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.remoting.support.SimpleHttpServerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="17723.0" y="67.0" />
+      <point x="9575.56968641115" y="67.0" />
+      <point x="62.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.SetFactoryBean" target="org.springframework.beans.factory.config.AbstractFactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="13869.569686411149" y="444.0" />
+      <point x="13139.857142857143" y="444.0" />
+      <point x="84.85714285714312" y="13.5" />
+    </edge>
+    <edge source="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="6263.0" y="267.0" />
+      <point x="9491.56968641115" y="267.0" />
+      <point x="-22.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.remoting.rmi.RmiRegistryFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="3833.0" y="177.0" />
+      <point x="9473.56968641115" y="177.0" />
+      <point x="-40.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.web.accept.ContentNegotiationManagerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="9659.0" y="367.0" />
+      <point x="9515.56968641115" y="367.0" />
+      <point x="2.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.scheduling.quartz.SchedulerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="3309.0" y="157.0" />
+      <point x="9469.56968641115" y="157.0" />
+      <point x="-44.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="15135.0" y="167.0" />
+      <point x="9555.56968641115" y="167.0" />
+      <point x="42.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.orm.jpa.support.SharedEntityManagerBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="1597.0" y="97.0" />
+      <point x="9457.56968641115" y="97.0" />
+      <point x="-56.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jmx.support.WebSphereMBeanServerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="18319.0" y="47.0" />
+      <point x="9579.56968641115" y="47.0" />
+      <point x="66.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.YamlMapFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="3091.0" y="147.0" />
+      <point x="9467.56968641115" y="147.0" />
+      <point x="-46.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="12805.0" y="257.0" />
+      <point x="9537.56968641115" y="257.0" />
+      <point x="24.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.AbstractFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="13055.0" y="247.0" />
+      <point x="9539.56968641115" y="247.0" />
+      <point x="26.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.orm.hibernate5.LocalSessionFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="14829.0" y="177.0" />
+      <point x="9553.56968641115" y="177.0" />
+      <point x="40.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.web.context.support.ServletContextAttributeFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="2817.0" y="137.0" />
+      <point x="9465.56968641115" y="137.0" />
+      <point x="-48.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.jmx.support.MBeanServerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="5687.0" y="247.0" />
+      <point x="9487.56968641115" y="247.0" />
+      <point x="-26.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.beans.factory.config.FieldRetrievingFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="11721.0" y="297.0" />
+      <point x="9529.56968641115" y="297.0" />
+      <point x="16.0" y="13.5" />
+    </edge>
+    <edge source="org.springframework.transaction.config.JtaTransactionManagerFactoryBean" target="org.springframework.beans.factory.FactoryBean">
+      <point x="0.0" y="-13.5" />
+      <point x="5969.0" y="257.0" />
+      <point x="9489.56968641115" y="257.0" />
+      <point x="-24.0" y="13.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="8948.0" y="27.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -33,15 +33,14 @@ import org.springframework.util.Assert;
  * all ApplicationContexts that live within the current web application.
  *
  * @author Juergen Hoeller
- * @since 3.2
  * @see org.springframework.context.support.LiveBeansView#getSnapshotAsJson()
+ * @since 3.2
  */
 @SuppressWarnings("serial")
 public class LiveBeansViewServlet extends HttpServlet {
 
 	@Nullable
 	private LiveBeansView liveBeansView;
-
 
 	@Override
 	public void init() throws ServletException {

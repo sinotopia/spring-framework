@@ -49,7 +49,6 @@ import org.springframework.core.io.ResourceLoader;
  *
  * @author Juergen Hoeller
  * @author Chris Beams
- * @since 10.03.2004
  * @see ApplicationContextAware
  * @see org.springframework.beans.factory.InitializingBean
  * @see org.springframework.core.io.Resource
@@ -58,6 +57,7 @@ import org.springframework.core.io.ResourceLoader;
  * @see org.springframework.core.io.DefaultResourceLoader
  * @see org.springframework.core.io.support.PathMatchingResourcePatternResolver
  * @see org.springframework.context.support.ReloadableResourceBundleMessageSource
+ * @since 10.03.2004
  */
 public interface ResourceLoaderAware extends Aware {
 
@@ -69,6 +69,7 @@ public interface ResourceLoaderAware extends Aware {
 	 * <p>Invoked after population of normal bean properties but before an init callback
 	 * like InitializingBean's {@code afterPropertiesSet} or a custom init-method.
 	 * Invoked before ApplicationContextAware's {@code setApplicationContext}.
+	 *
 	 * @param resourceLoader the ResourceLoader object to be used by this object
 	 * @see org.springframework.core.io.support.ResourcePatternResolver
 	 * @see org.springframework.core.io.support.ResourcePatternUtils#getResourcePatternResolver

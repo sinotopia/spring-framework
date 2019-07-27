@@ -38,9 +38,9 @@ import org.springframework.web.context.ServletContextAware;
  * expression to access a specific attribute by name.
  *
  * @author Juergen Hoeller
- * @since 1.1.4
  * @see org.springframework.web.context.WebApplicationContext#CONTEXT_ATTRIBUTES_BEAN_NAME
  * @see ServletContextParameterFactoryBean
+ * @since 1.1.4
  */
 public class ServletContextAttributeFactoryBean implements FactoryBean<Object>, ServletContextAware {
 
@@ -49,7 +49,6 @@ public class ServletContextAttributeFactoryBean implements FactoryBean<Object>, 
 
 	@Nullable
 	private Object attribute;
-
 
 	/**
 	 * Set the name of the ServletContext attribute to expose.

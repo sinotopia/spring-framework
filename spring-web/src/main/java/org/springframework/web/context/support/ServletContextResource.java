@@ -43,10 +43,10 @@ import org.springframework.web.util.WebUtils;
  * is expanded.
  *
  * @author Juergen Hoeller
- * @since 28.12.2003
  * @see javax.servlet.ServletContext#getResourceAsStream
  * @see javax.servlet.ServletContext#getResource
  * @see javax.servlet.ServletContext#getRealPath
+ * @since 28.12.2003
  */
 public class ServletContextResource extends AbstractFileResolvingResource implements ContextResource {
 
@@ -54,15 +54,15 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 
 	private final String path;
 
-
 	/**
 	 * Create a new ServletContextResource.
 	 * <p>The Servlet spec requires that resource paths start with a slash,
 	 * even if many containers accept paths without leading slash too.
 	 * Consequently, the given path will be prepended with a slash if it
 	 * doesn't already start with one.
+	 *
 	 * @param servletContext the ServletContext to load from
-	 * @param path the path of the resource
+	 * @param path           the path of the resource
 	 */
 	public ServletContextResource(ServletContext servletContext, String path) {
 		// check ServletContext
@@ -77,7 +77,6 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 		}
 		this.path = pathToUse;
 	}
-
 
 	/**
 	 * Return the ServletContext for this resource.
@@ -95,6 +94,7 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 
 	/**
 	 * This implementation checks {@code ServletContext.getResource}.
+	 *
 	 * @see javax.servlet.ServletContext#getResource(String)
 	 */
 	@Override
@@ -102,8 +102,7 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 		try {
 			URL url = this.servletContext.getResource(this.path);
 			return (url != null);
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			return false;
 		}
 	}
@@ -111,6 +110,7 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 	/**
 	 * This implementation delegates to {@code ServletContext.getResourceAsStream},
 	 * which returns {@code null} in case of a non-readable resource (e.g. a directory).
+	 *
 	 * @see javax.servlet.ServletContext#getResourceAsStream(String)
 	 */
 	@Override
@@ -119,13 +119,11 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 		if (is != null) {
 			try {
 				is.close();
-			}
-			catch (IOException ex) {
+			} catch (IOException ex) {
 				// ignore
 			}
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
@@ -136,12 +134,10 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 			URL url = this.servletContext.getResource(this.path);
 			if (url != null && ResourceUtils.isFileURL(url)) {
 				return true;
-			}
-			else {
+			} else {
 				return (this.servletContext.getRealPath(this.path) != null);
 			}
-		}
-		catch (MalformedURLException ex) {
+		} catch (MalformedURLException ex) {
 			return false;
 		}
 	}
@@ -149,6 +145,7 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 	/**
 	 * This implementation delegates to {@code ServletContext.getResourceAsStream},
 	 * but throws a FileNotFoundException if no resource found.
+	 *
 	 * @see javax.servlet.ServletContext#getResourceAsStream(String)
 	 */
 	@Override
@@ -163,6 +160,7 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 	/**
 	 * This implementation delegates to {@code ServletContext.getResource},
 	 * but throws a FileNotFoundException if no resource found.
+	 *
 	 * @see javax.servlet.ServletContext#getResource(String)
 	 */
 	@Override
@@ -179,6 +177,7 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 	 * This implementation resolves "file:" URLs or alternatively delegates to
 	 * {@code ServletContext.getRealPath}, throwing a FileNotFoundException
 	 * if not found or not resolvable.
+	 *
 	 * @see javax.servlet.ServletContext#getResource(String)
 	 * @see javax.servlet.ServletContext#getRealPath(String)
 	 */
@@ -188,8 +187,7 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 		if (url != null && ResourceUtils.isFileURL(url)) {
 			// Proceed with file system resolution...
 			return super.getFile();
-		}
-		else {
+		} else {
 			String realPath = WebUtils.getRealPath(this.servletContext, this.path);
 			return new File(realPath);
 		}
@@ -198,6 +196,7 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 	/**
 	 * This implementation creates a ServletContextResource, applying the given path
 	 * relative to the path of the underlying file of this resource descriptor.
+	 *
 	 * @see org.springframework.util.StringUtils#applyRelativePath(String, String)
 	 */
 	@Override
@@ -209,6 +208,7 @@ public class ServletContextResource extends AbstractFileResolvingResource implem
 	/**
 	 * This implementation returns the name of the file that this ServletContext
 	 * resource refers to.
+	 *
 	 * @see org.springframework.util.StringUtils#getFilename(String)
 	 */
 	@Override

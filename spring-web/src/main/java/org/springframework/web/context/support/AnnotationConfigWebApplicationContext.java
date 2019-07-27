@@ -78,8 +78,8 @@ import org.springframework.web.context.ContextLoader;
  *
  * @author Chris Beams
  * @author Juergen Hoeller
- * @since 3.0
  * @see org.springframework.context.annotation.AnnotationConfigApplicationContext
+ * @since 3.0
  */
 public class AnnotationConfigWebApplicationContext extends AbstractRefreshableWebApplicationContext
 		implements AnnotationConfigRegistry {
@@ -94,11 +94,11 @@ public class AnnotationConfigWebApplicationContext extends AbstractRefreshableWe
 
 	private final Set<String> basePackages = new LinkedHashSet<>();
 
-
 	/**
 	 * Set a custom {@link BeanNameGenerator} for use with {@link AnnotatedBeanDefinitionReader}
 	 * and/or {@link ClassPathBeanDefinitionScanner}.
 	 * <p>Default is {@link org.springframework.context.annotation.AnnotationBeanNameGenerator}.
+	 *
 	 * @see AnnotatedBeanDefinitionReader#setBeanNameGenerator
 	 * @see ClassPathBeanDefinitionScanner#setBeanNameGenerator
 	 */
@@ -119,6 +119,7 @@ public class AnnotationConfigWebApplicationContext extends AbstractRefreshableWe
 	 * Set a custom {@link ScopeMetadataResolver} for use with {@link AnnotatedBeanDefinitionReader}
 	 * and/or {@link ClassPathBeanDefinitionScanner}.
 	 * <p>Default is an {@link org.springframework.context.annotation.AnnotationScopeMetadataResolver}.
+	 *
 	 * @see AnnotatedBeanDefinitionReader#setScopeMetadataResolver
 	 * @see ClassPathBeanDefinitionScanner#setScopeMetadataResolver
 	 */
@@ -135,18 +136,19 @@ public class AnnotationConfigWebApplicationContext extends AbstractRefreshableWe
 		return this.scopeMetadataResolver;
 	}
 
-
 	/**
 	 * Register one or more annotated classes to be processed.
 	 * <p>Note that {@link #refresh()} must be called in order for the context
 	 * to fully process the new classes.
+	 *
 	 * @param annotatedClasses one or more annotated classes,
-	 * e.g. {@link org.springframework.context.annotation.Configuration @Configuration} classes
+	 *                         e.g. {@link org.springframework.context.annotation.Configuration @Configuration} classes
 	 * @see #scan(String...)
 	 * @see #loadBeanDefinitions(DefaultListableBeanFactory)
 	 * @see #setConfigLocation(String)
 	 * @see #refresh()
 	 */
+	@Override
 	public void register(Class<?>... annotatedClasses) {
 		Assert.notEmpty(annotatedClasses, "At least one annotated class must be specified");
 		Collections.addAll(this.annotatedClasses, annotatedClasses);
@@ -156,17 +158,18 @@ public class AnnotationConfigWebApplicationContext extends AbstractRefreshableWe
 	 * Perform a scan within the specified base packages.
 	 * <p>Note that {@link #refresh()} must be called in order for the context
 	 * to fully process the new classes.
+	 *
 	 * @param basePackages the packages to check for annotated classes
 	 * @see #loadBeanDefinitions(DefaultListableBeanFactory)
 	 * @see #register(Class...)
 	 * @see #setConfigLocation(String)
 	 * @see #refresh()
 	 */
+	@Override
 	public void scan(String... basePackages) {
 		Assert.notEmpty(basePackages, "At least one base package must be specified");
 		Collections.addAll(this.basePackages, basePackages);
 	}
-
 
 	/**
 	 * Register a {@link org.springframework.beans.factory.config.BeanDefinition} for
@@ -182,6 +185,7 @@ public class AnnotationConfigWebApplicationContext extends AbstractRefreshableWe
 	 * <p>Configuration class bean definitions are registered with generated bean
 	 * definition names unless the {@code value} attribute is provided to the stereotype
 	 * annotation.
+	 *
 	 * @param beanFactory the bean factory to load bean definitions into
 	 * @see #register(Class...)
 	 * @see #scan(String...)
@@ -233,8 +237,7 @@ public class AnnotationConfigWebApplicationContext extends AbstractRefreshableWe
 						logger.trace("Registering [" + configLocation + "]");
 					}
 					reader.register(clazz);
-				}
-				catch (ClassNotFoundException ex) {
+				} catch (ClassNotFoundException ex) {
 					if (logger.isTraceEnabled()) {
 						logger.trace("Could not load class for config location [" + configLocation +
 								"] - trying package scan. " + ex);
@@ -248,16 +251,16 @@ public class AnnotationConfigWebApplicationContext extends AbstractRefreshableWe
 		}
 	}
 
-
 	/**
 	 * Build an {@link AnnotatedBeanDefinitionReader} for the given bean factory.
 	 * <p>This should be pre-configured with the {@code Environment} (if desired)
 	 * but not with a {@code BeanNameGenerator} or {@code ScopeMetadataResolver} yet.
+	 *
 	 * @param beanFactory the bean factory to load bean definitions into
-	 * @since 4.1.9
 	 * @see #getEnvironment()
 	 * @see #getBeanNameGenerator()
 	 * @see #getScopeMetadataResolver()
+	 * @since 4.1.9
 	 */
 	protected AnnotatedBeanDefinitionReader getAnnotatedBeanDefinitionReader(DefaultListableBeanFactory beanFactory) {
 		return new AnnotatedBeanDefinitionReader(beanFactory, getEnvironment());
@@ -267,11 +270,12 @@ public class AnnotationConfigWebApplicationContext extends AbstractRefreshableWe
 	 * Build a {@link ClassPathBeanDefinitionScanner} for the given bean factory.
 	 * <p>This should be pre-configured with the {@code Environment} (if desired)
 	 * but not with a {@code BeanNameGenerator} or {@code ScopeMetadataResolver} yet.
+	 *
 	 * @param beanFactory the bean factory to load bean definitions into
-	 * @since 4.1.9
 	 * @see #getEnvironment()
 	 * @see #getBeanNameGenerator()
 	 * @see #getScopeMetadataResolver()
+	 * @since 4.1.9
 	 */
 	protected ClassPathBeanDefinitionScanner getClassPathBeanDefinitionScanner(DefaultListableBeanFactory beanFactory) {
 		return new ClassPathBeanDefinitionScanner(beanFactory, true, getEnvironment());

@@ -41,9 +41,9 @@ import org.springframework.web.context.ServletContextAware;
  * interface. This makes client code aware of Spring API, of course.
  *
  * @author Juergen Hoeller
- * @since 1.1.4
  * @see javax.servlet.ServletContext#getAttribute
  * @see WebApplicationContextUtils#getWebApplicationContext
+ * @since 1.1.4
  */
 public class ServletContextAttributeExporter implements ServletContextAware {
 
@@ -51,7 +51,6 @@ public class ServletContextAttributeExporter implements ServletContextAware {
 
 	@Nullable
 	private Map<String, Object> attributes;
-
 
 	/**
 	 * Set the ServletContext attributes to expose as key-value pairs.
