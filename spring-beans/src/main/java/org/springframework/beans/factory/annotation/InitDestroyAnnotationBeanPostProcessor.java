@@ -90,7 +90,6 @@ public class InitDestroyAnnotationBeanPostProcessor
 	@Nullable
 	private final transient Map<Class<?>, LifecycleMetadata> lifecycleMetadataCache = new ConcurrentHashMap<>(256);
 
-
 	/**
 	 * Specify the init annotation to check for, indicating initialization
 	 * methods to call after configuration of a bean.

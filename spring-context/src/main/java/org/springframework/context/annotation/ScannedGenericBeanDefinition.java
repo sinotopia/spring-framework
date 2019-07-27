@@ -62,7 +62,6 @@ public class ScannedGenericBeanDefinition extends GenericBeanDefinition implemen
 		setBeanClassName(this.metadata.getClassName());
 	}
 
-
 	@Override
 	public final AnnotationMetadata getMetadata() {
 		return this.metadata;

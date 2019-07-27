@@ -25,14 +25,13 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistry;
  * when actually creating a scoped proxy.
  *
  * @author Juergen Hoeller
- * @since 3.0
  * @see org.springframework.aop.scope.ScopedProxyUtils#createScopedProxy
+ * @since 3.0
  */
 final class ScopedProxyCreator {
 
 	private ScopedProxyCreator() {
 	}
-
 
 	public static BeanDefinitionHolder createScopedProxy(
 			BeanDefinitionHolder definitionHolder, BeanDefinitionRegistry registry, boolean proxyTargetClass) {
