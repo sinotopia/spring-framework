@@ -122,7 +122,6 @@ public abstract class PropertySource<T> {
 	@Nullable
 	public abstract Object getProperty(String name);
 
-
 	/**
 	 * This {@code PropertySource} object is equal to the given object if:
 	 * <ul>
@@ -166,7 +165,6 @@ public abstract class PropertySource<T> {
 		}
 	}
 
-
 	/**
 	 * Return a {@code PropertySource} implementation intended for collection comparison purposes only.
 	 * <p>Primarily for internal use, but given a collection of {@code PropertySource} objects, may be
@@ -188,7 +186,6 @@ public abstract class PropertySource<T> {
 	public static PropertySource<?> named(String name) {
 		return new ComparisonPropertySource(name);
 	}
-
 
 	/**
 	 * {@code PropertySource} to be used as a placeholder in cases where an actual
@@ -218,7 +215,6 @@ public abstract class PropertySource<T> {
 			return null;
 		}
 	}
-
 
 	/**
 	 * A {@code PropertySource} implementation intended for collection comparison

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diagram>
   <ID>JAVA</ID>
-  <OriginalElement>org.springframework.beans.factory.BeanFactory</OriginalElement>
+  <OriginalElement>org.springframework.core.io.InputStreamSource</OriginalElement>
   <nodes />
   <notes />
   <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="753.0" y="421.5" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="753.0" y="410.0" />
   <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>

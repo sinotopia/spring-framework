@@ -24,17 +24,17 @@ import org.springframework.util.StringUtils;
  * as relative to a given {@code java.lang.Class}.
  *
  * @author Juergen Hoeller
- * @since 3.0
  * @see Class#getResource(String)
  * @see ClassPathResource#ClassPathResource(String, Class)
+ * @since 3.0
  */
 public class ClassRelativeResourceLoader extends DefaultResourceLoader {
 
 	private final Class<?> clazz;
 
-
 	/**
 	 * Create a new ClassRelativeResourceLoader for the given class.
+	 *
 	 * @param clazz the class to load resources through
 	 */
 	public ClassRelativeResourceLoader(Class<?> clazz) {
@@ -47,7 +47,6 @@ public class ClassRelativeResourceLoader extends DefaultResourceLoader {
 	protected Resource getResourceByPath(String path) {
 		return new ClassRelativeContextResource(path, this.clazz);
 	}
-
 
 	/**
 	 * ClassPathResource that explicitly expresses a context-relative path

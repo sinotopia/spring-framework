@@ -58,7 +58,6 @@ public class UrlResource extends AbstractFileResolvingResource {
 	 */
 	private final URL cleanedUrl;
 
-
 	/**
 	 * Create a new {@code UrlResource} based on the given URI object.
 	 *

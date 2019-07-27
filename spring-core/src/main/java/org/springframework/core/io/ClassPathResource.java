@@ -51,7 +51,6 @@ public class ClassPathResource extends AbstractFileResolvingResource {
 	@Nullable
 	private Class<?> clazz;
 
-
 	/**
 	 * Create a new {@code ClassPathResource} for {@code ClassLoader} usage.
 	 * A leading slash will be removed, as the ClassLoader resource access
@@ -119,7 +118,6 @@ public class ClassPathResource extends AbstractFileResolvingResource {
 		this.clazz = clazz;
 	}
 
-
 	/**
 	 * Return the path for this resource (as resource path within the class path).
 	 */
@@ -134,7 +132,6 @@ public class ClassPathResource extends AbstractFileResolvingResource {
 	public final ClassLoader getClassLoader() {
 		return (this.clazz != null ? this.clazz.getClassLoader() : this.classLoader);
 	}
-
 
 	/**
 	 * This implementation checks for the resolution of a resource URL.
@@ -244,7 +241,6 @@ public class ClassPathResource extends AbstractFileResolvingResource {
 		builder.append(']');
 		return builder.toString();
 	}
-
 
 	/**
 	 * This implementation compares the underlying class path locations.

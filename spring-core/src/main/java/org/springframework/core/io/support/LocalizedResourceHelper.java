@@ -33,17 +33,18 @@ import org.springframework.util.Assert;
  */
 public class LocalizedResourceHelper {
 
-	/** The default separator to use in-between file name parts: an underscore. */
+	/**
+	 * The default separator to use in-between file name parts: an underscore.
+	 */
 	public static final String DEFAULT_SEPARATOR = "_";
-
 
 	private final ResourceLoader resourceLoader;
 
 	private String separator = DEFAULT_SEPARATOR;
 
-
 	/**
 	 * Create a new LocalizedResourceHelper with a DefaultResourceLoader.
+	 *
 	 * @see org.springframework.core.io.DefaultResourceLoader
 	 */
 	public LocalizedResourceHelper() {
@@ -52,6 +53,7 @@ public class LocalizedResourceHelper {
 
 	/**
 	 * Create a new LocalizedResourceHelper with the given ResourceLoader.
+	 *
 	 * @param resourceLoader the ResourceLoader to use
 	 */
 	public LocalizedResourceHelper(ResourceLoader resourceLoader) {
@@ -67,7 +69,6 @@ public class LocalizedResourceHelper {
 		this.separator = (separator != null ? separator : DEFAULT_SEPARATOR);
 	}
 
-
 	/**
 	 * Find the most specific localized resource for the given name,
 	 * extension and locale:
@@ -81,9 +82,10 @@ public class LocalizedResourceHelper {
 	 * </ul>
 	 * <p>If none of the specific files can be found, a resource
 	 * descriptor for the default location will be returned.
-	 * @param name the name of the file, without localization part nor extension
+	 *
+	 * @param name      the name of the file, without localization part nor extension
 	 * @param extension the file extension (e.g. ".xls")
-	 * @param locale the current locale (may be {@code null})
+	 * @param locale    the current locale (may be {@code null})
 	 * @return the most specific localized resource found
 	 * @see java.util.ResourceBundle
 	 */

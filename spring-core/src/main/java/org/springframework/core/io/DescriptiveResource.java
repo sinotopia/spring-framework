@@ -36,15 +36,14 @@ public class DescriptiveResource extends AbstractResource {
 
 	private final String description;
 
-
 	/**
 	 * Create a new DescriptiveResource.
+	 *
 	 * @param description the resource description
 	 */
 	public DescriptiveResource(@Nullable String description) {
 		this.description = (description != null ? description : "");
 	}
-
 
 	@Override
 	public boolean exists() {
@@ -66,7 +65,6 @@ public class DescriptiveResource extends AbstractResource {
 	public String getDescription() {
 		return this.description;
 	}
-
 
 	/**
 	 * This implementation compares the underlying description String.
