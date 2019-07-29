@@ -76,7 +76,6 @@ public class XmlWebApplicationContext extends AbstractRefreshableWebApplicationC
 	 */
 	public static final String DEFAULT_CONFIG_LOCATION_SUFFIX = ".xml";
 
-
 	/**
 	 * Loads the bean definitions via an XmlBeanDefinitionReader.
 	 *

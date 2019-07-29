@@ -48,11 +48,9 @@ public class DelegatingEntityResolver implements EntityResolver {
 	 */
 	public static final String XSD_SUFFIX = ".xsd";
 
-
 	private final EntityResolver dtdResolver;
 
 	private final EntityResolver schemaResolver;
-
 
 	/**
 	 * Create a new DelegatingEntityResolver that delegates to
@@ -82,7 +80,6 @@ public class DelegatingEntityResolver implements EntityResolver {
 		this.schemaResolver = schemaResolver;
 	}
 
-
 	@Override
 	@Nullable
 	public InputSource resolveEntity(String publicId, @Nullable String systemId) throws SAXException, IOException {
@@ -95,7 +92,6 @@ public class DelegatingEntityResolver implements EntityResolver {
 		}
 		return null;
 	}
-
 
 	@Override
 	public String toString() {

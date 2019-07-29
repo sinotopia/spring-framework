@@ -75,7 +75,6 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 
 	private boolean includeAnnotationConfig = true;
 
-
 	/**
 	 * Create a new {@code ClassPathBeanDefinitionScanner} for the given bean factory.
 	 *
@@ -173,7 +172,6 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 		setResourceLoader(resourceLoader);
 	}
 
-
 	/**
 	 * Return the BeanDefinitionRegistry that this scanner operates on.
 	 */
@@ -249,7 +247,6 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 	public void setIncludeAnnotationConfig(boolean includeAnnotationConfig) {
 		this.includeAnnotationConfig = includeAnnotationConfig;
 	}
-
 
 	/**
 	 * Perform a scan within the specified base packages.
@@ -332,7 +329,6 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 		BeanDefinitionReaderUtils.registerBeanDefinition(definitionHolder, registry);
 	}
 
-
 	/**
 	 * Check the given candidate's bean name, determining whether the corresponding
 	 * bean definition needs to be registered or conflicts with an existing definition.
@@ -379,7 +375,6 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 				(newDefinition.getSource() != null && newDefinition.getSource().equals(existingDefinition.getSource())) ||  // scanned same file twice
 				newDefinition.equals(existingDefinition));  // scanned equivalent class twice
 	}
-
 
 	/**
 	 * Get the Environment from the given registry if possible, otherwise return a new

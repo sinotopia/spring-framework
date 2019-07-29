@@ -383,7 +383,6 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 		return doLoadBeanDefinitions(inputSource, new DescriptiveResource(resourceDescription));
 	}
 
-
 	/**
 	 * Actually load bean definitions from the specified XML file.
 	 *

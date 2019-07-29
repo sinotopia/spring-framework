@@ -70,7 +70,6 @@ public abstract class BeanUtils {
 	private static final Set<Class<?>> unknownEditorTypes =
 			Collections.newSetFromMap(new ConcurrentReferenceHashMap<>(64));
 
-
 	/**
 	 * Convenience method to instantiate a class using its no-arg constructor.
 	 *

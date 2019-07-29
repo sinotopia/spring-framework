@@ -74,7 +74,6 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 
 	public static final String PROFILE_ATTRIBUTE = "profile";
 
-
 	protected final Log logger = LogFactory.getLog(getClass());
 
 	@Nullable

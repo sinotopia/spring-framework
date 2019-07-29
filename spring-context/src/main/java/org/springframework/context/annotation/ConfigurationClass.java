@@ -68,7 +68,6 @@ final class ConfigurationClass {
 
 	final Set<String> skippedBeanMethods = new HashSet<>();
 
-
 	/**
 	 * Create a new {@link ConfigurationClass} with the given name.
 	 *
@@ -140,7 +139,6 @@ final class ConfigurationClass {
 		this.resource = new DescriptiveResource(metadata.getClassName());
 		this.beanName = beanName;
 	}
-
 
 	public AnnotationMetadata getMetadata() {
 		return this.metadata;

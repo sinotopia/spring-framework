@@ -38,11 +38,9 @@ final class ArrayToStringConverter implements ConditionalGenericConverter {
 
 	private final CollectionToStringConverter helperConverter;
 
-
 	public ArrayToStringConverter(ConversionService conversionService) {
 		this.helperConverter = new CollectionToStringConverter(conversionService);
 	}
-
 
 	@Override
 	public Set<ConvertiblePair> getConvertibleTypes() {

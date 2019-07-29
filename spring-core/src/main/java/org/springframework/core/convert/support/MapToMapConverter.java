@@ -44,11 +44,9 @@ final class MapToMapConverter implements ConditionalGenericConverter {
 
 	private final ConversionService conversionService;
 
-
 	public MapToMapConverter(ConversionService conversionService) {
 		this.conversionService = conversionService;
 	}
-
 
 	@Override
 	public Set<ConvertiblePair> getConvertibleTypes() {

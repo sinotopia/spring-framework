@@ -202,7 +202,6 @@ public abstract class AbstractFactoryBean<T>
 		}
 	}
 
-
 	/**
 	 * This abstract method declaration mirrors the method in the FactoryBean
 	 * interface, for a consistent offering of abstract template methods.
@@ -256,7 +255,6 @@ public abstract class AbstractFactoryBean<T>
 	 */
 	protected void destroyInstance(@Nullable T instance) throws Exception {
 	}
-
 
 	/**
 	 * Reflective InvocationHandler for lazy access to the actual singleton object.

@@ -76,7 +76,6 @@ public class PluggableSchemaResolver implements EntityResolver {
 	@Nullable
 	private volatile Map<String, String> schemaMappings;
 
-
 	/**
 	 * Loads the schema URL -> schema file location mappings using the default
 	 * mapping file pattern "META-INF/spring.schemas".
@@ -166,7 +165,6 @@ public class PluggableSchemaResolver implements EntityResolver {
 		}
 		return schemaMappings;
 	}
-
 
 	@Override
 	public String toString() {

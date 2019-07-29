@@ -34,7 +34,6 @@ final class IntegerToEnumConverterFactory implements ConverterFactory<Integer, E
 		return new IntegerToEnum(ConversionUtils.getEnumType(targetType));
 	}
 
-
 	private class IntegerToEnum<T extends Enum> implements Converter<Integer, T> {
 
 		private final Class<T> enumType;

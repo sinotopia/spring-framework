@@ -29,16 +29,16 @@ import org.springframework.util.Assert;
  * a {@link org.springframework.beans.factory.config.BeanDefinition}.
  *
  * @author Juergen Hoeller
- * @since 2.5.2
  * @see org.springframework.core.io.DescriptiveResource
+ * @since 2.5.2
  */
 class BeanDefinitionResource extends AbstractResource {
 
 	private final BeanDefinition beanDefinition;
 
-
 	/**
 	 * Create a new BeanDefinitionResource.
+	 *
 	 * @param beanDefinition the BeanDefinition objectto wrap
 	 */
 	public BeanDefinitionResource(BeanDefinition beanDefinition) {
@@ -52,7 +52,6 @@ class BeanDefinitionResource extends AbstractResource {
 	public final BeanDefinition getBeanDefinition() {
 		return this.beanDefinition;
 	}
-
 
 	@Override
 	public boolean exists() {
@@ -74,7 +73,6 @@ class BeanDefinitionResource extends AbstractResource {
 	public String getDescription() {
 		return "BeanDefinition defined in " + this.beanDefinition.getResourceDescription();
 	}
-
 
 	/**
 	 * This implementation compares the underlying BeanDefinition.

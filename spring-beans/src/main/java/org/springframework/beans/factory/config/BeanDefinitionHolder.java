@@ -131,7 +131,6 @@ public class BeanDefinitionHolder implements BeanMetadataElement {
 				ObjectUtils.containsElement(this.aliases, candidateName)));
 	}
 
-
 	/**
 	 * Return a friendly, short description for the bean, stating name and aliases.
 	 *

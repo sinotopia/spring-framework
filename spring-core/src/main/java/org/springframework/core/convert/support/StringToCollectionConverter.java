@@ -40,11 +40,9 @@ final class StringToCollectionConverter implements ConditionalGenericConverter {
 
 	private final ConversionService conversionService;
 
-
 	public StringToCollectionConverter(ConversionService conversionService) {
 		this.conversionService = conversionService;
 	}
-
 
 	@Override
 	public Set<ConvertiblePair> getConvertibleTypes() {
@@ -74,8 +72,7 @@ final class StringToCollectionConverter implements ConditionalGenericConverter {
 			for (String field : fields) {
 				target.add(field.trim());
 			}
-		}
-		else {
+		} else {
 			for (String field : fields) {
 				Object targetElement = this.conversionService.convert(field.trim(), sourceType, elementDesc);
 				target.add(targetElement);

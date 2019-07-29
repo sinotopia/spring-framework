@@ -176,7 +176,6 @@ public interface AutowireCapableBeanFactory extends BeanFactory {
 	 */
 	Object configureBean(Object existingBean, String beanName) throws BeansException;
 
-
 	//-------------------------------------------------------------------------
 	// Specialized methods for fine-grained control over the bean lifecycle
 	//-------------------------------------------------------------------------
@@ -342,7 +341,6 @@ public interface AutowireCapableBeanFactory extends BeanFactory {
 	 * @param existingBean the bean instance to destroy
 	 */
 	void destroyBean(Object existingBean);
-
 
 	//-------------------------------------------------------------------------
 	// Delegate methods for resolving injection points

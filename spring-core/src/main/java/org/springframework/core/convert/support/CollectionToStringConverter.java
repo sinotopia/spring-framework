@@ -37,11 +37,9 @@ final class CollectionToStringConverter implements ConditionalGenericConverter {
 
 	private final ConversionService conversionService;
 
-
 	public CollectionToStringConverter(ConversionService conversionService) {
 		this.conversionService = conversionService;
 	}
-
 
 	@Override
 	public Set<ConvertiblePair> getConvertibleTypes() {

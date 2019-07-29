@@ -44,11 +44,9 @@ final class IdToEntityConverter implements ConditionalGenericConverter {
 
 	private final ConversionService conversionService;
 
-
 	public IdToEntityConverter(ConversionService conversionService) {
 		this.conversionService = conversionService;
 	}
-
 
 	@Override
 	public Set<ConvertiblePair> getConvertibleTypes() {
@@ -83,8 +81,7 @@ final class IdToEntityConverter implements ConditionalGenericConverter {
 		try {
 			methods = entityClass.getDeclaredMethods();
 			localOnlyFiltered = true;
-		}
-		catch (SecurityException ex) {
+		} catch (SecurityException ex) {
 			// Not allowed to access non-public methods...
 			// Fallback: check locally declared public methods only.
 			methods = entityClass.getMethods();
@@ -105,8 +102,7 @@ final class IdToEntityConverter implements ConditionalGenericConverter {
 		int lastDot = shortName.lastIndexOf('.');
 		if (lastDot != -1) {
 			return shortName.substring(lastDot + 1);
-		}
-		else {
+		} else {
 			return shortName;
 		}
 	}

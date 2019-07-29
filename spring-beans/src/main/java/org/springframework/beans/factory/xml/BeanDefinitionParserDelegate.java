@@ -248,7 +248,6 @@ public class BeanDefinitionParserDelegate {
 		this.readerContext = readerContext;
 	}
 
-
 	/**
 	 * Get the {@link XmlReaderContext} associated with this helper instance.
 	 */
@@ -389,7 +388,6 @@ public class BeanDefinitionParserDelegate {
 		String candidatePattern = this.defaults.getAutowireCandidates();
 		return (candidatePattern != null ? StringUtils.commaDelimitedListToStringArray(candidatePattern) : null);
 	}
-
 
 	/**
 	 * Parses the supplied {@code <bean>} element. May return {@code null}

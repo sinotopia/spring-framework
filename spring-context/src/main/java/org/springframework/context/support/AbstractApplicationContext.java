@@ -159,6 +159,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		ContextClosedEvent.class.getName();
 	}
 
+	//---------------------------------------------------------------------
+	// Fields
+	//---------------------------------------------------------------------
+
 	/**
 	 * Logger used by this class. Available to subclasses.
 	 */
@@ -250,6 +254,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	@Nullable
 	private Set<ApplicationEvent> earlyApplicationEvents;
+
+	//---------------------------------------------------------------------
+	// Constructors
+	//---------------------------------------------------------------------
 
 	/**
 	 * Create a new AbstractApplicationContext with no parent.
@@ -1143,7 +1151,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		}
 	}
 
-
 	//---------------------------------------------------------------------
 	// Implementation of BeanFactory interface
 	//---------------------------------------------------------------------
@@ -1231,7 +1238,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		return getBeanFactory().getAliases(name);
 	}
 
-
 	//---------------------------------------------------------------------
 	// Implementation of ListableBeanFactory interface
 	//---------------------------------------------------------------------
@@ -1306,7 +1312,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		return getBeanFactory().findAnnotationOnBean(beanName, annotationType);
 	}
 
-
 	//---------------------------------------------------------------------
 	// Implementation of HierarchicalBeanFactory interface
 	//---------------------------------------------------------------------
@@ -1333,7 +1338,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		return (getParent() instanceof ConfigurableApplicationContext ?
 				((ConfigurableApplicationContext) getParent()).getBeanFactory() : getParent());
 	}
-
 
 	//---------------------------------------------------------------------
 	// Implementation of MessageSource interface
@@ -1378,7 +1382,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				((AbstractApplicationContext) getParent()).messageSource : getParent());
 	}
 
-
 	//---------------------------------------------------------------------
 	// Implementation of ResourcePatternResolver interface
 	//---------------------------------------------------------------------
@@ -1387,7 +1390,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	public Resource[] getResources(String locationPattern) throws IOException {
 		return this.resourcePatternResolver.getResources(locationPattern);
 	}
-
 
 	//---------------------------------------------------------------------
 	// Implementation of Lifecycle interface
@@ -1409,7 +1411,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	public boolean isRunning() {
 		return (this.lifecycleProcessor != null && this.lifecycleProcessor.isRunning());
 	}
-
 
 	//---------------------------------------------------------------------
 	// Abstract methods that must be implemented by subclasses

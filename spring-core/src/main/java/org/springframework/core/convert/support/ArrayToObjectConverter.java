@@ -36,11 +36,9 @@ final class ArrayToObjectConverter implements ConditionalGenericConverter {
 
 	private final ConversionService conversionService;
 
-
 	public ArrayToObjectConverter(ConversionService conversionService) {
 		this.conversionService = conversionService;
 	}
-
 
 	@Override
 	public Set<ConvertiblePair> getConvertibleTypes() {

@@ -42,12 +42,10 @@ final class ArrayToArrayConverter implements ConditionalGenericConverter {
 
 	private final ConversionService conversionService;
 
-
 	public ArrayToArrayConverter(ConversionService conversionService) {
 		this.helperConverter = new CollectionToArrayConverter(conversionService);
 		this.conversionService = conversionService;
 	}
-
 
 	@Override
 	public Set<ConvertiblePair> getConvertibleTypes() {

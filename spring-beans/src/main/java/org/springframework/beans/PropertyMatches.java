@@ -36,22 +36,24 @@ import org.springframework.util.StringUtils;
  * @author Arjen Poutsma
  * @author Juergen Hoeller
  * @author Stephane Nicoll
- * @since 2.0
  * @see #forProperty(String, Class)
  * @see #forField(String, Class)
+ * @since 2.0
  */
 public abstract class PropertyMatches {
 
-	/** Default maximum property distance: 2. */
+	/**
+	 * Default maximum property distance: 2.
+	 */
 	public static final int DEFAULT_MAX_DISTANCE = 2;
-
 
 	// Static factory methods
 
 	/**
 	 * Create PropertyMatches for the given bean property.
+	 *
 	 * @param propertyName the name of the property to find possible matches for
-	 * @param beanClass the bean class to search for matches
+	 * @param beanClass    the bean class to search for matches
 	 */
 	public static PropertyMatches forProperty(String propertyName, Class<?> beanClass) {
 		return forProperty(propertyName, beanClass, DEFAULT_MAX_DISTANCE);
@@ -59,9 +61,10 @@ public abstract class PropertyMatches {
 
 	/**
 	 * Create PropertyMatches for the given bean property.
+	 *
 	 * @param propertyName the name of the property to find possible matches for
-	 * @param beanClass the bean class to search for matches
-	 * @param maxDistance the maximum property distance allowed for matches
+	 * @param beanClass    the bean class to search for matches
+	 * @param maxDistance  the maximum property distance allowed for matches
 	 */
 	public static PropertyMatches forProperty(String propertyName, Class<?> beanClass, int maxDistance) {
 		return new BeanPropertyMatches(propertyName, beanClass, maxDistance);
@@ -69,8 +72,9 @@ public abstract class PropertyMatches {
 
 	/**
 	 * Create PropertyMatches for the given field property.
+	 *
 	 * @param propertyName the name of the field to find possible matches for
-	 * @param beanClass the bean class to search for matches
+	 * @param beanClass    the bean class to search for matches
 	 */
 	public static PropertyMatches forField(String propertyName, Class<?> beanClass) {
 		return forField(propertyName, beanClass, DEFAULT_MAX_DISTANCE);
@@ -78,21 +82,20 @@ public abstract class PropertyMatches {
 
 	/**
 	 * Create PropertyMatches for the given field property.
+	 *
 	 * @param propertyName the name of the field to find possible matches for
-	 * @param beanClass the bean class to search for matches
-	 * @param maxDistance the maximum property distance allowed for matches
+	 * @param beanClass    the bean class to search for matches
+	 * @param maxDistance  the maximum property distance allowed for matches
 	 */
 	public static PropertyMatches forField(String propertyName, Class<?> beanClass, int maxDistance) {
 		return new FieldPropertyMatches(propertyName, beanClass, maxDistance);
 	}
-
 
 	// Instance state
 
 	private final String propertyName;
 
 	private final String[] possibleMatches;
-
 
 	/**
 	 * Create a new PropertyMatches instance for the given property and possible matches.
@@ -101,7 +104,6 @@ public abstract class PropertyMatches {
 		this.propertyName = propertyName;
 		this.possibleMatches = possibleMatches;
 	}
-
 
 	/**
 	 * Return the name of the requested property.
@@ -123,7 +125,6 @@ public abstract class PropertyMatches {
 	 */
 	public abstract String buildErrorMessage();
 
-
 	// Implementation support for subclasses
 
 	protected void appendHintMessage(StringBuilder msg) {
@@ -133,8 +134,7 @@ public abstract class PropertyMatches {
 			msg.append(this.possibleMatches[i]);
 			if (i < this.possibleMatches.length - 2) {
 				msg.append("', ");
-			}
-			else if (i == this.possibleMatches.length - 2) {
+			} else if (i == this.possibleMatches.length - 2) {
 				msg.append("', or ");
 			}
 		}
@@ -144,6 +144,7 @@ public abstract class PropertyMatches {
 	/**
 	 * Calculate the distance between the given two Strings
 	 * according to the Levenshtein algorithm.
+	 *
 	 * @param s1 the first String
 	 * @param s2 the second String
 	 * @return the distance value
@@ -171,8 +172,7 @@ public abstract class PropertyMatches {
 				char c2 = s2.charAt(j - 1);
 				if (c1 == c2) {
 					cost = 0;
-				}
-				else {
+				} else {
 					cost = 1;
 				}
 				d[i][j] = Math.min(Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1), d[i - 1][j - 1] + cost);
@@ -181,7 +181,6 @@ public abstract class PropertyMatches {
 
 		return d[s1.length()][s2.length()];
 	}
-
 
 	// Concrete subclasses
 
@@ -196,6 +195,7 @@ public abstract class PropertyMatches {
 		 * Generate possible property alternatives for the given property and class.
 		 * Internally uses the {@code getStringDistance} method, which in turn uses
 		 * the Levenshtein algorithm to determine the distance between two Strings.
+		 *
 		 * @param descriptors the JavaBeans property descriptors to search
 		 * @param maxDistance the maximum distance to accept
 		 */
@@ -220,14 +220,12 @@ public abstract class PropertyMatches {
 					"' is not writable or has an invalid setter method. ");
 			if (!ObjectUtils.isEmpty(getPossibleMatches())) {
 				appendHintMessage(msg);
-			}
-			else {
+			} else {
 				msg.append("Does the parameter type of the setter match the return type of the getter?");
 			}
 			return msg.toString();
 		}
 	}
-
 
 	private static class FieldPropertyMatches extends PropertyMatches {
 

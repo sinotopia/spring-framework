@@ -50,7 +50,6 @@ public class BeanDefinitionVisitor {
 	@Nullable
 	private StringValueResolver valueResolver;
 
-
 	/**
 	 * Create a new BeanDefinitionVisitor, applying the specified
 	 * value resolver to all bean metadata values.

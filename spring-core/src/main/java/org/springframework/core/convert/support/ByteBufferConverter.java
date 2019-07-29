@@ -52,14 +52,11 @@ final class ByteBufferConverter implements ConditionalGenericConverter {
 		CONVERTIBLE_PAIRS = Collections.unmodifiableSet(convertiblePairs);
 	}
 
-
 	private final ConversionService conversionService;
-
 
 	public ByteBufferConverter(ConversionService conversionService) {
 		this.conversionService = conversionService;
 	}
-
 
 	@Override
 	public Set<ConvertiblePair> getConvertibleTypes() {

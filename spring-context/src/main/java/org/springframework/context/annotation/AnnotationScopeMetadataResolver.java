@@ -42,7 +42,6 @@ public class AnnotationScopeMetadataResolver implements ScopeMetadataResolver {
 
 	protected Class<? extends Annotation> scopeAnnotationType = Scope.class;
 
-
 	/**
 	 * Construct a new {@code AnnotationScopeMetadataResolver}.
 	 *

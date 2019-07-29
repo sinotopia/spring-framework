@@ -37,10 +37,10 @@ public class BeanMetadataAttribute implements BeanMetadataElement {
 	@Nullable
 	private Object source;
 
-
 	/**
 	 * Create a new AttributeValue instance.
-	 * @param name the name of the attribute (never {@code null})
+	 *
+	 * @param name  the name of the attribute (never {@code null})
 	 * @param value the value of the attribute (possibly before type conversion)
 	 */
 	public BeanMetadataAttribute(String name, @Nullable Object value) {
@@ -48,7 +48,6 @@ public class BeanMetadataAttribute implements BeanMetadataElement {
 		this.name = name;
 		this.value = value;
 	}
-
 
 	/**
 	 * Return the name of the attribute.
@@ -78,7 +77,6 @@ public class BeanMetadataAttribute implements BeanMetadataElement {
 	public Object getSource() {
 		return this.source;
 	}
-
 
 	@Override
 	public boolean equals(Object other) {

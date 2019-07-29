@@ -194,7 +194,6 @@ public class PropertyValue extends BeanMetadataAttributeAccessor implements Seri
 		return this.convertedValue;
 	}
 
-
 	@Override
 	public boolean equals(Object other) {
 		if (this == other) {

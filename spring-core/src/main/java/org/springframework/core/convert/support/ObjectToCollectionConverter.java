@@ -38,11 +38,9 @@ final class ObjectToCollectionConverter implements ConditionalGenericConverter {
 
 	private final ConversionService conversionService;
 
-
 	public ObjectToCollectionConverter(ConversionService conversionService) {
 		this.conversionService = conversionService;
 	}
-
 
 	@Override
 	public Set<ConvertiblePair> getConvertibleTypes() {
@@ -67,8 +65,7 @@ final class ObjectToCollectionConverter implements ConditionalGenericConverter {
 
 		if (elementDesc == null || elementDesc.isCollection()) {
 			target.add(source);
-		}
-		else {
+		} else {
 			Object singleElement = this.conversionService.convert(source, sourceType, elementDesc);
 			target.add(singleElement);
 		}

@@ -60,7 +60,6 @@ public abstract class AbstractBeanDefinitionParser implements BeanDefinitionPars
 	 */
 	public static final String NAME_ATTRIBUTE = "name";
 
-
 	@Override
 	@Nullable
 	public final BeanDefinition parse(Element element, ParserContext parserContext) {
@@ -142,7 +141,6 @@ public abstract class AbstractBeanDefinitionParser implements BeanDefinitionPars
 	protected void registerBeanDefinition(BeanDefinitionHolder definition, BeanDefinitionRegistry registry) {
 		BeanDefinitionReaderUtils.registerBeanDefinition(definition, registry);
 	}
-
 
 	/**
 	 * Central template method to actually parse the supplied {@link Element}

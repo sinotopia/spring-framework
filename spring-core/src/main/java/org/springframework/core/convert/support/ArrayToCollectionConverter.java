@@ -43,11 +43,9 @@ final class ArrayToCollectionConverter implements ConditionalGenericConverter {
 
 	private final ConversionService conversionService;
 
-
 	public ArrayToCollectionConverter(ConversionService conversionService) {
 		this.conversionService = conversionService;
 	}
-
 
 	@Override
 	public Set<ConvertiblePair> getConvertibleTypes() {
@@ -77,8 +75,7 @@ final class ArrayToCollectionConverter implements ConditionalGenericConverter {
 				Object sourceElement = Array.get(source, i);
 				target.add(sourceElement);
 			}
-		}
-		else {
+		} else {
 			for (int i = 0; i < length; i++) {
 				Object sourceElement = Array.get(source, i);
 				Object targetElement = this.conversionService.convert(sourceElement,

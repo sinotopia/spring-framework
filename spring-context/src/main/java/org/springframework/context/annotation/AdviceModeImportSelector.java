@@ -40,7 +40,6 @@ public abstract class AdviceModeImportSelector<A extends Annotation> implements 
 	 */
 	public static final String DEFAULT_ADVICE_MODE_ATTRIBUTE_NAME = "mode";
 
-
 	/**
 	 * The name of the {@link AdviceMode} attribute for the annotation specified by the
 	 * generic type {@code A}. The default is {@value #DEFAULT_ADVICE_MODE_ATTRIBUTE_NAME},

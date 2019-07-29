@@ -76,7 +76,6 @@ public class ComponentScanBeanDefinitionParser implements BeanDefinitionParser {
 
 	private static final String FILTER_EXPRESSION_ATTRIBUTE = "expression";
 
-
 	@Override
 	@Nullable
 	public BeanDefinition parse(Element element, ParserContext parserContext) {
