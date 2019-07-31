@@ -34,9 +34,9 @@ public class ExceptionDepthComparator implements Comparator<Class<? extends Thro
 
 	private final Class<? extends Throwable> targetException;
 
-
 	/**
 	 * Create a new ExceptionDepthComparator for the given exception.
+	 *
 	 * @param exception the target exception to compare to when sorting by depth
 	 */
 	public ExceptionDepthComparator(Throwable exception) {
@@ -46,13 +46,13 @@ public class ExceptionDepthComparator implements Comparator<Class<? extends Thro
 
 	/**
 	 * Create a new ExceptionDepthComparator for the given exception type.
+	 *
 	 * @param exceptionType the target exception type to compare to when sorting by depth
 	 */
 	public ExceptionDepthComparator(Class<? extends Throwable> exceptionType) {
 		Assert.notNull(exceptionType, "Target exception type must not be null");
 		this.targetException = exceptionType;
 	}
-
 
 	@Override
 	public int compare(Class<? extends Throwable> o1, Class<? extends Throwable> o2) {
@@ -73,10 +73,10 @@ public class ExceptionDepthComparator implements Comparator<Class<? extends Thro
 		return getDepth(declaredException, exceptionToMatch.getSuperclass(), depth + 1);
 	}
 
-
 	/**
 	 * Obtain the closest match from the given exception types for the given target exception.
-	 * @param exceptionTypes the collection of exception types
+	 *
+	 * @param exceptionTypes  the collection of exception types
 	 * @param targetException the target exception to find a match for
 	 * @return the closest matching exception type from the given collection
 	 */

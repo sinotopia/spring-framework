@@ -139,7 +139,6 @@ public class UrlResource extends AbstractFileResolvingResource {
 		}
 	}
 
-
 	/**
 	 * Determine a cleaned URL for the given original URL.
 	 *

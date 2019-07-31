@@ -93,7 +93,6 @@ public class ResolvableType implements Serializable {
 	private static final ConcurrentReferenceHashMap<ResolvableType, ResolvableType> cache =
 			new ConcurrentReferenceHashMap<>(256);
 
-
 	/**
 	 * The underlying Java type being managed.
 	 */
@@ -131,7 +130,6 @@ public class ResolvableType implements Serializable {
 
 	@Nullable
 	private volatile ResolvableType[] generics;
-
 
 	/**
 	 * Private constructor used to create a new {@link ResolvableType} for cache key purposes,
@@ -194,7 +192,6 @@ public class ResolvableType implements Serializable {
 		this.componentType = null;
 		this.hash = null;
 	}
-
 
 	/**
 	 * Return the underling Java {@link Type} being managed.

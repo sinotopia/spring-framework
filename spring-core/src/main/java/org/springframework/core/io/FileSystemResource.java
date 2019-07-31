@@ -120,7 +120,6 @@ public class FileSystemResource extends AbstractResource implements WritableReso
 		this.path = StringUtils.cleanPath(filePath.toString());
 	}
 
-
 	/**
 	 * Return the file path for this resource.
 	 */
@@ -288,7 +287,6 @@ public class FileSystemResource extends AbstractResource implements WritableReso
 	public String getDescription() {
 		return "file [" + (this.file != null ? this.file.getAbsolutePath() : this.filePath.toAbsolutePath()) + "]";
 	}
-
 
 	/**
 	 * This implementation compares the underlying File references.

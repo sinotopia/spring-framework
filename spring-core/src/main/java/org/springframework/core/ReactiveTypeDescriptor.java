@@ -39,12 +39,11 @@ public final class ReactiveTypeDescriptor {
 
 	private final boolean noValue;
 
-
 	/**
 	 * Private constructor. See static factory methods.
 	 */
 	private ReactiveTypeDescriptor(Class<?> reactiveType, @Nullable Supplier<?> emptySupplier,
-			boolean multiValue, boolean noValue) {
+								   boolean multiValue, boolean noValue) {
 
 		Assert.notNull(reactiveType, "'reactiveType' must not be null");
 		this.reactiveType = reactiveType;
@@ -52,7 +51,6 @@ public final class ReactiveTypeDescriptor {
 		this.multiValue = multiValue;
 		this.noValue = noValue;
 	}
-
 
 	/**
 	 * Return the reactive type for this descriptor.
@@ -95,7 +93,6 @@ public final class ReactiveTypeDescriptor {
 		return this.emptyValueSupplier.get();
 	}
 
-
 	@Override
 	public boolean equals(@Nullable Object other) {
 		if (this == other) {
@@ -112,10 +109,10 @@ public final class ReactiveTypeDescriptor {
 		return this.reactiveType.hashCode();
 	}
 
-
 	/**
 	 * Descriptor for a reactive type that can produce 0..N values.
-	 * @param type the reactive type
+	 *
+	 * @param type          the reactive type
 	 * @param emptySupplier a supplier of an empty-value instance of the reactive type
 	 */
 	public static ReactiveTypeDescriptor multiValue(Class<?> type, Supplier<?> emptySupplier) {
@@ -124,7 +121,8 @@ public final class ReactiveTypeDescriptor {
 
 	/**
 	 * Descriptor for a reactive type that can produce 0..1 values.
-	 * @param type the reactive type
+	 *
+	 * @param type          the reactive type
 	 * @param emptySupplier a supplier of an empty-value instance of the reactive type
 	 */
 	public static ReactiveTypeDescriptor singleOptionalValue(Class<?> type, Supplier<?> emptySupplier) {
@@ -133,6 +131,7 @@ public final class ReactiveTypeDescriptor {
 
 	/**
 	 * Descriptor for a reactive type that must produce 1 value to complete.
+	 *
 	 * @param type the reactive type
 	 */
 	public static ReactiveTypeDescriptor singleRequiredValue(Class<?> type) {
@@ -141,7 +140,8 @@ public final class ReactiveTypeDescriptor {
 
 	/**
 	 * Descriptor for a reactive type that does not produce any values.
-	 * @param type the reactive type
+	 *
+	 * @param type          the reactive type
 	 * @param emptySupplier a supplier of an empty-value instance of the reactive type
 	 */
 	public static ReactiveTypeDescriptor noValue(Class<?> type, Supplier<?> emptySupplier) {

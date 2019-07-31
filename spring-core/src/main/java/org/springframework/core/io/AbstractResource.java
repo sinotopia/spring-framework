@@ -206,7 +206,6 @@ public abstract class AbstractResource implements Resource {
 		return null;
 	}
 
-
 	/**
 	 * This implementation compares description strings.
 	 *

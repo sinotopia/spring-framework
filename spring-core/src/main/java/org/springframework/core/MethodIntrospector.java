@@ -43,7 +43,6 @@ public final class MethodIntrospector {
 	private MethodIntrospector() {
 	}
 
-
 	/**
 	 * Select methods on the given target type based on the lookup of associated metadata.
 	 * <p>Callers define methods of interest through the {@link MetadataLookup} parameter,
@@ -138,7 +137,6 @@ public final class MethodIntrospector {
 					method.getName(), method.getDeclaringClass().getSimpleName()));
 		}
 	}
-
 
 	/**
 	 * A callback interface for metadata lookup on a given method.

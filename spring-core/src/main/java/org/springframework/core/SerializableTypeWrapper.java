@@ -60,10 +60,8 @@ final class SerializableTypeWrapper {
 
 	static final ConcurrentReferenceHashMap<Type, Type> cache = new ConcurrentReferenceHashMap<>(256);
 
-
 	private SerializableTypeWrapper() {
 	}
-
 
 	/**
 	 * Return a {@link Serializable} variant of {@link Field#getGenericType()}.
@@ -84,6 +82,7 @@ final class SerializableTypeWrapper {
 
 	/**
 	 * Unwrap the given type, effectively returning the original non-serializable type.
+	 *
 	 * @param type the type to unwrap
 	 * @return the original non-serializable type
 	 */
@@ -122,7 +121,7 @@ final class SerializableTypeWrapper {
 		for (Class<?> type : SUPPORTED_SERIALIZABLE_TYPES) {
 			if (type.isInstance(providedType)) {
 				ClassLoader classLoader = provider.getClass().getClassLoader();
-				Class<?>[] interfaces = new Class<?>[] {type, SerializableTypeProxy.class, Serializable.class};
+				Class<?>[] interfaces = new Class<?>[]{type, SerializableTypeProxy.class, Serializable.class};
 				InvocationHandler handler = new TypeProxyInvocationHandler(provider);
 				cached = (Type) Proxy.newProxyInstance(classLoader, interfaces, handler);
 				cache.put(providedType, cached);
@@ -131,7 +130,6 @@ final class SerializableTypeWrapper {
 		}
 		throw new IllegalArgumentException("Unsupported Type class: " + providedType.getClass().getName());
 	}
-
 
 	/**
 	 * Additional interface implemented by the type proxy.
@@ -143,7 +141,6 @@ final class SerializableTypeWrapper {
 		 */
 		TypeProvider getTypeProvider();
 	}
-
 
 	/**
 	 * A {@link Serializable} interface providing access to a {@link Type}.
@@ -166,7 +163,6 @@ final class SerializableTypeWrapper {
 			return null;
 		}
 	}
-
 
 	/**
 	 * {@link Serializable} {@link InvocationHandler} used by the proxied {@link Type}.
@@ -192,18 +188,15 @@ final class SerializableTypeWrapper {
 					other = unwrap((Type) other);
 				}
 				return ObjectUtils.nullSafeEquals(this.provider.getType(), other);
-			}
-			else if (method.getName().equals("hashCode")) {
+			} else if (method.getName().equals("hashCode")) {
 				return ObjectUtils.nullSafeHashCode(this.provider.getType());
-			}
-			else if (method.getName().equals("getTypeProvider")) {
+			} else if (method.getName().equals("getTypeProvider")) {
 				return this.provider;
 			}
 
 			if (Type.class == method.getReturnType() && args == null) {
 				return forTypeProvider(new MethodInvokeTypeProvider(this.provider, method, -1));
-			}
-			else if (Type[].class == method.getReturnType() && args == null) {
+			} else if (Type[].class == method.getReturnType() && args == null) {
 				Type[] result = new Type[((Type[]) method.invoke(this.provider.getType())).length];
 				for (int i = 0; i < result.length; i++) {
 					result[i] = forTypeProvider(new MethodInvokeTypeProvider(this.provider, method, i));
@@ -213,13 +206,11 @@ final class SerializableTypeWrapper {
 
 			try {
 				return method.invoke(this.provider.getType(), args);
-			}
-			catch (InvocationTargetException ex) {
+			} catch (InvocationTargetException ex) {
 				throw ex.getTargetException();
 			}
 		}
 	}
-
 
 	/**
 	 * {@link TypeProvider} for {@link Type Types} obtained from a {@link Field}.
@@ -253,13 +244,11 @@ final class SerializableTypeWrapper {
 			inputStream.defaultReadObject();
 			try {
 				this.field = this.declaringClass.getDeclaredField(this.fieldName);
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				throw new IllegalStateException("Could not find original class structure", ex);
 			}
 		}
 	}
-
 
 	/**
 	 * {@link TypeProvider} for {@link Type Types} obtained from a {@link MethodParameter}.
@@ -302,13 +291,11 @@ final class SerializableTypeWrapper {
 				if (this.methodName != null) {
 					this.methodParameter = new MethodParameter(
 							this.declaringClass.getDeclaredMethod(this.methodName, this.parameterTypes), this.parameterIndex);
-				}
-				else {
+				} else {
 					this.methodParameter = new MethodParameter(
 							this.declaringClass.getDeclaredConstructor(this.parameterTypes), this.parameterIndex);
 				}
-			}
-			catch (Throwable ex) {
+			} catch (Throwable ex) {
 				throw new IllegalStateException("Could not find original class structure", ex);
 			}
 		}

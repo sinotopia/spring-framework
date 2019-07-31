@@ -93,7 +93,6 @@ public class ResourceEditor extends PropertyEditorSupport {
 		this.ignoreUnresolvablePlaceholders = ignoreUnresolvablePlaceholders;
 	}
 
-
 	@Override
 	public void setAsText(String text) {
 		if (StringUtils.hasText(text)) {
@@ -120,7 +119,6 @@ public class ResourceEditor extends PropertyEditorSupport {
 		return (this.ignoreUnresolvablePlaceholders ? this.propertyResolver.resolvePlaceholders(path) :
 				this.propertyResolver.resolveRequiredPlaceholders(path));
 	}
-
 
 	@Override
 	@Nullable

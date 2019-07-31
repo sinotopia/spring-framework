@@ -273,7 +273,6 @@ public class NettyDataBuffer implements PooledDataBuffer {
 		return this.byteBuf.release();
 	}
 
-
 	@Override
 	public boolean equals(Object other) {
 		return (this == other || (other instanceof NettyDataBuffer &&

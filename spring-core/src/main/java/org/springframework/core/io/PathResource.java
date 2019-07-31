@@ -97,7 +97,6 @@ public class PathResource extends AbstractResource implements WritableResource {
 		this.path = Paths.get(uri).normalize();
 	}
 
-
 	/**
 	 * Return the file path for this resource.
 	 */
@@ -280,7 +279,6 @@ public class PathResource extends AbstractResource implements WritableResource {
 	public String getDescription() {
 		return "path [" + this.path.toAbsolutePath() + "]";
 	}
-
 
 	/**
 	 * This implementation compares the underlying Path references.

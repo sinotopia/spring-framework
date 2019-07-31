@@ -69,7 +69,6 @@ public abstract class NestedRuntimeException extends RuntimeException {
 		super(msg, cause);
 	}
 
-
 	/**
 	 * Return the detail message, including the message from the nested exception
 	 * if there is one.
@@ -79,7 +78,6 @@ public abstract class NestedRuntimeException extends RuntimeException {
 	public String getMessage() {
 		return NestedExceptionUtils.buildMessage(super.getMessage(), getCause());
 	}
-
 
 	/**
 	 * Retrieve the innermost cause of this exception, if any.

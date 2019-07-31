@@ -42,7 +42,6 @@ public abstract class DecoratingClassLoader extends ClassLoader {
 
 	private final Set<String> excludedClasses = Collections.newSetFromMap(new ConcurrentHashMap<>(8));
 
-
 	/**
 	 * Create a new DecoratingClassLoader with no parent ClassLoader.
 	 */
@@ -56,7 +55,6 @@ public abstract class DecoratingClassLoader extends ClassLoader {
 	public DecoratingClassLoader(@Nullable ClassLoader parent) {
 		super(parent);
 	}
-
 
 	/**
 	 * Add a package name to exclude from decoration (e.g. overriding).

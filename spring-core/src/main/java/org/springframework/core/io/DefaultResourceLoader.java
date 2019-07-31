@@ -34,7 +34,7 @@ import org.springframework.util.StringUtils;
  * Default implementation of the {@link ResourceLoader} interface.
  * Used by {@link ResourceEditor}, and serves as base class for
  * {@link org.springframework.context.support.AbstractApplicationContext}.
- * Can also be used standalone.
+ * * Can also be used standalone.
  *
  * <p>Will return a {@link UrlResource} if the location value is a URL,
  * and a {@link ClassPathResource} if it is a non-URL path or a

@@ -207,7 +207,6 @@ public abstract class DataBufferUtils {
 		return position == 0 ? result : skipUntilByteCount(result, position);
 	}
 
-
 	//---------------------------------------------------------------------
 	// Writing
 	//---------------------------------------------------------------------
@@ -323,7 +322,6 @@ public abstract class DataBufferUtils {
 			}
 		}
 	}
-
 
 	//---------------------------------------------------------------------
 	// Various

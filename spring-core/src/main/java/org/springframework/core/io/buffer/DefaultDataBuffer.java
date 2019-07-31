@@ -75,7 +75,6 @@ public class DefaultDataBuffer implements DataBuffer {
 		return new DefaultDataBuffer(dataBufferFactory, byteBuffer);
 	}
 
-
 	/**
 	 * Directly exposes the native {@code ByteBuffer} that this buffer is based on.
 	 *
@@ -89,7 +88,6 @@ public class DefaultDataBuffer implements DataBuffer {
 		this.byteBuffer = byteBuffer;
 		this.capacity = byteBuffer.remaining();
 	}
-
 
 	@Override
 	public DefaultDataBufferFactory factory() {
@@ -428,7 +426,6 @@ public class DefaultDataBuffer implements DataBuffer {
 				this.readPosition, this.writePosition, this.capacity);
 	}
 
-
 	private void checkIndex(int index, int length) {
 		assertIndex(index >= 0, "index %d must be >= 0", index);
 		assertIndex(length >= 0, "length %d must be >= 0", index);
@@ -442,7 +439,6 @@ public class DefaultDataBuffer implements DataBuffer {
 			throw new IndexOutOfBoundsException(message);
 		}
 	}
-
 
 	private class DefaultDataBufferInputStream extends InputStream {
 
@@ -469,7 +465,6 @@ public class DefaultDataBuffer implements DataBuffer {
 		}
 	}
 
-
 	private class DefaultDataBufferOutputStream extends OutputStream {
 
 		@Override
@@ -482,7 +477,6 @@ public class DefaultDataBuffer implements DataBuffer {
 			DefaultDataBuffer.this.write(bytes, off, len);
 		}
 	}
-
 
 	private static class SlicedDefaultDataBuffer extends DefaultDataBuffer {
 

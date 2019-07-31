@@ -40,17 +40,17 @@ public class ReactiveAdapter {
 
 	private final Function<Publisher<?>, Object> fromPublisherFunction;
 
-
 	/**
 	 * Constructor for an adapter with functions to convert the target reactive
 	 * or async type to and from a Reactive Streams Publisher.
-	 * @param descriptor the reactive type descriptor
-	 * @param toPublisherFunction adapter to a Publisher
+	 *
+	 * @param descriptor            the reactive type descriptor
+	 * @param toPublisherFunction   adapter to a Publisher
 	 * @param fromPublisherFunction adapter from a Publisher
 	 */
 	public ReactiveAdapter(ReactiveTypeDescriptor descriptor,
-			Function<Object, Publisher<?>> toPublisherFunction,
-			Function<Publisher<?>, Object> fromPublisherFunction) {
+						   Function<Object, Publisher<?>> toPublisherFunction,
+						   Function<Publisher<?>, Object> fromPublisherFunction) {
 
 		Assert.notNull(descriptor, "'descriptor' is required");
 		Assert.notNull(toPublisherFunction, "'toPublisherFunction' is required");
@@ -60,7 +60,6 @@ public class ReactiveAdapter {
 		this.toPublisherFunction = toPublisherFunction;
 		this.fromPublisherFunction = fromPublisherFunction;
 	}
-
 
 	/**
 	 * Return the descriptor of the reactive type for the adapter.
@@ -97,11 +96,11 @@ public class ReactiveAdapter {
 		return getDescriptor().isNoValue();
 	}
 
-
 	/**
 	 * Adapt the given instance to a Reactive Streams {@code Publisher}.
+	 *
 	 * @param source the source object to adapt from; if the given object is
-	 * {@code null}, {@link ReactiveTypeDescriptor#getEmptyValue()} is used.
+	 *               {@code null}, {@link ReactiveTypeDescriptor#getEmptyValue()} is used.
 	 * @return the Publisher representing the adaptation
 	 */
 	@SuppressWarnings("unchecked")
@@ -114,6 +113,7 @@ public class ReactiveAdapter {
 
 	/**
 	 * Adapt from the given Reactive Streams Publisher.
+	 *
 	 * @param publisher the publisher to adapt from
 	 * @return the reactive type instance representing the adapted publisher
 	 */
